@@ -88,7 +88,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PrimarySearchAppBar() {
+export default function Header() {
   const classes = useStyles();
 
   return (
@@ -118,7 +118,11 @@ export default function PrimarySearchAppBar() {
             </Grid>
 
             <Box flexGrow={1}>
-              <Typography  variant="h6" className={classes.info}>Elegant 3</Typography>
+              <Grid container xs={12}>
+                
+                  <Grid item><Typography  variant="h6" className={classes.info}>Elegant 3</Typography></Grid>
+                  <Grid item><Typography  variant="h6" className={classes.info}>Elegant 3</Typography></Grid>
+              </Grid>
             </Box>
           </Toolbar>
       </Container>

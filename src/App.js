@@ -5,12 +5,14 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import PrimarySearchAppBar from "./Components/Appbar";
+import Header from "./Components/Header/Header";
+import Hero from "./Components/Hero/Hero";
 
 function App() {
   return (
     <Router>
-      <PrimarySearchAppBar />
+      <Header />
+      <Hero />
     </Router>
   );
 }
