@@ -9,6 +9,10 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
+import {FaRegUser} from 'react-icons/fa'
+import {BiChevronDown} from 'react-icons/bi'
+// FaRegUser
+// BiChevronDown
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -117,11 +121,26 @@ export default function Header() {
           </div>
             </Grid>
 
-            <Box flexGrow={1}>
-              <Grid container xs={12}>
-                
-                  <Grid item><Typography  variant="h6" className={classes.info}>Elegant 3</Typography></Grid>
-                  <Grid item><Typography  variant="h6" className={classes.info}>Elegant 3</Typography></Grid>
+            <Box flexGrow={1} style={{
+                // backgroundColor:'red',
+                height: 39
+                }}>
+              <Grid container style={{
+                height: '100%',
+                alignItems:'center',
+                textAlign: 'center'
+                }}>
+                  <Grid item xs={4} 
+                  style={{backgroundColor:''}}>
+                    <label>
+                      <span><FaRegUser fontSize={20} style={{marginRight:5}}/> Login <BiChevronDown/></span>
+                     
+                    </label>
+                  </Grid>
+                  <Grid item xs={4}
+                  style={{backgroundColor:'yellow'}}>Elegant 2</Grid>
+                  <Grid item xs={4}
+                  style={{backgroundColor:'green'}}>Elegant 3</Grid>
               </Grid>
             </Box>
           </Toolbar>
