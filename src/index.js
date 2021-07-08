@@ -12,14 +12,14 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: '#f68b1e'
-  },
+    },
   },
 })
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-    <App />
+      <App />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
