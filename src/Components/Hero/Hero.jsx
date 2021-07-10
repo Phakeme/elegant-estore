@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import categories from "../../Data/categories";
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 const Hero = () => {
   const classes = useStyles();
   return (
-    <Container style={{ marginTop: "76px" }}>
+    <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
       <Grid
         container
         spacing={2}
@@ -44,7 +45,6 @@ const Hero = () => {
                   >
                     <span
                       style={{
-                        // background: "yellow",
                         width: "20px",
                         fontSize: "20px",
                       }}
@@ -69,14 +69,28 @@ const Hero = () => {
           </Paper>
         </Grid>
         <Grid item xs={8}>
-          <Paper className={classes.paper}>
-            <p>Item 1</p>
-          </Paper>
+          <Paper className={classes.paper}></Paper>
         </Grid>
         <Grid item xs={2}>
-          <Paper className={classes.paper}>
-            <p>Item 1</p>
-          </Paper>
+          <Box
+            style={{
+              display: "grid",
+              gridTemplateRows: "1fr 1fr",
+              gap: "16px",
+              height: "100%",
+            }}
+          >
+            <Box flexGrow={1} style={{ marginBottom: "0" }}>
+              <Paper style={{ height: "100%", marginBottom: "16px" }}>
+                <span>Text</span>
+              </Paper>
+            </Box>
+            <Box flexGrow={1}>
+              <Paper style={{ height: "100%" }}>
+                <span>Text</span>
+              </Paper>
+            </Box>
+          </Box>
         </Grid>
       </Grid>
     </Container>
