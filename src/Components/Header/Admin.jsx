@@ -8,10 +8,9 @@ import { GrCart } from "react-icons/gr/";
 const Admin = () => {
   return (
     <Box
-      flexGrow={1}
       style={{
-        height: 39,
-        minWidth: 286,
+        height: "40px",
+        width: "280px",
       }}
     >
       <Grid
