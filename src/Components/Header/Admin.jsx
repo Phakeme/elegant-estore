@@ -24,16 +24,15 @@ const Admin = () => {
         <Grid item xs={4} style={{ backgroundColor: "" }}>
           <label>
             <span>
-              <FaRegUser fontSize={20} style={{ marginRight: 5 }} /> Login{" "}
-              <BiChevronDown />
+              <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />{" "}
+              Help <BiChevronDown />
             </span>
           </label>
         </Grid>
         <Grid item xs={4} style={{ backgroundColor: "" }}>
           <label>
             <span>
-              <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />{" "}
-              Help <BiChevronDown />
+              <GrCart fontSize={20} /> Cart
             </span>
           </label>
         </Grid>
@@ -41,8 +40,6 @@ const Admin = () => {
           item
           xs={4}
           style={{
-            backgroundColor: "#f5f5f5",
-            borderRadius: 4,
             height: "100%",
             display: "grid",
             alignItems: "center",
@@ -50,7 +47,8 @@ const Admin = () => {
         >
           <label>
             <span>
-              <GrCart fontSize={20} /> Cart
+              <FaRegUser fontSize={20} style={{ marginRight: 5 }} /> Login{" "}
+              <BiChevronDown />
             </span>
           </label>
         </Grid>
