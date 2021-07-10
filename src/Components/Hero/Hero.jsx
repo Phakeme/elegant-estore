@@ -86,9 +86,17 @@ const Hero = () => {
               </Paper>
             </Box>
             <Box flexGrow={1}>
-              <Paper style={{ height: "100%" }}>
-                <span>Text</span>
-              </Paper>
+              <Link to="/address">
+                <Paper
+                  style={{
+                    height: "100%",
+                    backgroundImage: "url(./images/Top-Right.gif)",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "repeat",
+                    backgroundPosition: "center",
+                  }}
+                />
+              </Link>
             </Box>
           </Box>
         </Grid>
