@@ -6,8 +6,8 @@ import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import categories from "../../Data/categories";
-import Typography from "@material-ui/core/Typography";
 import InfoLink from "./InfoLink";
+import HeroCarousel from "./Carousel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -77,7 +77,9 @@ const Hero = () => {
         </Grid>
         {/* -------------- MAIN HERO IMAGE SLIDER -------------- */}
         <Grid item xs={8}>
-          <Paper className={classes.paper}></Paper>
+          <Paper className={classes.paper}>
+            <HeroCarousel />
+          </Paper>
         </Grid>
         {/* -------------- INFORMATIVE LINKS -------------- */}
         <Grid item xs={2}>
