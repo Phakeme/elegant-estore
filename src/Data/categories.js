@@ -61,7 +61,7 @@ const categories = [
     icon: <FaShoppingCart />,
   },
   {
-    name: "Fasion",
+    name: "Fashion",
     path: "/",
     icon: <GiTShirt />,
   },
