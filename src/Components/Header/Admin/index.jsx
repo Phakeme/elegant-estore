@@ -10,8 +10,18 @@ import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { GrCart } from "react-icons/gr/";
 import DropDownLink from "./DropDownLink";
 
+const styles = makeStyles((theme) => ({
+  link: {
+    "&:hover": {
+      color: theme.palette.secondary.main,
+    },
+  },
+}));
+
 const Admin = () => {
   const [helpOpen, setHelpOpen] = useState(false);
+  const classes = styles();
+
   return (
     <Box
       style={{
@@ -28,27 +38,37 @@ const Admin = () => {
         }}
       >
         <Grid
+          className={classes.link}
           item
           xs={4}
-          style={{ backgroundColor: "" }}
-          onClick={() => setHelpOpen(!helpOpen)}
+          style={{
+            display: "flex",
+            height: "100%",
+            alignItems: "center",
+            borderRadius: " 4px",
+            justifyContent: "center",
+          }}
+          onMouseEnter={() => setHelpOpen(true)}
+          onMouseLeave={() => setHelpOpen(false)}
+          onClick={() => setHelpOpen(false)}
         >
           <label>
             <span>
               <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />{" "}
-              Help {helpOpen ? <BiChevronDown /> : <BiChevronUp />}
+              Help {!helpOpen ? <BiChevronDown /> : <BiChevronUp />}
             </span>
           </label>
-          {!helpOpen && (
+          {helpOpen && (
             <Paper
               elevation={5}
               style={{
                 position: "absolute",
-                marginTop: "10px",
+                marginTop: "1px",
                 padding: "10px",
                 width: "206px",
                 height: "269px",
                 right: "115px",
+                top: "50px",
               }}
             >
               <Button
@@ -81,7 +101,6 @@ const Admin = () => {
               <Divider />
               <Box
                 style={{
-                  // position: "relative",
                   marginTop: "16px",
                   textAlign: "left",
                 }}
