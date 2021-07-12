@@ -3,3 +3,8 @@ React Project (YouTube)
 Creating an application main Navbar menu
 React Router?
 What is TextField?
+
+npm packages
+@material-ui
+react-responsive-carousel
+react-icons

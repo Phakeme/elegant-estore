@@ -75,7 +75,6 @@ export default function Header() {
                     />
                   </Link>
                 </Box>
-
                 <Box
                   flexGrow={1}
                   style={{
