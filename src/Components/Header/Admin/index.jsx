@@ -8,16 +8,9 @@ import Divider from "@material-ui/core/Divider";
 import { FaRegUser, FaRegQuestionCircle } from "react-icons/fa";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { GrCart } from "react-icons/gr/";
+import DropDownLink from "./DropDownLink";
 
 const Admin = () => {
-  const classes = makeStyles({
-    hr: {
-      ":before": {
-        height: "10px",
-        backgroundColor: "red",
-      },
-    },
-  });
   const [helpOpen, setHelpOpen] = useState(false);
   return (
     <Box
@@ -52,25 +45,49 @@ const Admin = () => {
               style={{
                 position: "absolute",
                 marginTop: "10px",
-                padding: "20px",
+                padding: "10px",
                 width: "206px",
-                height: "256px",
+                height: "269px",
+                right: "115px",
               }}
             >
               <Button
                 variant="contained"
                 color="secondary"
                 size="medium"
+                fullWidth
                 style={{
-                  width: "100%",
                   color: "white",
                   marginBottom: "10px",
                 }}
               >
-                Login
+                <span style={{ fontWeight: 500 }}>Login</span>
               </Button>
               <span>OR</span>
-              <div className={classes.hr} />
+              <Button
+                size="medium"
+                variant="outlined"
+                color="secondary"
+                fullWidth
+                style={{
+                  fontSize: "0.875rem",
+                  fontWeight: "bold",
+                  marginBottom: "16px",
+                  marginTop: "10px",
+                }}
+              >
+                <span style={{ fontWeight: 700 }}>CREATE ACCOUNT</span>
+              </Button>
+              <Divider />
+              <Box
+                style={{
+                  // position: "relative",
+                  marginTop: "16px",
+                  textAlign: "left",
+                }}
+              >
+                <DropDownLink />
+              </Box>
             </Paper>
           )}
         </Grid>
