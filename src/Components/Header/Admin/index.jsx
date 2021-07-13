@@ -20,6 +20,7 @@ const styles = makeStyles((theme) => ({
 
 const Admin = () => {
   const [helpOpen, setHelpOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
   const classes = styles();
 
   return (
@@ -37,6 +38,7 @@ const Admin = () => {
           textAlign: "center",
         }}
       >
+        {/* -------------- HELP LINK AND SUBLINKS -------------- */}
         <Grid
           className={classes.link}
           item
@@ -50,7 +52,7 @@ const Admin = () => {
           }}
           onMouseEnter={() => setHelpOpen(true)}
           onMouseLeave={() => setHelpOpen(false)}
-          onClick={() => setHelpOpen(false)}
+          onClick={() => setHelpOpen(!helpOpen)}
         >
           <label>
             <span>
@@ -110,6 +112,7 @@ const Admin = () => {
             </Paper>
           )}
         </Grid>
+        {/* -------------- CART LINK -------------- */}
         <Grid item xs={4} style={{ backgroundColor: "" }}>
           <label>
             <span>
@@ -117,6 +120,7 @@ const Admin = () => {
             </span>
           </label>
         </Grid>
+        {/* -------------- LOGIN AND SUBLINKS -------------- */}
         <Grid
           item
           xs={4}
@@ -125,6 +129,9 @@ const Admin = () => {
             display: "grid",
             alignItems: "center",
           }}
+          onMouseEnter={() => setLoginOpen(true)}
+          onMouseLeave={() => setLoginOpen(false)}
+          onClick={() => setLoginOpen(!loginOpen)}
         >
           <label>
             <span>
@@ -132,6 +139,57 @@ const Admin = () => {
               <BiChevronDown />
             </span>
           </label>
+          {loginOpen && (
+            <Paper
+              elevation={5}
+              style={{
+                position: "absolute",
+                marginTop: "1px",
+                padding: "10px",
+                width: "206px",
+                height: "269px",
+                right: "0px",
+                top: "50px",
+              }}
+            >
+              <Button
+                variant="contained"
+                color="secondary"
+                size="medium"
+                fullWidth
+                style={{
+                  color: "white",
+                  marginBottom: "10px",
+                }}
+              >
+                <span style={{ fontWeight: 500 }}>Login</span>
+              </Button>
+              <span>OR</span>
+              <Button
+                size="medium"
+                variant="outlined"
+                color="secondary"
+                fullWidth
+                style={{
+                  fontSize: "0.875rem",
+                  fontWeight: "bold",
+                  marginBottom: "16px",
+                  marginTop: "10px",
+                }}
+              >
+                <span style={{ fontWeight: 700 }}>CREATE ACCOUNT</span>
+              </Button>
+              <Divider />
+              <Box
+                style={{
+                  marginTop: "16px",
+                  textAlign: "left",
+                }}
+              >
+                <DropDownLink />
+              </Box>
+            </Paper>
+          )}
         </Grid>
       </Grid>
     </Box>
