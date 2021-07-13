@@ -123,6 +123,7 @@ const Admin = () => {
         </Grid>
         {/* -------------- LOGIN AND SUBLINKS -------------- */}
         <Grid
+          className={classes.link}
           item
           xs={4}
           style={{
@@ -137,7 +138,7 @@ const Admin = () => {
           <label>
             <span>
               <FaRegUser fontSize={20} style={{ marginRight: 5 }} /> Login{" "}
-              <BiChevronDown />
+              {!loginOpen ? <BiChevronDown /> : <BiChevronUp />}
             </span>
           </label>
           {loginOpen && (
