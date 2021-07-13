@@ -8,3 +8,4 @@ npm packages
 @material-ui
 react-responsive-carousel
 react-icons
+@chec/commerce.js

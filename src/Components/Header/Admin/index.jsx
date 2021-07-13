@@ -9,6 +9,7 @@ import { FaRegUser, FaRegQuestionCircle } from "react-icons/fa";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { GrCart } from "react-icons/gr/";
 import DropDownLink from "./DropDownLink";
+import { Link } from "react-router-dom";
 
 const styles = makeStyles((theme) => ({
   link: {
@@ -60,7 +61,7 @@ const Admin = () => {
               Help {!helpOpen ? <BiChevronDown /> : <BiChevronUp />}
             </span>
           </label>
-          {helpOpen && (
+          {/* {helpOpen && (
             <Paper
               elevation={5}
               style={{
@@ -110,7 +111,7 @@ const Admin = () => {
                 <DropDownLink />
               </Box>
             </Paper>
-          )}
+          )} */}
         </Grid>
         {/* -------------- CART LINK -------------- */}
         <Grid item xs={4} style={{ backgroundColor: "" }}>
@@ -131,7 +132,7 @@ const Admin = () => {
           }}
           onMouseEnter={() => setLoginOpen(true)}
           onMouseLeave={() => setLoginOpen(false)}
-          onClick={() => setLoginOpen(!loginOpen)}
+          // onClick={() => setLoginOpen(!loginOpen)}
         >
           <label>
             <span>
@@ -162,7 +163,12 @@ const Admin = () => {
                   marginBottom: "10px",
                 }}
               >
-                <span style={{ fontWeight: 500 }}>Login</span>
+                <Link
+                  style={{ fontWeight: 500, width: "100%", height: "100%" }}
+                  to="/login"
+                >
+                  <span>Login</span>
+                </Link>
               </Button>
               <span>OR</span>
               <Button

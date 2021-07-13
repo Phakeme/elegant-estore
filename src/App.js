@@ -7,7 +7,14 @@ function App() {
   return (
     <Router>
       <Header />
-      <Hero />
+      <Switch>
+        <Route exact path="/">
+          <Hero />
+        </Route>
+        <Route exact path="/login">
+          <h1 style={{ marginTop: `${76 + 8 + 8}px` }}>Login</h1>
+        </Route>
+      </Switch>
     </Router>
   );
 }
