@@ -1,14 +1,7 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header, Product } from "./Components/";
 import Home from "./pages/Home";
-// import Product from "./pages/Product";
 
 function App() {
   return (

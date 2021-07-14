@@ -18,8 +18,6 @@ const TopSellers = () => {
     commerce.products.list().then((product) => setProducts(product.data));
   }, []);
 
-  // console.log(products, "Products");
-
   return (
     <Container style={{ paddingTop: "16px" }}>
       <Paper style={{ width: "100%", minHeight: "250px", padding: "10px" }}>

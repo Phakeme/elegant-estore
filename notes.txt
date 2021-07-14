@@ -4,6 +4,9 @@ Creating an application main Navbar menu
 React Router?
 What is TextField?
 
+//React Hooks
+useState, useEffect, useParams
+
 npm packages
 @material-ui
 react-responsive-carousel
