@@ -4,7 +4,7 @@ import Container from "@material-ui/core/Container";
 import { commerce } from "../../lib/commerce";
 
 const TopSellers = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
 
   useEffect(() => {
     commerce.products.list().then((product) => setProducts(product.data));
@@ -19,7 +19,6 @@ const TopSellers = () => {
           products.map((product, i) => (
             <div key={i}>
               <div>id: {product.id}</div>
-              {/* {product} */}
               {product.assets.map((image, i) => (
                 <img
                   style={{ height: "300px" }}
