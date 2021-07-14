@@ -1,7 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Header } from "./Components/";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
+import { Header, Product } from "./Components/";
 import Home from "./pages/Home";
+// import Product from "./pages/Product";
 
 function App() {
   return (
@@ -13,6 +20,9 @@ function App() {
         </Route>
         <Route exact path="/login">
           <h1 style={{ marginTop: `${76 + 8 + 8}px` }}>Login</h1>
+        </Route>
+        <Route path="/product/:slug/:id">
+          <Product />
         </Route>
       </Switch>
     </Router>

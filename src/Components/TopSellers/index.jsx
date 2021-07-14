@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
@@ -33,10 +33,15 @@ const TopSellers = () => {
         >
           {Array.isArray(products) &&
             products.slice(0, 6).map((product, i) => (
-              <Box xs={2}>
-                <Link to="/text">
+              <Box xs={2} key={i}>
+                <Link
+                  key={i}
+                  to={`product/${product.name.split(" ").join("-")}/${
+                    product.id
+                  }`}
+                >
                   <Card key={i} elevation={0}>
-                    <CardActionArea>
+                    <CardActionArea key={i}>
                       {product.assets.slice(0, 1).map((image, i) => (
                         <CardMedia
                           key={i}
