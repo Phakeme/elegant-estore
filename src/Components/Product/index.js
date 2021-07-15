@@ -4,6 +4,7 @@ import { commerce } from "../../lib/commerce";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/styles";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -11,6 +12,7 @@ import { Carousel } from "react-responsive-carousel";
 import { Divider } from "@material-ui/core";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import { AiFillTwitterCircle } from "react-icons/ai";
+import { HiOutlineHeart } from "react-icons/hi";
 
 const useStyles = makeStyles((theme) => ({
   navigation: {
@@ -23,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       color: theme.palette.secondary.main,
     },
+  },
+  cartlink: {
+    color: theme.palette.secondary.main,
   },
 }));
 
@@ -95,19 +100,46 @@ const Product = () => {
                 </Box>
               </Grid>
               <Grid item xs={8}>
-                text
+                <Box>
+                  <Box>
+                    {product.hasOwnProperty("name") && (
+                      <Box>
+                        <Box
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            background: "",
+                            height: "35px",
+                          }}
+                        >
+                          <h1 style={{ fontSize: "20px", marginTop: 0 }}>
+                            {product.name}
+                          </h1>
+                          <Button
+                            style={{
+                              minWidth: "50px",
+                              minHeight: "50px",
+                              borderRadius: "50px",
+                              fontSize: "25px",
+                              top: "-10px",
+                              right: "-10px",
+                            }}
+                            className={classes.cartlink}
+                          >
+                            <HiOutlineHeart />
+                          </Button>
+                        </Box>
+                        <Box style={{ background: "", marginBottom: 10 }}>
+                          <div>Brand:</div>
+                          <div>Rating(6):</div>
+                        </Box>
+                        <Divider />
+                      </Box>
+                    )}
+                  </Box>
+                </Box>
               </Grid>
             </Grid>
-            {product.hasOwnProperty("name") && (
-              <div>
-                {/* <div>{product.name}</div>
-          <div>{product.price.formatted_with_symbol}</div>
-          <div>{product.description}</div>
-          {product.assets.map((image, i) => (
-            <img key={i} src={image.url} alt="product" />
-          ))} */}
-              </div>
-            )}
           </Paper>
         </Grid>
         <Grid item xs={3}>
@@ -119,3 +151,7 @@ const Product = () => {
 };
 
 export default Product;
+{
+  /* <div>{product.price.formatted_with_symbol}</div>
+<div>{product.description}</div> */
+}
