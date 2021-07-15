@@ -6,6 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/styles";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
+import { Divider } from "@material-ui/core";
+import { RiFacebookCircleFill } from "react-icons/ri";
+import { AiFillTwitterCircle } from "react-icons/ai";
 
 const useStyles = makeStyles((theme) => ({
   navigation: {
@@ -13,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
   },
   mainPaper: {
     height: "100%",
+  },
+  link: {
+    "&:hover": {
+      color: theme.palette.secondary.main,
+    },
   },
 }));
 
@@ -44,9 +54,50 @@ const Product = () => {
             ))}
         </Grid>
       </Box>
-      <Grid container spacing={2} style={{ minHeight: "400px" }}>
+      <Grid container spacing={2} style={{ height: "567px" }}>
         <Grid item xs={9}>
-          <Paper className={classes.mainPaper}>
+          <Paper className={classes.mainPaper} style={{ padding: "16px" }}>
+            <Grid container spacing={2}>
+              <Grid item xs={4}>
+                <Box>
+                  <Box>
+                    <Carousel showThumbs useKeyboardArrows showStatus={false}>
+                      {Array.isArray(product.assets) &&
+                        product.assets.map((image, i) => (
+                          <img key={i} src={image.url} alt="product" />
+                        ))}
+                    </Carousel>
+                  </Box>
+                  <Divider />
+                  <Box>
+                    <h2 style={{ fontSize: "14px", fontWeight: "bold" }}>
+                      SHARE THIS PRODUCT
+                    </h2>
+                    <div style={{ fontSize: "30px" }}>
+                      <a
+                        href="https://www.facebook.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className={classes.link}
+                      >
+                        <RiFacebookCircleFill />
+                      </a>
+                      <a
+                        href="https://twitter.com/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className={classes.link}
+                      >
+                        <AiFillTwitterCircle />
+                      </a>
+                    </div>
+                  </Box>
+                </Box>
+              </Grid>
+              <Grid item xs={8}>
+                text
+              </Grid>
+            </Grid>
             {product.hasOwnProperty("name") && (
               <div>
                 {/* <div>{product.name}</div>
