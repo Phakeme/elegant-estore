@@ -59,6 +59,12 @@ const Product = () => {
     commerce.products.retrieve(id).then((product) => setProduct(product));
   }, []);
 
+  const addToCart = () => {
+    commerce.cart
+      .add(product.id, 1)
+      .then((response) => console.log(response, "Response"));
+  };
+
   const handleClick = () => {
     console.info("You clicked the Chip.");
   };
@@ -200,6 +206,7 @@ const Product = () => {
                             )}
                           </div>
                           <Button
+                            onClick={addToCart}
                             variant="contained"
                             color="secondary"
                             size="large"
@@ -214,6 +221,37 @@ const Product = () => {
                           </Button>
                         </Box>
                         <Divider />
+                        <Box style={{ padding: "10px 0" }}>
+                          <Typography
+                            gutterBottom
+                            variant="subtitle2"
+                            paragraph
+                            component="div"
+                          >
+                            <Box fontWeight="fontWeightBold">PROMOTIONS</Box>
+                          </Typography>
+                          <Typography
+                            gutterBottom
+                            variant="body1"
+                            component="div"
+                          >
+                            Take R250 off your first Zando order on the app*
+                          </Typography>
+                          <Typography
+                            gutterBottom
+                            variant="body1"
+                            component="div"
+                          >
+                            Free Delivery above R400*
+                          </Typography>
+                          <Typography
+                            gutterBottom
+                            variant="body1"
+                            component="div"
+                          >
+                            Free Returns*
+                          </Typography>
+                        </Box>
                       </Box>
                     )}
                   </Box>

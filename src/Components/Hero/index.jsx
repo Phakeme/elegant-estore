@@ -8,6 +8,10 @@ import Container from "@material-ui/core/Container";
 import categories from "../../Data/categories";
 import InfoLink from "./InfoLink";
 import HeroCarousel from "./Carousel";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,10 +43,11 @@ const Hero = () => {
         {/* -------------- CATEGORIERS LINKS -------------- */}
         <Grid item xs={2}>
           <Paper className={classes.paper}>
-            <ul>
+            <List component="nav" aria-label="main categories">
               {categories.map(({ name, icon, path }, i) => (
                 <Link to={path} key={i}>
-                  <div
+                  <ListItem
+                    button
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -69,10 +74,10 @@ const Hero = () => {
                     >
                       {name}
                     </span>
-                  </div>
+                  </ListItem>
                 </Link>
               ))}
-            </ul>
+            </List>
           </Paper>
         </Grid>
         {/* -------------- MAIN HERO IMAGE SLIDER -------------- */}

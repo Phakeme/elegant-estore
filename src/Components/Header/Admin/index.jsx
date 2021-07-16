@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -10,19 +10,37 @@ import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { GrCart } from "react-icons/gr/";
 import DropDownLink from "./DropDownLink";
 import { Link } from "react-router-dom";
+import { commerce } from "../../../lib/commerce";
+import Badge from "@material-ui/core/Badge";
 
 const styles = makeStyles((theme) => ({
+  adminBtn: {
+    display: "flex",
+    height: "100%",
+    alignItems: "center",
+    borderRadius: " 4px",
+    justifyContent: "center",
+  },
   link: {
     "&:hover": {
       color: theme.palette.secondary.main,
     },
+  },
+  badge: {
+    color: theme.palette.primary.main,
   },
 }));
 
 const Admin = () => {
   const [helpOpen, setHelpOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+
+  const [cart, setCart] = useState({});
   const classes = styles();
+
+  useEffect(() => {
+    commerce.cart.retrieve().then((cart) => setCart(cart));
+  }, []);
 
   return (
     <Box
@@ -41,16 +59,9 @@ const Admin = () => {
       >
         {/* -------------- HELP LINK AND SUBLINKS -------------- */}
         <Grid
-          className={classes.link}
+          className={classes.link + " " + classes.adminBtn}
           item
           xs={4}
-          style={{
-            display: "flex",
-            height: "100%",
-            alignItems: "center",
-            borderRadius: " 4px",
-            justifyContent: "center",
-          }}
           onMouseEnter={() => setHelpOpen(true)}
           onMouseLeave={() => setHelpOpen(false)}
           onClick={() => setHelpOpen(!helpOpen)}
@@ -114,12 +125,29 @@ const Admin = () => {
           )} */}
         </Grid>
         {/* -------------- CART LINK -------------- */}
-        <Grid item xs={4} style={{ backgroundColor: "" }}>
-          <label>
-            <span>
-              <GrCart fontSize={20} /> Cart
-            </span>
-          </label>
+        <Grid item xs={4}>
+          <Link to="/cart">
+            <Box
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+              }}
+            >
+              <span>
+                <Badge
+                  badgeContent={cart.total_items}
+                  color="secondary"
+                  classes={{ badge: classes.badge }}
+                >
+                  <GrCart fontSize={20} />
+                </Badge>
+              </span>
+
+              <span style={{ marginLeft: "15px" }}>Cart</span>
+            </Box>
+          </Link>
         </Grid>
         {/* -------------- LOGIN AND SUBLINKS -------------- */}
         <Grid
