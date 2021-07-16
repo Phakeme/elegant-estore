@@ -4,6 +4,8 @@ import { commerce } from "../../lib/commerce";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import Chip from "@material-ui/core/Chip";
+import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
@@ -13,9 +15,25 @@ import { Carousel } from "react-responsive-carousel";
 import { Divider } from "@material-ui/core";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import { AiFillTwitterCircle } from "react-icons/ai";
+import { MdAddShoppingCart } from "react-icons/md";
 import { HiOutlineHeart } from "react-icons/hi";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import Favorite from "@material-ui/icons/Favorite";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "left",
+    alignItems: "center",
+    flexWrap: "wrap",
+    "& > *": {
+      margin: theme.spacing(0.5),
+    },
+  },
   navigation: {
     marginRight: "8px",
   },
@@ -40,6 +58,10 @@ const Product = () => {
   useEffect(() => {
     commerce.products.retrieve(id).then((product) => setProduct(product));
   }, []);
+
+  const handleClick = () => {
+    console.info("You clicked the Chip.");
+  };
 
   return (
     <Container style={{ marginTop: `${76 + 8}px` }}>
@@ -114,7 +136,9 @@ const Product = () => {
                           }}
                         >
                           <Typography variant="h6" component="h2">
-                            {product.name}
+                            <Box fontWeight="fontWeightBold">
+                              {product.name}
+                            </Box>
                           </Typography>
                           <Button
                             style={{
@@ -141,7 +165,9 @@ const Product = () => {
                         <Divider />
                         <Box style={{ padding: "10px 0" }}>
                           <Typography variant="h4" component="h2">
-                            {product.price.formatted_with_symbol}
+                            <Box fontWeight="fontWeightBold">
+                              {product.price.formatted_with_symbol}
+                            </Box>
                           </Typography>
                           <Typography variant="body2" component="h2">
                             + shipping from <em>R60</em> to Edenvale | 1609
@@ -149,12 +175,43 @@ const Product = () => {
                         </Box>
                         <Divider />
                         <Box style={{ padding: "10px 0" }}>
-                          <Typography variant="subtitle2" component="h2">
-                            VARIATION AVAILABLE
+                          <Typography
+                            gutterBottom
+                            variant="subtitle2"
+                            component="div"
+                          >
+                            <Box fontWeight="fontWeightBold">
+                              VARIATION AVAILABLE
+                            </Box>
                           </Typography>
-                          {/* <Typography variant="body2" component="h2">
-                            + shipping from <em>R60</em> to Edenvale | 1609
-                          </Typography> */}
+                          <div className={classes.root}>
+                            {product.variant_groups.map(
+                              ({ id, options }, i) => (
+                                <div key={id} className={classes.root}>
+                                  {options.map(({ id, name }) => (
+                                    <Chip
+                                      key={id}
+                                      clickable
+                                      label={`size ${name}`}
+                                    />
+                                  ))}
+                                </div>
+                              )
+                            )}
+                          </div>
+                          <Button
+                            variant="contained"
+                            color="secondary"
+                            size="large"
+                            fullWidth
+                            style={{
+                              color: "white",
+                              margin: "15px 0 10px 0",
+                            }}
+                            startIcon={<MdAddShoppingCart />}
+                          >
+                            Add to cart
+                          </Button>
                         </Box>
                         <Divider />
                       </Box>
@@ -174,7 +231,3 @@ const Product = () => {
 };
 
 export default Product;
-{
-  /* <div>{product.price.formatted_with_symbol}</div>
-<div>{product.description}</div> */
-}
