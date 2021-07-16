@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header, Product } from "./Components/";
+import CartPage from "./pages/CartPage";
 import Home from "./pages/Home";
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
         </Route>
         <Route path="/product/:slug/:id">
           <Product />
+        </Route>
+        <Route path="/cart">
+          <CartPage />
         </Route>
       </Switch>
     </Router>

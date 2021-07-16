@@ -42,6 +42,8 @@ const Admin = () => {
     commerce.cart.retrieve().then((cart) => setCart(cart));
   }, []);
 
+  console.info(cart, "CART");
+
   return (
     <Box
       style={{
