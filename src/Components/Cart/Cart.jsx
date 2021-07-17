@@ -87,7 +87,10 @@ const Cart = () => {
                         </div>
                       </Link>
                     </div>
-                    <div>Text</div>
+                    <div>
+                      <div>{name}</div>
+                      <div>Text</div>
+                    </div>
                   </div>
                 ))}
               </FormGroup>

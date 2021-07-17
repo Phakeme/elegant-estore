@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { commerce } from "../../lib/commerce";
-import Container from "@material-ui/core/Container";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import Chip from "@material-ui/core/Chip";
-import Checkbox from "@material-ui/core/Checkbox";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
+import {
+  Container,
+  Grid,
+  Box,
+  Chip,
+  Typography,
+  Button,
+  Paper,
+  Divider,
+} from "@material-ui/core";
+
 import { makeStyles } from "@material-ui/styles";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { Divider } from "@material-ui/core";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { MdAddShoppingCart } from "react-icons/md";
 import { HiOutlineHeart } from "react-icons/hi";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
-import Favorite from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
 const useStyles = makeStyles((theme) => ({
   root: {
