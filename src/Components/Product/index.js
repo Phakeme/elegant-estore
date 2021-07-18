@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { commerce } from "../../lib/commerce";
-import {
-  Container,
-  Grid,
-  Box,
-  Chip,
-  Typography,
-  Button,
-  Paper,
-  Divider,
-} from "@material-ui/core";
-
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Chip from "@material-ui/core/Chip";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/styles";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";

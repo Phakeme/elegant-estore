@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { fade, makeStyles } from "@material-ui/core/styles";
+import { fade } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
@@ -10,31 +10,7 @@ import InputBase from "@material-ui/core/InputBase";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Admin from "./Admin/";
-
-const useStyles = makeStyles((theme) => ({
-  searchIcon: {
-    padding: "1px 1px 1px 10px",
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    width: "100%",
-  },
-  inputInput: {
-    padding: "10px",
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${30}px)`,
-    transition: "",
-    // width: "100%",
-  },
-  info: {
-    minWidth: "200px",
-  },
-}));
+import useStyles from "./styles";
 
 export default function Header() {
   const classes = useStyles();
