@@ -4,8 +4,12 @@ Creating an application main Navbar menu
 React Router?
 What is TextField?
 
-//React Hooks
+//React
+/React Hooks
 useState, useEffect, useParams
+/React Patterns
+namespace
+
 
 npm packages
 @material-ui
