@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "@material-ui/core";
-import { Cart } from "../Components/";
+import { Cart } from "../../Components";
 
 const CartPage = () => {
   return (
