@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { commerce } from "../../lib/commerce";
-import Container from "@material-ui/core/Container";
+import React from "react";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Chip from "@material-ui/core/Chip";
@@ -17,7 +15,7 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 import { MdAddShoppingCart } from "react-icons/md";
 import { HiOutlineHeart } from "react-icons/hi";
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   root: {
     display: "flex",
     justifyContent: "left",
@@ -43,28 +41,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Product = () => {
-  const classes = useStyles();
-  const [product, setProduct] = useState({});
-  const { id } = useParams();
-
-  useEffect(() => {
-    commerce.products.retrieve(id).then((product) => setProduct(product));
-  }, []);
-
-  const addToCart = () => {
-    commerce.cart
-      .add(product.id, 1)
-      .then((response) => console.log(response, "Response"));
-  };
-
-  const handleClick = () => {
-    console.info("You clicked the Chip.");
-  };
+const Product = ({ product, addToCart }) => {
+  const classes = Styles();
 
   return (
-    <Container style={{ marginTop: `${76 + 8}px` }}>
-      {console.log(product, "Product")}
+    <>
       <Box style={{ marginBottom: "8px" }}>
         <Grid container>
           <Grid item>
@@ -257,7 +238,7 @@ const Product = () => {
           <Paper className={classes.mainPaper}></Paper>
         </Grid>
       </Grid>
-    </Container>
+    </>
   );
 };
 
