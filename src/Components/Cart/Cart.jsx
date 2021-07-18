@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { commerce } from "../../lib/commerce";
 import { Box, Typography, Paper, FormGroup } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
-const styles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   container: {
-    // background: "red",
     maxWidth: "950px",
     margin: "auto",
   },
@@ -28,14 +26,8 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-const Cart = () => {
-  const classes = styles();
-  const [cart, setCart] = useState({});
-
-  useEffect(() => {
-    commerce.cart.retrieve().then((cart) => setCart(cart));
-    console.log(cart, "CART");
-  }, []);
+const Cart = ({ cart }) => {
+  const classes = Styles();
 
   return (
     <div>

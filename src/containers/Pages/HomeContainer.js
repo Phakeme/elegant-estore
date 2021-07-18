@@ -15,10 +15,11 @@ const HomeContainer = () => {
   useEffect(() => {
     commerce.products.list().then((product) => setProducts(product.data));
   }, []);
+
   return (
     <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
       <Hero>
-        <Hero.Categories categories={categories}></Hero.Categories>
+        <Hero.Categories categories={categories} />
         <Hero.ImageSlide>
           <HeroCarousel />
         </Hero.ImageSlide>
@@ -43,7 +44,7 @@ const HomeContainer = () => {
           />
         </Hero.InformativeLinks>
       </Hero>
-      {/* <ProductsSummary products={products} /> */}
+      <ProductsSummary products={products} />
     </Container>
   );
 };

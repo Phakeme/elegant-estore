@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "@material-ui/core";
-// import { Cart } from "../../Components";
+import { commerce } from "../../lib/commerce";
+import { Cart } from "../../Components";
 
-const CartPage = () => {
+const CartContainer = () => {
+  const [cart, setCart] = useState({});
+
+  useEffect(() => {
+    commerce.cart.retrieve().then((cart) => setCart(cart));
+  }, []);
+
   return (
     <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
-      {/* '<Cart />' */}
+      <Cart cart={cart} />
     </Container>
   );
 };
 
-export default CartPage;
+export default CartContainer;
