@@ -41,7 +41,7 @@ const Styles = makeStyles((theme) => ({
   },
 }));
 
-const Product = ({ product, addToCart }) => {
+const Product = ({ product, children }) => {
   const classes = Styles();
 
   return (
@@ -53,6 +53,7 @@ const Product = ({ product, addToCart }) => {
               Home
             </Link>
           </Grid>
+
           {Array.isArray(product.categories) &&
             product.categories.map(({ id, name }, i) => (
               <Grid item key={id}>
@@ -63,182 +64,176 @@ const Product = ({ product, addToCart }) => {
         </Grid>
       </Box>
       <Grid container spacing={2} style={{ height: "567px" }}>
-        <Grid item xs={9}>
-          <Paper className={classes.mainPaper} style={{ padding: "16px" }}>
-            <Grid container spacing={2}>
-              <Grid item xs={4}>
-                <Box>
-                  <Box>
-                    <Carousel showThumbs useKeyboardArrows showStatus={false}>
-                      {Array.isArray(product.assets) &&
-                        product.assets.map((image, i) => (
-                          <img key={i} src={image.url} alt="product" />
-                        ))}
-                    </Carousel>
-                  </Box>
-                  <Divider />
-                  <Box>
-                    <h2 style={{ fontSize: "14px", fontWeight: "bold" }}>
-                      SHARE THIS PRODUCT
-                    </h2>
-                    <div style={{ fontSize: "30px" }}>
-                      <a
-                        href="https://www.facebook.com/"
-                        target="_blank"
-                        rel="noreferrer"
-                        className={classes.link}
-                      >
-                        <RiFacebookCircleFill />
-                      </a>
-                      <a
-                        href="https://twitter.com/"
-                        target="_blank"
-                        rel="noreferrer"
-                        className={classes.link}
-                      >
-                        <AiFillTwitterCircle />
-                      </a>
-                    </div>
-                  </Box>
-                </Box>
-              </Grid>
-              <Grid item xs={8}>
-                <Box>
-                  <Box>
-                    {product.hasOwnProperty("name") && (
-                      <Box>
-                        <Box
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            background: "",
-                            height: "35px",
-                          }}
-                        >
-                          <Typography variant="h6" component="h2">
-                            <Box fontWeight="fontWeightBold">
-                              {product.name}
-                            </Box>
-                          </Typography>
-                          <Button
-                            style={{
-                              minWidth: "50px",
-                              minHeight: "50px",
-                              borderRadius: "50px",
-                              fontSize: "25px",
-                              top: "-10px",
-                              right: "-10px",
-                            }}
-                            className={classes.cartlink}
-                          >
-                            <HiOutlineHeart />
-                          </Button>
-                        </Box>
-                        <Box style={{ background: "", marginBottom: 10 }}>
-                          <Typography variant="body2" component="h2">
-                            Brand:
-                          </Typography>
-                          <Typography variant="body2" component="h2">
-                            Rating(6)
-                          </Typography>
-                        </Box>
-                        <Divider />
-                        <Box style={{ padding: "10px 0" }}>
-                          <Typography variant="h4" component="h2">
-                            <Box fontWeight="fontWeightBold">
-                              {product.price.formatted_with_symbol}
-                            </Box>
-                          </Typography>
-                          <Typography variant="body2" component="h2">
-                            + shipping from <em>R60</em> to Edenvale | 1609
-                          </Typography>
-                        </Box>
-                        <Divider />
-                        <Box style={{ padding: "10px 0" }}>
-                          <Typography
-                            gutterBottom
-                            variant="subtitle2"
-                            component="div"
-                          >
-                            <Box fontWeight="fontWeightBold">
-                              VARIATION AVAILABLE
-                            </Box>
-                          </Typography>
-                          <div className={classes.root}>
-                            {product.variant_groups.map(
-                              ({ id, options }, i) => (
-                                <div key={id} className={classes.root}>
-                                  {options.map(({ id, name }) => (
-                                    <Chip
-                                      key={id}
-                                      clickable
-                                      label={`size ${name}`}
-                                    />
-                                  ))}
-                                </div>
-                              )
-                            )}
-                          </div>
-                          <Button
-                            onClick={addToCart}
-                            variant="contained"
-                            color="secondary"
-                            size="large"
-                            fullWidth
-                            style={{
-                              color: "white",
-                              margin: "15px 0 10px 0",
-                            }}
-                            startIcon={<MdAddShoppingCart />}
-                          >
-                            Add to cart
-                          </Button>
-                        </Box>
-                        <Divider />
-                        <Box style={{ padding: "10px 0" }}>
-                          <Typography
-                            gutterBottom
-                            variant="subtitle2"
-                            paragraph
-                            component="div"
-                          >
-                            <Box fontWeight="fontWeightBold">PROMOTIONS</Box>
-                          </Typography>
-                          <Typography
-                            gutterBottom
-                            variant="body1"
-                            component="div"
-                          >
-                            Take R250 off your first Zando order on the app*
-                          </Typography>
-                          <Typography
-                            gutterBottom
-                            variant="body1"
-                            component="div"
-                          >
-                            Free Delivery above R400*
-                          </Typography>
-                          <Typography
-                            gutterBottom
-                            variant="body1"
-                            component="div"
-                          >
-                            Free Returns*
-                          </Typography>
-                        </Box>
-                      </Box>
-                    )}
-                  </Box>
-                </Box>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.mainPaper}></Paper>
-        </Grid>
+        {children}
       </Grid>
     </>
+  );
+};
+
+Product.View = ({ product, handleOpen, addToCart }) => {
+  const classes = Styles();
+  return (
+    <Grid item xs={9}>
+      <Paper className={classes.mainPaper} style={{ padding: "16px" }}>
+        <Grid container spacing={2}>
+          <Grid item xs={4}>
+            <Box>
+              <Box>
+                <Carousel showThumbs useKeyboardArrows showStatus={false}>
+                  {Array.isArray(product.assets) &&
+                    product.assets.map((image, i) => (
+                      <img key={i} src={image.url} alt="product" />
+                    ))}
+                </Carousel>
+              </Box>
+              <Divider />
+              <Box>
+                <h2 style={{ fontSize: "14px", fontWeight: "bold" }}>
+                  SHARE THIS PRODUCT
+                </h2>
+                <div style={{ fontSize: "30px" }}>
+                  <a
+                    href="https://www.facebook.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className={classes.link}
+                  >
+                    <RiFacebookCircleFill />
+                  </a>
+                  <a
+                    href="https://twitter.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className={classes.link}
+                  >
+                    <AiFillTwitterCircle />
+                  </a>
+                </div>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid item xs={8}>
+            <Box>
+              <Box>
+                {product.hasOwnProperty("name") && (
+                  <Box>
+                    <Box
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        background: "",
+                        height: "35px",
+                      }}
+                    >
+                      <Typography variant="h6" component="h2">
+                        <Box fontWeight="fontWeightBold">{product.name}</Box>
+                      </Typography>
+                      <Button
+                        style={{
+                          minWidth: "50px",
+                          minHeight: "50px",
+                          borderRadius: "50px",
+                          fontSize: "25px",
+                          top: "-10px",
+                          right: "-10px",
+                        }}
+                        className={classes.cartlink}
+                      >
+                        <HiOutlineHeart />
+                      </Button>
+                    </Box>
+                    <Box style={{ background: "", marginBottom: 10 }}>
+                      <Typography variant="body2" component="h2">
+                        Brand:
+                      </Typography>
+                      <Typography variant="body2" component="h2">
+                        Rating(6)
+                      </Typography>
+                    </Box>
+                    <Divider />
+                    <Box style={{ padding: "10px 0" }}>
+                      <Typography variant="h4" component="h2">
+                        <Box fontWeight="fontWeightBold">
+                          {product.price.formatted_with_symbol}
+                        </Box>
+                      </Typography>
+                      <Typography variant="body2" component="h2">
+                        + shipping from <em>R60</em> to Edenvale | 1609
+                      </Typography>
+                    </Box>
+                    <Divider />
+                    <Box style={{ padding: "10px 0" }}>
+                      <Typography
+                        gutterBottom
+                        variant="subtitle2"
+                        component="div"
+                      >
+                        <Box fontWeight="fontWeightBold">
+                          VARIATION AVAILABLE
+                        </Box>
+                      </Typography>
+                      <div className={classes.root}>
+                        {product.variant_groups.map(({ id, options }, i) => (
+                          <div key={id} className={classes.root}>
+                            {options.map(({ id, name }) => (
+                              <Chip key={id} clickable label={`size ${name}`} />
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                      <Button
+                        // onClick={addToCart}
+                        onClick={handleOpen}
+                        variant="contained"
+                        color="secondary"
+                        size="large"
+                        fullWidth
+                        style={{
+                          color: "white",
+                          margin: "15px 0 10px 0",
+                        }}
+                        startIcon={<MdAddShoppingCart />}
+                      >
+                        Add to cart
+                      </Button>
+                    </Box>
+                    <Divider />
+                    <Box style={{ padding: "10px 0" }}>
+                      <Typography
+                        gutterBottom
+                        variant="subtitle2"
+                        paragraph
+                        component="div"
+                      >
+                        <Box fontWeight="fontWeightBold">PROMOTIONS</Box>
+                      </Typography>
+                      <Typography gutterBottom variant="body1" component="div">
+                        Take R250 off your first Zando order on the app*
+                      </Typography>
+                      <Typography gutterBottom variant="body1" component="div">
+                        Free Delivery above R400*
+                      </Typography>
+                      <Typography gutterBottom variant="body1" component="div">
+                        Free Returns*
+                      </Typography>
+                    </Box>
+                  </Box>
+                )}
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Paper>
+    </Grid>
+  );
+};
+
+Product.Form = () => {
+  const classes = Styles();
+  return (
+    <Grid item xs={3}>
+      <Paper className={classes.mainPaper}></Paper>
+    </Grid>
   );
 };
 
