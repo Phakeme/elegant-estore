@@ -2,23 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import { commerce } from "../../lib/commerce";
-import { Product } from "../../Components";
+import { Product, AddToCartModal } from "../../Components";
 import Modal from "@material-ui/core/Modal";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
 
 const ProductContainer = () => {
-  const classes = useStyles();
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
@@ -41,11 +28,11 @@ const ProductContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const addToCart = () => {
-    commerce.cart
-      .add(product.id, 1)
-      .then((response) => console.log(response, "Response"));
-  };
+  // const addToCart = () => {
+  //   commerce.cart
+  //     .add(product.id, 1)
+  //     .then((response) => console.log(response, "Response"));
+  // };
 
   // const handleClick = () => {
   //   console.info("You clicked the Chip.");
@@ -66,12 +53,7 @@ const ProductContainer = () => {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
       >
-        <div className={classes.paper}>
-          <h2 id="simple-modal-title">Text in a modal</h2>
-          <p id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </p>
-        </div>
+        <AddToCartModal product={product} />
       </Modal>
     </Container>
   );
