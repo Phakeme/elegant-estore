@@ -26,6 +26,17 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
+  variantBtn: {
+    maxWidth: "30px",
+    maxHeight: "30px",
+    minWidth: "30px",
+    minHeight: "30px",
+    color: "white",
+  },
+  btnInnerBox: {
+    display: "flex",
+    alignItems: "center",
+  },
 }));
 
 const AddToCartModal = ({ product }) => {
@@ -46,83 +57,59 @@ const AddToCartModal = ({ product }) => {
       </header>
 
       {product.variant_groups.map(({ id, options }, i) => (
-        <div key={id}>
+        <Box key={id}>
           {options.map(({ id, name }) => (
-            <div
+            <Box
               key={id}
               className={classes.root}
               style={{
                 marginBottom: 5,
               }}
             >
-              <div>
+              <Box>
                 <Typography variant="h6" component="div">
                   <Box fontWeight="fontWeightBold">{`size ${name}`}</Box>
                 </Typography>
                 <Typography variant="body1" component="div">
                   {product.price.formatted_with_symbol}
                 </Typography>
-              </div>
+              </Box>
               <FormControl>
-                <div
+                <Box
                   className={classes.root}
                   style={{
+                    // background: "red",
                     width: 112,
                     height: "100%",
                     alignItems: "center",
                   }}
                 >
-                  <div>
-                    <Button
-                      style={{
-                        maxWidth: "32px",
-                        maxHeight: "32px",
-                        color: "white",
-                      }}
-                      variant="contained"
-                      color="secondary"
-                      disabled
-                    >
-                      <Box>
-                        <Box
-                          style={{
-                            display: "flex",
-                            height: "32px",
-                            alignItems: "center",
-                          }}
-                        >
-                          <FaMinus />
-                        </Box>
-                      </Box>
-                    </Button>
-                  </div>
+                  <Button
+                    className={classes.variantBtn}
+                    variant="contained"
+                    color="secondary"
+                    // disabled
+                  >
+                    <Box className={classes.btnInnerBox}>
+                      <FaMinus />
+                    </Box>
+                  </Button>
                   <div>0</div>
-                  <div>
-                    <Button
-                      style={{
-                        maxWidth: "32px",
-                        maxHeight: "32px",
-                        color: "white",
-                      }}
-                      variant="contained"
-                      color="secondary"
-                    >
-                      <Box
-                        style={{
-                          display: "flex",
-                          height: "32px",
-                          alignItems: "center",
-                        }}
-                      >
-                        <FaPlus />
-                      </Box>
-                    </Button>
-                  </div>
-                </div>
+                  <Button
+                    className={classes.variantBtn}
+                    variant="contained"
+                    color="secondary"
+                    // disabled
+                  >
+                    <Box className={classes.btnInnerBox}>
+                      <FaPlus />
+                    </Box>
+                  </Button>
+                </Box>
               </FormControl>
-            </div>
+            </Box>
           ))}
-        </div>
+        </Box>
       ))}
     </Paper>
   );
