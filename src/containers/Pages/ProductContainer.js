@@ -27,11 +27,11 @@ const ProductContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const addToCart = (id) => {
-    console.log(product.id, 1, id, "Yexy");
+  const addToCart = ({ id }) => {
+    console.log({ [product.variant_groups[0].id]: id }, "Yexy");
 
     commerce.cart
-      .add(product.id, 1, id)
+      .add(product.id, 1, { [product.variant_groups[0].id]: id })
       .then((response) => console.log(response, "Response"));
   };
 
@@ -55,7 +55,9 @@ const ProductContainer = () => {
         aria-describedby="simple-modal-description"
         // container={() => rootRef.current}
       >
-        <AddToCartModal addToCart={addToCart} product={product} />
+        <div>
+          <AddToCartModal addToCart={addToCart} product={product} />
+        </div>
       </Modal>
     </Container>
   );

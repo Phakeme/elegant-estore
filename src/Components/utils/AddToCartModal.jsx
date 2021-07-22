@@ -56,10 +56,10 @@ const AddToCartModal = ({ product, addToCart }) => {
       </header>
 
       {product.variant_groups.map(({ id, options }, i) => (
-        <Box key={id}>
-          {options.map(({ variantId, name, price }) => (
-            <Box
-              key={variantId}
+        <div key={id}>
+          {options.map(({ id, name, price }) => (
+            <div
+              key={name}
               className={classes.root}
               style={{
                 marginBottom: 5,
@@ -99,7 +99,7 @@ const AddToCartModal = ({ product, addToCart }) => {
                     variant="contained"
                     color="secondary"
                     // disabled
-                    onClick={() => addToCart({ variantId })}
+                    onClick={() => addToCart({ id })}
                   >
                     <div className={classes.btnInnerBox}>
                       <FaPlus />
@@ -107,9 +107,9 @@ const AddToCartModal = ({ product, addToCart }) => {
                   </Button>
                 </Box>
               </FormControl>
-            </Box>
+            </div>
           ))}
-        </Box>
+        </div>
       ))}
     </Paper>
   );
