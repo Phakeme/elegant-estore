@@ -7,6 +7,7 @@ import Modal from "@material-ui/core/Modal";
 
 const ProductContainer = () => {
   const { id } = useParams();
+  // const rootRef = React.useRef(null);
 
   const [product, setProduct] = useState({});
   const [open, setOpen] = useState(false);
@@ -22,17 +23,17 @@ const ProductContainer = () => {
   useEffect(() => {
     commerce.products
       .retrieve(id)
-      .then((product) =>
-        setProduct(product, console.log(product.categories, "product"))
-      );
+      .then((product) => setProduct(product, console.log(product, "product")));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const addToCart = () => {
-  //   commerce.cart
-  //     .add(product.id, 1)
-  //     .then((response) => console.log(response, "Response"));
-  // };
+  const addToCart = (id) => {
+    console.log(product.id, 1, id, "Yexy");
+
+    commerce.cart
+      .add(product.id, 1, id)
+      .then((response) => console.log(response, "Response"));
+  };
 
   // const handleClick = () => {
   //   console.info("You clicked the Chip.");
@@ -52,8 +53,9 @@ const ProductContainer = () => {
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
+        // container={() => rootRef.current}
       >
-        <AddToCartModal product={product} />
+        <AddToCartModal addToCart={addToCart} product={product} />
       </Modal>
     </Container>
   );

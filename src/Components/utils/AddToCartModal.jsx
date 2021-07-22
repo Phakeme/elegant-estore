@@ -3,11 +3,9 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
 import Box from "@material-ui/core/Box";
-import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -39,8 +37,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddToCartModal = ({ product }) => {
+const AddToCartModal = ({ product, addToCart }) => {
   const classes = useStyles();
+  console.log(product.variant_groups, "product.variant_groups");
   return (
     <Paper className={classes.paper}>
       <header className={classes.root} style={{ marginBottom: 10 }}>
@@ -58,9 +57,9 @@ const AddToCartModal = ({ product }) => {
 
       {product.variant_groups.map(({ id, options }, i) => (
         <Box key={id}>
-          {options.map(({ id, name }) => (
+          {options.map(({ variantId, name, price }) => (
             <Box
-              key={id}
+              key={variantId}
               className={classes.root}
               style={{
                 marginBottom: 5,
@@ -71,7 +70,7 @@ const AddToCartModal = ({ product }) => {
                   <Box fontWeight="fontWeightBold">{`size ${name}`}</Box>
                 </Typography>
                 <Typography variant="body1" component="div">
-                  {product.price.formatted_with_symbol}
+                  {price.formatted_with_symbol}
                 </Typography>
               </Box>
               <FormControl>
@@ -90,9 +89,9 @@ const AddToCartModal = ({ product }) => {
                     color="secondary"
                     // disabled
                   >
-                    <Box className={classes.btnInnerBox}>
+                    <div className={classes.btnInnerBox}>
                       <FaMinus />
-                    </Box>
+                    </div>
                   </Button>
                   <div>0</div>
                   <Button
@@ -100,10 +99,11 @@ const AddToCartModal = ({ product }) => {
                     variant="contained"
                     color="secondary"
                     // disabled
+                    onClick={() => addToCart({ variantId })}
                   >
-                    <Box className={classes.btnInnerBox}>
+                    <div className={classes.btnInnerBox}>
                       <FaPlus />
-                    </Box>
+                    </div>
                   </Button>
                 </Box>
               </FormControl>
