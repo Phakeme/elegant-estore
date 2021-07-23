@@ -13,7 +13,7 @@ import useStyles from "./styles";
 
 import Admin from "./Admin/";
 
-export default function Header() {
+export default function Header({ cart }) {
   const classes = useStyles();
 
   return (
@@ -105,7 +105,7 @@ export default function Header() {
                 </Box>
               </Box>
             </Box>
-            <Admin />
+            <Admin cart={cart} />
           </Grid>
         </Toolbar>
       </Container>

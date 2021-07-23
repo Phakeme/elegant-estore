@@ -39,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
 
 const AddToCartModal = ({ product, addToCart }) => {
   const classes = useStyles();
+
+  const productId = product.id;
+  const vgrpId = product.variant_groups[0].id;
+
   console.log(product.variant_groups, "product.variant_groups");
   return (
     <Paper className={classes.paper}>
@@ -99,7 +103,7 @@ const AddToCartModal = ({ product, addToCart }) => {
                     variant="contained"
                     color="secondary"
                     // disabled
-                    onClick={() => addToCart({ id })}
+                    onClick={() => addToCart(productId, vgrpId, id)}
                   >
                     <div className={classes.btnInnerBox}>
                       <FaPlus />

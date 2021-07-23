@@ -13,11 +13,11 @@ function App() {
     commerce.cart.retrieve().then((cart) => setCart(cart));
   }, []);
 
-  const addToCart = (productId, id, varId) => {
-    console.log(productId, id, varId, "productId, id, varId");
-    // commerce.cart
-    //   .add(productId, 1, { [varId]: id })
-    //   .then((response) => console.log(response, "Response"));
+  const addToCart = (productId, vgrpId, optnId) => {
+    // console.log(productId, vgrpId, optnId, "productId, id, optnId");
+    commerce.cart
+      .add(productId, 1, { [vgrpId]: optnId })
+      .then(({ cart }) => setCart(cart));
   };
 
   const removeFromCart = ({ id }) => {
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <Router>
-      <Header />
+      <Header cart={cart} />
       <Switch>
         <Route exact path="/">
           <Home />

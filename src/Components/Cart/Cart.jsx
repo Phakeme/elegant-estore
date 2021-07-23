@@ -63,8 +63,8 @@ const Cart = ({ cart }) => {
             </div>
             <Paper style={{ minHeight: "110px", padding: 10 }}>
               <FormGroup>
-                {cart.line_items.map(({ product_id, name, media }) => (
-                  <div key={product_id} style={{ display: "flex" }}>
+                {cart.line_items.map(({ product_id, name, media }, index) => (
+                  <div key={index} style={{ display: "flex" }}>
                     <div style={{ width: "60px" }}>
                       <Link
                         style={{ width: "60px" }}

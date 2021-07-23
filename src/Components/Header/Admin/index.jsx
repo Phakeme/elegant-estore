@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -10,7 +10,6 @@ import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { GrCart } from "react-icons/gr/";
 import DropDownLink from "./DropDownLink";
 import { Link } from "react-router-dom";
-import { commerce } from "../../../lib/commerce";
 import Badge from "@material-ui/core/Badge";
 
 const styles = makeStyles((theme) => ({
@@ -31,18 +30,11 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-const Admin = () => {
+const Admin = ({ cart }) => {
   const [helpOpen, setHelpOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
 
-  const [cart, setCart] = useState({});
   const classes = styles();
-
-  useEffect(() => {
-    commerce.cart.retrieve().then((cart) => setCart(cart));
-  }, []);
-
-  console.info(cart, "CART");
 
   return (
     <Box
