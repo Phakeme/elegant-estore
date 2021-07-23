@@ -5,9 +5,8 @@ import { commerce } from "../../lib/commerce";
 import { Product, AddToCartModal } from "../../Components";
 import Modal from "@material-ui/core/Modal";
 
-const ProductContainer = () => {
+const ProductContainer = ({ cart, addToCart }) => {
   const { id } = useParams();
-  // const rootRef = React.useRef(null);
 
   const [product, setProduct] = useState({});
   const [open, setOpen] = useState(false);
@@ -27,13 +26,13 @@ const ProductContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const addToCart = ({ id }) => {
-    console.log({ [product.variant_groups[0].id]: id }, "Yexy");
+  // const addToCart = ({ id }) => {
+  //   console.log({ [product.variant_groups[0].id]: id }, "Yexy");
 
-    commerce.cart
-      .add(product.id, 1, { [product.variant_groups[0].id]: id })
-      .then((response) => console.log(response, "Response"));
-  };
+  //   commerce.cart
+  //     .add(product.id, 1, { [product.variant_groups[0].id]: id })
+  //     .then((response) => console.log(response, "Response"));
+  // };
 
   // const handleClick = () => {
   //   console.info("You clicked the Chip.");
@@ -53,10 +52,12 @@ const ProductContainer = () => {
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
-        // container={() => rootRef.current}
       >
         <div>
-          <AddToCartModal addToCart={addToCart} product={product} />
+          <AddToCartModal
+            addToCart={() => addToCart("a", "b", "c")}
+            product={product}
+          />
         </div>
       </Modal>
     </Container>
