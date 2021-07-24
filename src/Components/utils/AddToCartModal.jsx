@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 // }
 
-const AddToCartModal = ({ product, addToCart, cart, removeFromCart }) => {
+const AddToCartModal = ({ product, addToCart, cart, decrementCart }) => {
   const classes = useStyles();
 
   const productId = product.id;
@@ -51,11 +51,16 @@ const AddToCartModal = ({ product, addToCart, cart, removeFromCart }) => {
     const item = cart.line_items.filter(
       (item) => item.selected_options[0].option_id === optionId
     );
+    // console.log(item.length, "item");
 
     if (item.length !== 0) {
-      return { quantity: item[0].quantity, cartItemId: item[0].id };
+      return {
+        quantity: item[0].quantity,
+        cartItemId: item[0].id,
+        disabled: false,
+      };
     } else {
-      return item.length;
+      return { quantity: item.length, disabled: true };
     }
   };
 
@@ -106,8 +111,13 @@ const AddToCartModal = ({ product, addToCart, cart, removeFromCart }) => {
                     className={classes.variantBtn}
                     variant="contained"
                     color="secondary"
-                    // disabled
-                    onClick={() => removeFromCart(getVariantQty(id).cartItemId)}
+                    disabled={getVariantQty(id).disabled}
+                    onClick={() =>
+                      decrementCart(
+                        getVariantQty(id).cartItemId,
+                        getVariantQty(id).quantity - 1
+                      )
+                    }
                   >
                     <div className={classes.btnInnerBox}>
                       <FaMinus />

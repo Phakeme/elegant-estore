@@ -22,9 +22,18 @@ function App() {
       .then(({ cart }) => setCart(cart, console.log(cart, "AddToCart Cart")));
   };
 
-  const removeFromCart = (id) => {
+  // const removeFromCart = (id) => {
+  //   // console.log(id);
+  //   commerce.cart
+  //     .remove(id)
+  //     .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
+  // };
+
+  const decrementCart = (id, qty) => {
     // console.log(id);
-    commerce.cart.remove(id).then((response) => console.log(response));
+    commerce.cart
+      .update(id, { quantity: qty })
+      .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
   };
 
   return (
@@ -41,7 +50,7 @@ function App() {
           <ProductContainer
             cart={cart}
             addToCart={addToCart}
-            removeFromCart={removeFromCart}
+            decrementCart={decrementCart}
           />
         </Route>
         <Route path="/cart">
