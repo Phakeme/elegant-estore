@@ -46,7 +46,7 @@ const ProductContainer = ({ cart, addToCart }) => {
         aria-describedby="simple-modal-description"
       >
         <div>
-          <AddToCartModal addToCart={addToCart} product={product} />
+          <AddToCartModal addToCart={addToCart} product={product} cart={cart} />
         </div>
       </Modal>
     </Container>

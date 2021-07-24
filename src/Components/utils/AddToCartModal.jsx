@@ -37,13 +37,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddToCartModal = ({ product, addToCart }) => {
+const AddToCartModal = ({ product, addToCart, cart }) => {
   const classes = useStyles();
 
   const productId = product.id;
   const vgrpId = product.variant_groups[0].id;
 
-  console.log(product.variant_groups, "product.variant_groups");
+  const getVariantQty = (optionId) => {
+    const res = cart.line_items.filter(
+      (item) => item.selected_options[0].option_id === optionId
+    );
+
+    if (res.length !== 0) {
+      return res[0].quantity;
+    } else {
+      return res.length;
+    }
+  };
+
   return (
     <Paper className={classes.paper}>
       <header className={classes.root} style={{ marginBottom: 10 }}>
@@ -59,8 +70,8 @@ const AddToCartModal = ({ product, addToCart }) => {
         </div>
       </header>
 
-      {product.variant_groups.map(({ id, options }, i) => (
-        <div key={id}>
+      {product.variant_groups.map(({ options }, i) => (
+        <div key={i}>
           {options.map(({ id, name, price }) => (
             <div
               key={name}
@@ -97,7 +108,7 @@ const AddToCartModal = ({ product, addToCart }) => {
                       <FaMinus />
                     </div>
                   </Button>
-                  <div>0</div>
+                  <div>{getVariantQty(id)}</div>
                   <Button
                     className={classes.variantBtn}
                     variant="contained"

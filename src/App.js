@@ -10,21 +10,23 @@ function App() {
   const [cart, setCart] = useState({});
 
   useEffect(() => {
-    commerce.cart.retrieve().then((cart) => setCart(cart));
+    commerce.cart
+      .retrieve()
+      .then((cart) => setCart(cart, console.log(cart, "UseEffect Cart")));
   }, []);
 
   const addToCart = (productId, vgrpId, optnId) => {
     // console.log(productId, vgrpId, optnId, "productId, id, optnId");
     commerce.cart
       .add(productId, 1, { [vgrpId]: optnId })
-      .then(({ cart }) => setCart(cart));
+      .then(({ cart }) => setCart(cart, console.log(cart, "AddToCart Cart")));
   };
 
-  const removeFromCart = ({ id }) => {
-    commerce.cart
-      .remove("item_7RyWOwmK5nEa2V")
-      .then((response) => console.log(response));
-  };
+  // const removeFromCart = ({ id }) => {
+  //   commerce.cart
+  //     .remove("item_7RyWOwmK5nEa2V")
+  //     .then((response) => console.log(response));
+  // };
 
   return (
     <Router>
