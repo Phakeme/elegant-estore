@@ -5,8 +5,21 @@ import Card from "@material-ui/core/Card";
 import Box from "@material-ui/core/Box";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
+import { makeStyles } from "@material-ui/core/styles";
+
+const Styles = makeStyles((theme) => ({
+  description: {
+    width: "180px",
+    fontSize: "12px",
+    margin: "5px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+}));
 
 const ProductSummary = ({ products }) => {
+  const classes = Styles();
   return (
     <Paper
       style={{
@@ -44,11 +57,7 @@ const ProductSummary = ({ products }) => {
                         image={image.url}
                       />
                     ))}
-                    <div style={{ fontSize: "12px", margin: "5px" }}>
-                      {product.name.length > 22
-                        ? product.name.substring(0, 30).trim() + "..."
-                        : product.name}
-                    </div>
+                    <div className={classes.description}>{product.name}</div>
                     <div
                       style={{
                         fontSize: "16px",

@@ -47,7 +47,7 @@ const AddToCartModal = ({ product, addToCart, cart, decrementCart }) => {
   const productId = product.id;
   const vgrpId = product.variant_groups[0].id;
 
-  const getVariantQty = (optionId) => {
+  const getItemQty = (optionId) => {
     const item = cart.line_items.filter(
       (item) => item.selected_options[0].option_id === optionId
     );
@@ -60,7 +60,7 @@ const AddToCartModal = ({ product, addToCart, cart, decrementCart }) => {
         disabled: false,
       };
     } else {
-      return { quantity: item.length, disabled: true };
+      return { quantity: 0, disabled: true };
     }
   };
 
@@ -101,7 +101,6 @@ const AddToCartModal = ({ product, addToCart, cart, decrementCart }) => {
                 <Box
                   className={classes.root}
                   style={{
-                    // background: "red",
                     width: 112,
                     height: "100%",
                     alignItems: "center",
@@ -111,11 +110,11 @@ const AddToCartModal = ({ product, addToCart, cart, decrementCart }) => {
                     className={classes.variantBtn}
                     variant="contained"
                     color="secondary"
-                    disabled={getVariantQty(id).disabled}
+                    disabled={getItemQty(id).disabled}
                     onClick={() =>
                       decrementCart(
-                        getVariantQty(id).cartItemId,
-                        getVariantQty(id).quantity - 1
+                        getItemQty(id).cartItemId,
+                        getItemQty(id).quantity - 1
                       )
                     }
                   >
@@ -123,12 +122,11 @@ const AddToCartModal = ({ product, addToCart, cart, decrementCart }) => {
                       <FaMinus />
                     </div>
                   </Button>
-                  <div>{getVariantQty(id).quantity}</div>
+                  <div>{getItemQty(id).quantity}</div>
                   <Button
                     className={classes.variantBtn}
                     variant="contained"
                     color="secondary"
-                    // disabled
                     onClick={() => addToCart(productId, vgrpId, id)}
                   >
                     <div className={classes.btnInnerBox}>
