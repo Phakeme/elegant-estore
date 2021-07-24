@@ -37,21 +37,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AddToCartModal = ({ product, addToCart, cart }) => {
+// let getItemId = ()=>{
+
+// }
+
+const AddToCartModal = ({ product, addToCart, cart, removeFromCart }) => {
   const classes = useStyles();
 
   const productId = product.id;
   const vgrpId = product.variant_groups[0].id;
 
   const getVariantQty = (optionId) => {
-    const res = cart.line_items.filter(
+    const item = cart.line_items.filter(
       (item) => item.selected_options[0].option_id === optionId
     );
 
-    if (res.length !== 0) {
-      return res[0].quantity;
+    if (item.length !== 0) {
+      return { quantity: item[0].quantity, cartItemId: item[0].id };
     } else {
-      return res.length;
+      return item.length;
     }
   };
 
@@ -103,12 +107,13 @@ const AddToCartModal = ({ product, addToCart, cart }) => {
                     variant="contained"
                     color="secondary"
                     // disabled
+                    onClick={() => removeFromCart(getVariantQty(id).cartItemId)}
                   >
                     <div className={classes.btnInnerBox}>
                       <FaMinus />
                     </div>
                   </Button>
-                  <div>{getVariantQty(id)}</div>
+                  <div>{getVariantQty(id).quantity}</div>
                   <Button
                     className={classes.variantBtn}
                     variant="contained"

@@ -5,7 +5,7 @@ import { commerce } from "../../lib/commerce";
 import { Product, AddToCartModal } from "../../Components";
 import Modal from "@material-ui/core/Modal";
 
-const ProductContainer = ({ cart, addToCart }) => {
+const ProductContainer = ({ cart, addToCart, removeFromCart }) => {
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
@@ -46,7 +46,12 @@ const ProductContainer = ({ cart, addToCart }) => {
         aria-describedby="simple-modal-description"
       >
         <div>
-          <AddToCartModal addToCart={addToCart} product={product} cart={cart} />
+          <AddToCartModal
+            addToCart={addToCart}
+            removeFromCart={removeFromCart}
+            product={product}
+            cart={cart}
+          />
         </div>
       </Modal>
     </Container>

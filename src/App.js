@@ -22,11 +22,10 @@ function App() {
       .then(({ cart }) => setCart(cart, console.log(cart, "AddToCart Cart")));
   };
 
-  // const removeFromCart = ({ id }) => {
-  //   commerce.cart
-  //     .remove("item_7RyWOwmK5nEa2V")
-  //     .then((response) => console.log(response));
-  // };
+  const removeFromCart = (id) => {
+    // console.log(id);
+    commerce.cart.remove(id).then((response) => console.log(response));
+  };
 
   return (
     <Router>
@@ -39,7 +38,11 @@ function App() {
           <h1 style={{ marginTop: `${76 + 8 + 8}px` }}>Login</h1>
         </Route>
         <Route path="/product/:slug/:id">
-          <ProductContainer cart={cart} addToCart={addToCart} />
+          <ProductContainer
+            cart={cart}
+            addToCart={addToCart}
+            removeFromCart={removeFromCart}
+          />
         </Route>
         <Route path="/cart">
           <Cart cart={cart} />
