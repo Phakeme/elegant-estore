@@ -4,13 +4,17 @@ import { Box, Typography, Paper, FormGroup } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 
 const Styles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    width: "100%",
+  },
   container: {
     maxWidth: "950px",
     margin: "auto",
   },
   header: {
-    display: "flex",
-    width: "100%",
+    height: "30px",
+    textTransform: "uppercase",
   },
   items: {
     width: "53.47%",
@@ -35,58 +39,80 @@ const Cart = ({ cart }) => {
         {cart.hasOwnProperty("id") && (
           <div>
             <Typography variant="h5" paragraph component="h2">
-              <Box fontWeight="fontWeightBold">
-                Cart: {cart.line_items.length} item(s)
-              </Box>
+              <Box>Cart: {cart.line_items.length} item(s)</Box>
             </Typography>
-            <div className={classes.header}>
+            <div className={`${classes.header} ${classes.root}`}>
               <div className={classes.items}>
-                <Typography variant="subtitle1" paragraph component="h2">
-                  <Box fontWeight="fontWeightBold">Items</Box>
+                <Typography variant="subtitle2" paragraph component="h2">
+                  <Box>Items</Box>
                 </Typography>
               </div>
               <div className={classes.quantity}>
-                <Typography variant="subtitle1" paragraph component="h2">
-                  <Box fontWeight="fontWeightBold">Quantity</Box>
+                <Typography variant="subtitle2" paragraph component="h2">
+                  <Box>Quantity</Box>
                 </Typography>
               </div>
               <div className={classes.unitPrice}>
-                <Typography variant="subtitle1" paragraph component="h2">
-                  <Box fontWeight="fontWeightBold">Unit Price</Box>
+                <Typography variant="subtitle2" paragraph component="h2">
+                  <Box>Unit Price</Box>
                 </Typography>
               </div>
               <div className={classes.subTotal}>
-                <Typography variant="subtitle1" paragraph component="h2">
-                  <Box fontWeight="fontWeightBold">SubTotal</Box>
+                <Typography variant="subtitle2" paragraph component="h2">
+                  <Box>SubTotal</Box>
                 </Typography>
               </div>
             </div>
-            <Paper style={{ minHeight: "110px", padding: 10 }}>
+            <div style={{ minHeight: "110px" }}>
               <FormGroup>
                 {cart.line_items.map(({ product_id, name, media }, index) => (
-                  <div key={index} style={{ display: "flex" }}>
-                    <div style={{ width: "60px" }}>
-                      <Link
-                        style={{ width: "60px" }}
-                        to={`/product/${name}/${product_id}`}
-                      >
-                        <div>
-                          <img
-                            style={{ width: "100%" }}
-                            src={media.source}
-                            alt="Product"
-                          />
+                  <Paper
+                    key={index}
+                    className={classes.root}
+                    style={{ padding: 10, marginBottom: 8, height: 110 }}
+                  >
+                    <div className={`${classes.root} ${classes.items}`}>
+                      <div style={{ width: "60px" }}>
+                        <Link to={`/product/${name}/${product_id}`}>
+                          <div>
+                            <img
+                              style={{ width: "100%" }}
+                              src={media.source}
+                              alt="Product"
+                            />
+                          </div>
+                        </Link>
+                      </div>
+                      <div style={{ marginLeft: 10 }}>
+                        <div
+                          style={{
+                            height: 60,
+                            paddingBottom: "10px",
+                          }}
+                        >
+                          <Typography variant="caption" component="p">
+                            Seller: Elegent
+                          </Typography>
+                          <Typography
+                            variant="subtitle2"
+                            fontWeight="bold"
+                            component="h6"
+                          >
+                            {name}
+                          </Typography>
+                          <Typography variant="caption" component="p">
+                            Size: UK
+                          </Typography>
                         </div>
-                      </Link>
+                        <div style={{ background: "red", height: 30 }}>
+                          Buttons
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <div>{name}</div>
-                      <div>Text</div>
-                    </div>
-                  </div>
+                  </Paper>
                 ))}
               </FormGroup>
-            </Paper>
+            </div>
           </div>
         )}
       </Box>
