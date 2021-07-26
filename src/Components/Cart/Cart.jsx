@@ -182,6 +182,17 @@ const Cart = ({ cart }) => {
                     </Paper>
                   )
                 )}
+                <div style={{ marginTop: "20px" }}>
+                  <Typography variant="h5" component="p" align="right">
+                    Total: {cart.subtotal.formatted_with_symbol}
+                  </Typography>
+                  <Typography variant="body1" component="p" align="right">
+                    Shipping fees not included yet
+                  </Typography>
+                  <Paper style={{ padding: 10, marginTop: 15, height: 50 }}>
+                    Text
+                  </Paper>
+                </div>
               </FormGroup>
             </div>
           </div>
