@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Box, Typography, Paper, FormGroup } from "@material-ui/core";
+import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/styles";
 
 const Styles = makeStyles((theme) => ({
@@ -28,6 +29,11 @@ const Styles = makeStyles((theme) => ({
   subTotal: {
     width: "18.105%",
   },
+  itemBox: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 
 const Cart = ({ cart }) => {
@@ -48,69 +54,120 @@ const Cart = ({ cart }) => {
                 </Typography>
               </div>
               <div className={classes.quantity}>
-                <Typography variant="subtitle2" paragraph component="h2">
+                <Typography
+                  variant="subtitle2"
+                  paragraph
+                  component="h2"
+                  align="center"
+                >
                   <Box>Quantity</Box>
                 </Typography>
               </div>
               <div className={classes.unitPrice}>
-                <Typography variant="subtitle2" paragraph component="h2">
+                <Typography
+                  variant="subtitle2"
+                  paragraph
+                  component="h2"
+                  align="center"
+                >
                   <Box>Unit Price</Box>
                 </Typography>
               </div>
               <div className={classes.subTotal}>
-                <Typography variant="subtitle2" paragraph component="h2">
+                <Typography
+                  variant="subtitle2"
+                  paragraph
+                  component="h2"
+                  align="center"
+                >
                   <Box>SubTotal</Box>
                 </Typography>
               </div>
             </div>
             <div style={{ minHeight: "110px" }}>
               <FormGroup>
-                {cart.line_items.map(({ product_id, name, media }, index) => (
-                  <Paper
-                    key={index}
-                    className={classes.root}
-                    style={{ padding: 10, marginBottom: 8, height: 110 }}
-                  >
-                    <div className={`${classes.root} ${classes.items}`}>
-                      <div style={{ width: "60px" }}>
-                        <Link to={`/product/${name}/${product_id}`}>
-                          <div>
-                            <img
-                              style={{ width: "100%" }}
-                              src={media.source}
-                              alt="Product"
-                            />
-                          </div>
-                        </Link>
-                      </div>
-                      <div style={{ marginLeft: 10 }}>
-                        <div
-                          style={{
-                            height: 60,
-                            paddingBottom: "10px",
-                          }}
-                        >
-                          <Typography variant="caption" component="p">
-                            Seller: Elegent
-                          </Typography>
-                          <Typography
-                            variant="subtitle2"
-                            fontWeight="bold"
-                            component="h6"
+                {cart.line_items.map(
+                  (
+                    {
+                      product_id,
+                      name,
+                      media,
+                      line_total,
+                      price,
+                      quantity,
+                      selected_options,
+                    },
+                    index
+                  ) => (
+                    <Paper
+                      key={index}
+                      className={classes.root}
+                      style={{ padding: 10, marginBottom: 8, height: 110 }}
+                    >
+                      <div
+                        className={`${classes.root} ${classes.items}`}
+                        // style={{ background: "blue" }}
+                      >
+                        <div style={{ width: "60px" }}>
+                          <Link to={`/product/${name}/${product_id}`}>
+                            <div>
+                              <img
+                                style={{ width: "100%" }}
+                                src={media.source}
+                                alt="Product"
+                              />
+                            </div>
+                          </Link>
+                        </div>
+                        <div style={{ marginLeft: 10 }}>
+                          <div
+                            style={{
+                              height: 60,
+                              paddingBottom: "10px",
+                            }}
                           >
-                            {name}
-                          </Typography>
-                          <Typography variant="caption" component="p">
-                            Size: UK
-                          </Typography>
-                        </div>
-                        <div style={{ background: "red", height: 30 }}>
-                          Buttons
+                            <Typography variant="caption" component="p">
+                              Seller: Elegent
+                            </Typography>
+                            <Typography
+                              variant="subtitle2"
+                              fontWeight="bold"
+                              component="h6"
+                            >
+                              {name}
+                            </Typography>
+                            <Typography variant="caption" component="p">
+                              Size: {selected_options[0].option_name}
+                            </Typography>
+                          </div>
+                          <div style={{ background: "red", height: 30 }}>
+                            Buttons
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Paper>
-                ))}
+                      <Divider orientation="vertical" flexItem />
+                      <div className={`${classes.quantity} ${classes.itemBox}`}>
+                        {quantity}
+                      </div>
+                      <Divider orientation="vertical" flexItem />
+                      <div
+                        className={`${classes.unitPrice} ${classes.itemBox}`}
+                      >
+                        {price.formatted_with_symbol}
+                      </div>
+                      <Divider orientation="vertical" flexItem />
+                      <div className={`${classes.subTotal} ${classes.itemBox}`}>
+                        <Typography
+                          variant="h6"
+                          component="p"
+                          color="secondary"
+                        >
+                          {line_total.formatted_with_symbol}
+                        </Typography>
+                      </div>
+                    </Paper>
+                  )
+                )}
               </FormGroup>
             </div>
           </div>
