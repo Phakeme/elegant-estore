@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Box, Typography, Paper, FormGroup } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
+import { HiOutlineHeart } from "react-icons/hi";
+import { AiFillDelete } from "react-icons/ai";
 import { makeStyles } from "@material-ui/styles";
 
 const Styles = makeStyles((theme) => ({
@@ -142,8 +144,18 @@ const Cart = ({ cart }) => {
                             </Typography>
                           </div>
                           <div style={{ height: 30 }}>
-                            <Button color="secondary">Move to wishlist</Button>
-                            <Button color="secondary">Remove</Button>
+                            <Button
+                              color="secondary"
+                              startIcon={<HiOutlineHeart />}
+                            >
+                              Move to wishlist
+                            </Button>
+                            <Button
+                              color="secondary"
+                              startIcon={<AiFillDelete />}
+                            >
+                              Remove
+                            </Button>
                           </div>
                         </div>
                       </div>
