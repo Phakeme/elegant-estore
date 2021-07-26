@@ -39,7 +39,7 @@ const Styles = makeStyles((theme) => ({
   },
 }));
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, removeFromCart }) => {
   const classes = Styles();
 
   return (
@@ -93,6 +93,7 @@ const Cart = ({ cart }) => {
                   (
                     {
                       product_id,
+                      id,
                       name,
                       media,
                       line_total,
@@ -153,6 +154,7 @@ const Cart = ({ cart }) => {
                             <Button
                               color="secondary"
                               startIcon={<AiFillDelete />}
+                              onClick={() => removeFromCart(id)}
                             >
                               Remove
                             </Button>

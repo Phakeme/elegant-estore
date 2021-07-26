@@ -22,12 +22,12 @@ function App() {
       .then(({ cart }) => setCart(cart, console.log(cart, "AddToCart Cart")));
   };
 
-  // const removeFromCart = (id) => {
-  //   // console.log(id);
-  //   commerce.cart
-  //     .remove(id)
-  //     .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
-  // };
+  const removeFromCart = (id) => {
+    // console.log(id);
+    commerce.cart
+      .remove(id)
+      .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
+  };
 
   const decrementCart = (id, qty) => {
     // console.log(id);
@@ -54,7 +54,7 @@ function App() {
           />
         </Route>
         <Route path="/cart">
-          <Cart cart={cart} />
+          <Cart cart={cart} removeFromCart={removeFromCart} />
         </Route>
       </Switch>
     </Router>
