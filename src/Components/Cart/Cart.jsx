@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Box, Typography, Paper, FormGroup } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
+import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/styles";
 
 const Styles = makeStyles((theme) => ({
@@ -140,8 +141,9 @@ const Cart = ({ cart }) => {
                               Size: {selected_options[0].option_name}
                             </Typography>
                           </div>
-                          <div style={{ background: "red", height: 30 }}>
-                            Buttons
+                          <div style={{ height: 30 }}>
+                            <Button color="secondary">Move to wishlist</Button>
+                            <Button color="secondary">Remove</Button>
                           </div>
                         </div>
                       </div>
