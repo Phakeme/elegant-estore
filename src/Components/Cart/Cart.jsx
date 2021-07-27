@@ -4,7 +4,9 @@ import { Box, Typography, Paper, FormGroup } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import { HiOutlineHeart } from "react-icons/hi";
+import { FaShoppingBasket } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
+import { FiCheckCircle } from "react-icons/fi";
 import { makeStyles } from "@material-ui/styles";
 
 const Styles = makeStyles((theme) => ({
@@ -13,7 +15,7 @@ const Styles = makeStyles((theme) => ({
     width: "100%",
   },
   container: {
-    maxWidth: "950px",
+    maxWidth: "100%",
     margin: "auto",
   },
   header: {
@@ -36,6 +38,22 @@ const Styles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+  },
+  btnShopping: {
+    color: theme.palette.secondary.main,
+    "&:hover": {
+      background: theme.palette.secondary.main,
+      color: theme.palette.primary.main,
+    },
+  },
+  actionBtns: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  actionBtn: {
+    marginLeft: 10,
+    color: theme.palette.primary.main,
+    width: 250,
   },
 }));
 
@@ -191,8 +209,29 @@ const Cart = ({ cart, removeFromCart }) => {
                   <Typography variant="body1" component="p" align="right">
                     Shipping fees not included yet
                   </Typography>
-                  <Paper style={{ padding: 10, marginTop: 15, height: 50 }}>
-                    Text
+                  <Paper style={{ padding: 10, marginTop: 15 }}>
+                    <div className={classes.actionBtns}>
+                      <div>
+                        <Button
+                          className={classes.actionBtn}
+                          variant="contained"
+                          color="secondary"
+                          startIcon={<FaShoppingBasket />}
+                        >
+                          <Link to="/">Continue shopping</Link>
+                        </Button>
+                      </div>
+                      <div>
+                        <Button
+                          className={classes.actionBtn}
+                          variant="contained"
+                          color="secondary"
+                          startIcon={<FiCheckCircle />}
+                        >
+                          <Link to="/checkout">Checkout</Link>
+                        </Button>
+                      </div>
+                    </div>
                   </Paper>
                 </div>
               </FormGroup>
