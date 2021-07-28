@@ -36,6 +36,12 @@ function App() {
       .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
   };
 
+   const generateToken = (id) => {
+    // console.log(id, 'id');
+    commerce.checkout.generateTokenFrom('cart',id)
+  .then((checkout) => console.log(checkout, 'checkout.id'))
+  };
+
   return (
     <Router>
       <Header cart={cart} />
@@ -54,7 +60,7 @@ function App() {
           />
         </Route>
         <Route path="/cart">
-          <Cart cart={cart} removeFromCart={removeFromCart} />
+          <Cart cart={cart} removeFromCart={removeFromCart} generateToken={generateToken} />
         </Route>
       </Switch>
     </Router>
