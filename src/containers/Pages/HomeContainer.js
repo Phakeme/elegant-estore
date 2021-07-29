@@ -44,7 +44,7 @@ const HomeContainer = () => {
           />
         </Hero.InformativeLinks>
       </Hero>
-      <ProductsSummary products={products} />
+      <ProductsSummary products={products} title="Our Top Sellers" />
     </Container>
   );
 };

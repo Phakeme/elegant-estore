@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
 import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,7 +19,7 @@ const Styles = makeStyles((theme) => ({
   },
 }));
 
-const ProductSummary = ({ products }) => {
+const ProductSummary = ({ products, title }) => {
   const classes = Styles();
   return (
     <Paper
@@ -29,6 +30,9 @@ const ProductSummary = ({ products }) => {
         padding: "10px",
       }}
     >
+      <Typography variant="h5" gutterBottom>
+        {title}
+      </Typography>
       <Box
         spacin={0}
         style={{
