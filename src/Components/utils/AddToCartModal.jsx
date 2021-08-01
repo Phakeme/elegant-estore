@@ -37,10 +37,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// let getItemId = ()=>{
-
-// }
-
 const AddToCartModal = ({ product, addToCart, cart, decrementCart }) => {
   const classes = useStyles();
 
