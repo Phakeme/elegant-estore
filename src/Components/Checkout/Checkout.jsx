@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Box, Typography, Paper, FormGroup } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import { HiCheckCircle } from "react-icons/hi";
 import { makeStyles } from "@material-ui/styles";
@@ -29,6 +30,9 @@ const Styles = makeStyles((theme) => ({
     fontSize: "1.5rem",
     color: theme.palette.secondary.main,
   },
+  textField: {
+    marginTop: 15,
+  },
 }));
 
 const Checkout = () => {
@@ -41,22 +45,58 @@ const Checkout = () => {
           <Typography variant="h5" paragraph component="h2">
             <Box>Checkout</Box>
           </Typography>
-          <Paper style={{ padding: 10 }}>
+          <Paper style={{ padding: "10px 10px 30px 10px" }}>
             <Grid container>
               <Grid item xs={1}>
                 <HiCheckCircle className={classes.icon} />
               </Grid>
               <Grid item xs={11}>
+                <Typography>
+                  <div>Customer details</div>
+                </Typography>
+              </Grid>
+            </Grid>
+            <Divider />
+            <Grid container>
+              <Grid item xs={1}></Grid>
+              <Grid item xs={11}>
                 <form noValidate autoComplete="off">
-                  <TextField
-                    id="standard-basic"
-                    color="secondary"
-                    fullWidth
-                    label="Name"
-                  />
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                      <TextField
+                        className={classes.textField}
+                        id="standard-basic"
+                        color="secondary"
+                        label="First name"
+                        // variant="filled"
+                        fullWidth
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        className={classes.textField}
+                        id="standard-basic"
+                        color="secondary"
+                        label="Last name"
+                        // variant="filled"
+                        fullWidth
+                      />
+                    </Grid>
+                    <div style={{ padding: "0 8px", width: "100%" }}>
+                      <TextField
+                        className={classes.textField}
+                        id="standard-basic"
+                        color="secondary"
+                        label="Email"
+                        type="mail"
+                        fullWidth
+                      />
+                    </div>
+                  </Grid>
                 </form>
               </Grid>
             </Grid>
+            {/* <h3>Text</h3> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
