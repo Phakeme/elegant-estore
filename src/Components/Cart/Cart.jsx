@@ -149,7 +149,7 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
                           startIcon={<FiCheckCircle />}
                           onClick={() => generateToken(cart.id)}
                         >
-                          <Link to="#">Checkout</Link>
+                          <Link to="/checkout">Checkout</Link>
                         </Button>
                       </div>
                     </div>

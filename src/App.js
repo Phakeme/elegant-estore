@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header } from "./Components/";
 import Cart from "./containers/Pages/CartContainer";
+import Checkout from "./containers/Pages/CheckoutContainer";
 import Home from "./containers/Pages/HomeContainer";
 import ProductContainer from "./containers/Pages/ProductContainer";
 import { commerce } from "./lib/commerce";
@@ -36,10 +37,11 @@ function App() {
       .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
   };
 
-   const generateToken = (id) => {
+  const generateToken = (id) => {
     // console.log(id, 'id');
-    commerce.checkout.generateTokenFrom('cart',id)
-  .then((checkout) => console.log(checkout, 'checkout.id'))
+    commerce.checkout
+      .generateTokenFrom("cart", id)
+      .then((checkout) => console.log(checkout, "checkout.id"));
   };
 
   return (
@@ -60,7 +62,14 @@ function App() {
           />
         </Route>
         <Route path="/cart">
-          <Cart cart={cart} removeFromCart={removeFromCart} generateToken={generateToken} />
+          <Cart
+            cart={cart}
+            removeFromCart={removeFromCart}
+            generateToken={generateToken}
+          />
+        </Route>
+        <Route path="/checkout">
+          <Checkout />
         </Route>
       </Switch>
     </Router>
