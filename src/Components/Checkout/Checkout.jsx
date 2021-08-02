@@ -39,8 +39,15 @@ const Styles = makeStyles((theme) => ({
 
 const Checkout = () => {
   const classes = Styles();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const onSubmit = (data) => console.log(data);
+
+  // console.log(watch("example"));
 
   return (
     <FormGroup>
@@ -75,8 +82,12 @@ const Checkout = () => {
                         color="secondary"
                         label="First name"
                         fullWidth
-                        {...register("firstName")}
+                        {...register("firstName", {
+                          required: true,
+                          minLength: 5,
+                        })}
                       />
+                      {errors.firstName && <span>{console.log(errors)}</span>}
                     </Grid>
                     <Grid item xs={6}>
                       <TextField
@@ -85,6 +96,7 @@ const Checkout = () => {
                         color="secondary"
                         label="Last name"
                         fullWidth
+                        {...register("lastName")}
                       />
                     </Grid>
                     <div style={{ padding: "0 8px", width: "100%" }}>
@@ -95,6 +107,7 @@ const Checkout = () => {
                         label="Email"
                         type="mail"
                         fullWidth
+                        {...register("Email")}
                       />
                     </div>
                   </Grid>
