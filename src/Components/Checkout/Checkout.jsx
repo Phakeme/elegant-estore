@@ -7,6 +7,8 @@ import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import { HiCheckCircle } from "react-icons/hi";
 import { makeStyles } from "@material-ui/styles";
+import { useForm } from "react-hook-form";
+import FormInput from "./CustomTextField";
 
 const Styles = makeStyles((theme) => ({
   root: {
@@ -37,13 +39,15 @@ const Styles = makeStyles((theme) => ({
 
 const Checkout = () => {
   const classes = Styles();
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => console.log(data);
 
   return (
     <FormGroup>
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <Typography variant="h5" paragraph component="h2">
-            <Box>Checkout</Box>
+            Checkout
           </Typography>
           <Paper style={{ padding: "10px 10px 30px 10px" }}>
             <Grid container>
@@ -51,16 +55,18 @@ const Checkout = () => {
                 <HiCheckCircle className={classes.icon} />
               </Grid>
               <Grid item xs={11}>
-                <Typography>
-                  <div>Customer details</div>
-                </Typography>
+                <Typography>Customer details</Typography>
               </Grid>
             </Grid>
             <Divider />
             <Grid container>
               <Grid item xs={1}></Grid>
               <Grid item xs={11}>
-                <form noValidate autoComplete="off">
+                <form
+                  noValidate
+                  autoComplete="on"
+                  onSubmit={handleSubmit(onSubmit)}
+                >
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
                       <TextField
@@ -68,8 +74,8 @@ const Checkout = () => {
                         id="standard-basic"
                         color="secondary"
                         label="First name"
-                        // variant="filled"
                         fullWidth
+                        {...register("firstName")}
                       />
                     </Grid>
                     <Grid item xs={6}>
@@ -78,7 +84,6 @@ const Checkout = () => {
                         id="standard-basic"
                         color="secondary"
                         label="Last name"
-                        // variant="filled"
                         fullWidth
                       />
                     </Grid>
@@ -93,15 +98,15 @@ const Checkout = () => {
                       />
                     </div>
                   </Grid>
+                  <input type="submit" />
                 </form>
               </Grid>
             </Grid>
-            {/* <h3>Text</h3> */}
           </Paper>
         </Grid>
         <Grid item xs={4}>
           <Typography variant="h5" paragraph component="h2">
-            <Box>Order Summary</Box>
+            Order Summary
           </Typography>
           <Paper style={{ padding: 10 }}>
             <div>Checkout</div>
