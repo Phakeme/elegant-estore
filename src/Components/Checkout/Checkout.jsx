@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Box, Typography, Paper, FormGroup } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
+// import { Link } from "react-router-dom";
+import { Typography, Paper, FormGroup, Select } from "@material-ui/core";
+import MenuItem from "@material-ui/core/MenuItem";
+// import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
@@ -26,14 +27,23 @@ const validationSchema = yup.object({
     .required("Name is required"),
 });
 
-const Checkout = () => {
+const Checkout = ({ provinces }) => {
   const classes = Styles();
+  const wrapper = React.createRef();
+
+  const listItems = [];
+
+  for (const [key, value] of Object.entries(provinces)) {
+    listItems.push(value);
+  }
+  // console.log(listItems, "XXX");
 
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
       email: "",
+      province: "KwaZulu-Natal",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -124,7 +134,31 @@ const Checkout = () => {
                         fullWidth
                       />
                     </div>
+                    <br />
+                    <br />
+                    <Select
+                      fullWidth
+                      ref={wrapper}
+                      name="province"
+                      id="province"
+                      value={formik.values.province}
+                      onChange={formik.handleChange}
+                    >
+                      {listItems.map((province, i) => (
+                        <MenuItem
+                          key={i}
+                          id="province"
+                          name="province"
+                          ref={wrapper}
+                          value={province}
+                        >
+                          {province}
+                        </MenuItem>
+                      ))}
+                    </Select>
                   </Grid>
+                  <br />
+                  <br />
                   <button type="submit">Submit</button>
                 </form>
               </Grid>
