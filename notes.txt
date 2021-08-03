@@ -16,6 +16,8 @@ namespace
 react-responsive-carousel
 react-icons
 @chec/commerce.js
+formik
+yup
 
 // What I have learned from this Project
 - Lifting the State in React

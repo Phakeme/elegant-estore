@@ -6,49 +6,12 @@ import TextField from "@material-ui/core/TextField";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import { HiCheckCircle } from "react-icons/hi";
-import { makeStyles } from "@material-ui/styles";
-import { useForm } from "react-hook-form";
-import FormInput from "./CustomTextField";
-
-const Styles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    width: "100%",
-  },
-  container: {
-    maxWidth: "100%",
-    margin: "auto",
-  },
-  actionBtns: {
-    display: "flex",
-    justifyContent: "flex-end",
-  },
-  actionBtn: {
-    marginLeft: 10,
-    color: theme.palette.primary.main,
-    width: 250,
-  },
-  icon: {
-    fontSize: "1.5rem",
-    color: theme.palette.secondary.main,
-  },
-  textField: {
-    marginTop: 15,
-  },
-}));
+import Styles from "./styles";
+import * as yup from "yup";
+import { Formik, Field, Form } from "formik";
 
 const Checkout = () => {
   const classes = Styles();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-
-  // console.log(watch("example"));
-
   return (
     <FormGroup>
       <Grid container spacing={2}>
@@ -69,11 +32,7 @@ const Checkout = () => {
             <Grid container>
               <Grid item xs={1}></Grid>
               <Grid item xs={11}>
-                <form
-                  noValidate
-                  autoComplete="on"
-                  onSubmit={handleSubmit(onSubmit)}
-                >
+                <form noValidate autoComplete="on">
                   <Grid container spacing={2}>
                     <Grid item xs={6}>
                       <TextField
@@ -82,12 +41,7 @@ const Checkout = () => {
                         color="secondary"
                         label="First name"
                         fullWidth
-                        {...register("firstName", {
-                          required: true,
-                          minLength: 5,
-                        })}
                       />
-                      {errors.firstName && <span>{console.log(errors)}</span>}
                     </Grid>
                     <Grid item xs={6}>
                       <TextField
@@ -96,7 +50,6 @@ const Checkout = () => {
                         color="secondary"
                         label="Last name"
                         fullWidth
-                        {...register("lastName")}
                       />
                     </Grid>
                     <div style={{ padding: "0 8px", width: "100%" }}>
@@ -107,7 +60,6 @@ const Checkout = () => {
                         label="Email"
                         type="mail"
                         fullWidth
-                        {...register("Email")}
                       />
                     </div>
                   </Grid>
