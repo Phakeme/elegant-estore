@@ -3,6 +3,7 @@ React Project (YouTube)
 Creating an application main Navbar menu
 React Router?
 What is TextField?
+Object.entries() Method
 
 //React
 /React Hooks

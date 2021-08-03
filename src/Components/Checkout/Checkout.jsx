@@ -31,13 +31,6 @@ const Checkout = ({ provinces }) => {
   const classes = Styles();
   const wrapper = React.createRef();
 
-  const listItems = [];
-
-  for (const [key, value] of Object.entries(provinces)) {
-    listItems.push(value);
-  }
-  // console.log(listItems, "XXX");
-
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -144,15 +137,15 @@ const Checkout = ({ provinces }) => {
                       value={formik.values.province}
                       onChange={formik.handleChange}
                     >
-                      {listItems.map((province, i) => (
+                      {Object.entries(provinces).map(([key, value]) => (
                         <MenuItem
-                          key={i}
+                          key={value}
                           id="province"
                           name="province"
                           ref={wrapper}
-                          value={province}
+                          value={value}
                         >
-                          {province}
+                          {value}
                         </MenuItem>
                       ))}
                     </Select>
