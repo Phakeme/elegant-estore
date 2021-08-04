@@ -18,12 +18,18 @@ const validationSchema = yup.object({
     .required("Email is required"),
   firstName: yup
     .string("Enter your name")
-    .min(4, "Name should be of minimum 4 characters length")
+    .min(4, "First Name should be of minimum 4 characters")
     .required("Name is required"),
   lastName: yup
     .string("Enter your name")
-    .min(4, "Name should be of minimum 4 characters length")
+    .min(4, "Last Name should be of minimum 4 characters")
     .required("Name is required"),
+  city: yup
+    .string("Enter your city")
+    .min(4, "City should be of minimum 4 characters")
+    .required("City is required"),
+  zipcode: yup.string("Enter your zipcode").required("Zipcode is required"),
+  street: yup.string("Enter your street").required("Street name is required"),
 });
 
 const Checkout = () => {
@@ -35,6 +41,9 @@ const Checkout = () => {
       firstName: "",
       lastName: "",
       email: "",
+      zipcode: "",
+      street: "",
+      city: "",
       province: "KwaZulu-Natal",
     },
     validationSchema: validationSchema,
@@ -168,51 +177,79 @@ const Checkout = () => {
                           </FormControl>
                         </Grid>
                         <Grid item xs={6}>
+                          <FormControl className={classes.formControl}>
+                            <TextField
+                              className={classes.textField}
+                              color="secondary"
+                              label="City"
+                              id="city"
+                              name="city"
+                              type="text"
+                              onChange={formik.handleChange}
+                              value={formik.values.city}
+                              error={
+                                formik.touched.city &&
+                                Boolean(formik.errors.city)
+                              }
+                              helperText={
+                                formik.touched.city && formik.errors.city
+                              }
+                              fullWidth
+                            />
+                          </FormControl>
+                        </Grid>
+                      </Grid>
+                      <Grid container spacing={2}>
+                        <Grid
+                          item
+                          xs={6}
+                          // style={{ padding: "0 8px", width: "100%" }}
+                        >
                           <TextField
                             className={classes.textField}
                             color="secondary"
-                            label="Last name"
-                            id="lastName"
-                            name="lastName"
+                            label="Street"
+                            id="street"
+                            name="street"
                             type="text"
-                            onChange={formik.handleChange}
-                            value={formik.values.lastName}
+                            fullWidth
                             error={
-                              formik.touched.lastName &&
-                              Boolean(formik.errors.lastName)
+                              formik.touched.street &&
+                              Boolean(formik.errors.street)
                             }
                             helperText={
-                              formik.touched.lastName && formik.errors.lastName
+                              formik.touched.street && formik.errors.street
                             }
-                            fullWidth
+                            onChange={formik.handleChange}
+                            value={formik.values.street}
                           />
                         </Grid>
-                        <div style={{ padding: "0 8px", width: "100%" }}>
+                        <Grid
+                          item
+                          xs={6}
+                          // style={{ padding: "0 8px", width: "100%" }}
+                        >
                           <TextField
                             className={classes.textField}
                             color="secondary"
-                            label="Email"
-                            id="email"
-                            name="email"
-                            type="mail"
+                            label="Zip Code"
+                            id="zipcode"
+                            name="zipcode"
+                            type="text"
+                            fullWidth
                             error={
-                              formik.touched.email &&
-                              Boolean(formik.errors.email)
+                              formik.touched.zipcode &&
+                              Boolean(formik.errors.zipcode)
                             }
                             helperText={
-                              formik.touched.email && formik.errors.email
+                              formik.touched.zipcode && formik.errors.zipcode
                             }
                             onChange={formik.handleChange}
-                            value={formik.values.email}
-                            fullWidth
+                            value={formik.values.zipcode}
                           />
-                        </div>
-                        {/* <br />
-                  <br /> */}
+                        </Grid>
                       </Grid>
-                      {/* <br /> */}
-                      {/* <br /> */}
-                      {/* <button type="submit">Submit</button> */}
+                      <button type="submit">Submit</button>
                     </Grid>
                   </Grid>
                 </Paper>
