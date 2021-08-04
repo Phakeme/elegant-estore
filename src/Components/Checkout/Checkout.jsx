@@ -8,6 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import { HiCheckCircle } from "react-icons/hi";
 import Styles from "./styles";
+import provinces from "../../Data/provinces";
 import * as yup from "yup";
 // import { Formik, Field, Form } from "formik";
 import { useFormik } from "formik";
@@ -27,7 +28,7 @@ const validationSchema = yup.object({
     .required("Name is required"),
 });
 
-const Checkout = ({ provinces }) => {
+const Checkout = () => {
   const classes = Styles();
   const wrapper = React.createRef();
 
