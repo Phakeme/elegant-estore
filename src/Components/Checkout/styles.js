@@ -29,4 +29,8 @@ export default makeStyles((theme) => ({
     width: "100%",
     height: "100%",
   },
+  stepper: {
+    marginBottom: 16,
+    // padding: theme.spacing(3, 0, 5),
+  },
 }));
