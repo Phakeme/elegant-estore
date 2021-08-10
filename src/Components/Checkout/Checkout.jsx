@@ -16,7 +16,7 @@ import CheckoutForm from "./CheckoutForm";
 import Styles from "./styles";
 import PaymentForm from "./PaymentForm";
 
-const steps = ["Checkout", "Payment"];
+const steps = ["Checkout", "Payment", "Success"];
 
 const Checkout = ({ cart, generateToken }) => {
   const [activeStep, setActiveStep] = useState(0);

@@ -15,6 +15,18 @@ const theme = createMuiTheme({
       main: "#f68b1e",
     },
   },
+  overrides: {
+    MuiStepIcon: {
+      root: {
+        "&$completed": {
+          color: "#00A300",
+        },
+        "&$active": {
+          color: "#f68b1e",
+        },
+      },
+    },
+  },
 });
 
 ReactDOM.render(
