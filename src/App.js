@@ -38,7 +38,6 @@ function App() {
   };
 
   const generateToken = (id) => {
-    // console.log(id, 'id');
     commerce.checkout
       .generateTokenFrom("cart", id)
       .then((checkout) => console.log(checkout, "checkout.id"));
