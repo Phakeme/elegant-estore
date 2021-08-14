@@ -24,7 +24,8 @@ const Checkout = ({ cart, generateToken, checkoutToken }) => {
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
-  const Form = () => (activeStep === 0 ? <CheckoutForm /> : <PaymentForm />);
+  const Form = () =>
+    activeStep === 0 ? <CheckoutForm /> : <PaymentForm backStep={backStep} />;
 
   return (
     <Grid container spacing={2}>
@@ -46,13 +47,6 @@ const Checkout = ({ cart, generateToken, checkoutToken }) => {
           </Stepper>
           <Form />
           <div>
-            <Button
-              disabled={activeStep === 0}
-              onClick={backStep}
-              className={classes.backButton}
-            >
-              Back
-            </Button>
             <Button variant="contained" color="secondary" onClick={nextStep}>
               {activeStep === steps.length - 1 ? "Finish" : "Next"}
             </Button>
