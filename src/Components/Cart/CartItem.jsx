@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Typography, Paper } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import { HiOutlineHeart } from "react-icons/hi";

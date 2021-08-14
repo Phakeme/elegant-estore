@@ -9,6 +9,7 @@ import { commerce } from "./lib/commerce";
 
 function App() {
   const [cart, setCart] = useState({});
+  const [checkoutToken, setCheckoutToken] = useState(false);
 
   useEffect(() => {
     commerce.cart
@@ -17,21 +18,18 @@ function App() {
   }, []);
 
   const addToCart = (productId, vgrpId, optnId) => {
-    // console.log(productId, vgrpId, optnId, "productId, id, optnId");
     commerce.cart
       .add(productId, 1, { [vgrpId]: optnId })
       .then(({ cart }) => setCart(cart, console.log(cart, "AddToCart Cart")));
   };
 
   const removeFromCart = (id) => {
-    // console.log(id);
     commerce.cart
       .remove(id)
       .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
   };
 
   const decrementCart = (id, qty) => {
-    // console.log(id);
     commerce.cart
       .update(id, { quantity: qty })
       .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
@@ -40,7 +38,9 @@ function App() {
   const generateToken = (id) => {
     commerce.checkout
       .generateTokenFrom("cart", id)
-      .then((checkout) => console.log(checkout, "checkout.id"));
+      .then((checkout) =>
+        setCheckoutToken(checkout, console.log(checkout, "checkout.id"))
+      );
   };
 
   return (
@@ -68,7 +68,7 @@ function App() {
           />
         </Route>
         <Route path="/checkout">
-          <Checkout cart={cart} />
+          <Checkout cart={cart} checkoutToken={checkoutToken} />
         </Route>
       </Switch>
     </Router>

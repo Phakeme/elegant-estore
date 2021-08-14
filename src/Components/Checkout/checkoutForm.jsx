@@ -1,5 +1,7 @@
 import React from "react";
-import { Typography, Paper, Select } from "@material-ui/core";
+import Select from "@material-ui/core/Select";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
