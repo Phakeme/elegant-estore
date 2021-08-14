@@ -1,11 +1,12 @@
 import React from "react";
 import Select from "@material-ui/core/Select";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Styles from "./styles";
 import provinces from "../../Data/provinces";
@@ -34,7 +35,7 @@ const validationSchema = yup.object({
   street: yup.string("Enter your street").required("Street name is required"),
 });
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ nextStep, getOrderData }) => {
   const classes = Styles();
   const wrapper = React.createRef();
 
@@ -50,7 +51,9 @@ const CheckoutForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      getOrderData(values);
       alert(JSON.stringify(values, null, 2));
+      nextStep();
     },
   });
 
@@ -228,7 +231,10 @@ const CheckoutForm = () => {
           </Paper>
         </Grid>
       </Grid>
-      {/* <button type="submit">submit</button> */}
+      {/* <button >submit</button> */}
+      <Button variant="contained" color="secondary" type="submit">
+        Next
+      </Button>
     </form>
   );
 };

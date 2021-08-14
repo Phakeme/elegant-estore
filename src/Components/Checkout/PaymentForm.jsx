@@ -10,7 +10,7 @@ import {
 import { loadStripe } from "@stripe/stripe-js";
 import Styles from "./styles";
 
-const PaymentForm = ({ backStep, activeStep }) => {
+const PaymentForm = ({ backStep, activeStep, captureCheckout }) => {
   const classes = Styles();
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -76,6 +76,7 @@ const PaymentForm = ({ backStep, activeStep }) => {
                   variant="contained"
                   disabled={!stripe}
                   color="secondery"
+                  onClick={() => captureCheckout()}
                 >
                   Pay Price
                 </Button>

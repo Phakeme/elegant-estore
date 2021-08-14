@@ -9,6 +9,7 @@ import { commerce } from "./lib/commerce";
 
 function App() {
   const [cart, setCart] = useState({});
+  const [orderData, setOrderData] = useState(false);
   const [checkoutToken, setCheckoutToken] = useState(false);
 
   useEffect(() => {
@@ -43,6 +44,15 @@ function App() {
       );
   };
 
+  const getOrderData = (data) => {
+    setOrderData(data);
+    console.log("OrderData");
+  };
+
+  const captureCheckout = (data, id) => {
+    console.log(data, id, "CaptureCheckout");
+  };
+
   return (
     <Router>
       <Header cart={cart} />
@@ -68,7 +78,12 @@ function App() {
           />
         </Route>
         <Route path="/checkout">
-          <Checkout cart={cart} checkoutToken={checkoutToken} />
+          <Checkout
+            cart={cart}
+            checkoutToken={checkoutToken}
+            getOrderData={getOrderData}
+            captureCheckout={captureCheckout}
+          />
         </Route>
       </Switch>
     </Router>
