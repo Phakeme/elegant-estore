@@ -3,20 +3,16 @@ import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
 
 const OrderSummary = () => {
   const localData = localStorage.getItem("checkoutData");
-
   const checkoutData = JSON.parse(localData);
-  // const [cartData, setCartData] = useState(localData);
-
-  // useEffect(() => {
-  //   console.log("Checkout First Loaded");
-  //   setCartData(JSON.parse(localData));
-  // }, []);
 
   return (
     <>
+      <Typography>Order Summary</Typography>
+      <Divider />
       <List disablePadding>
         {checkoutData &&
           checkoutData.live.line_items.map((product, index) => (

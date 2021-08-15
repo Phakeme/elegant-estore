@@ -58,6 +58,11 @@ function App() {
       .then((response) => console.log(response));
   };
 
+  const emptyCart = () => {
+    commerce.cart.empty().then((response) => console.log(response));
+    commerce.cart.refresh().then((cart) => console.log(cart));
+  };
+
   return (
     <Router>
       <Header cart={cart} />
@@ -88,6 +93,7 @@ function App() {
             checkoutToken={checkoutToken}
             getOrderData={getOrderData}
             captureCheckout={captureCheckout}
+            emptyCart={emptyCart}
           />
         </Route>
       </Switch>

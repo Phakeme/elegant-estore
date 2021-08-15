@@ -19,6 +19,7 @@ const Checkout = ({
   checkoutToken,
   captureCheckout,
   getOrderData,
+  emptyCart,
 }) => {
   const [activeStep, setActiveStep] = useState(0);
   const classes = Styles();
@@ -32,6 +33,8 @@ const Checkout = ({
     ) : (
       <PaymentForm
         backStep={backStep}
+        nextStep={nextStep}
+        emptyCart={emptyCart}
         getOrderData={getOrderData}
         captureCheckout={captureCheckout}
       />
@@ -58,7 +61,6 @@ const Checkout = ({
 
       <Grid item xs={4}>
         <Paper style={{ padding: 10 }}>
-          <div> Order Summary</div>
           <OrderSummary />
         </Paper>
       </Grid>

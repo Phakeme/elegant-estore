@@ -15,6 +15,8 @@ const PaymentForm = ({
   activeStep,
   captureCheckout,
   getOrderData,
+  nextStep,
+  emptyCart,
 }) => {
   const classes = Styles();
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
@@ -38,7 +40,6 @@ const PaymentForm = ({
       const getLocalOrderData = localStorage.getItem("checkoutData");
       const dataInfo = JSON.parse(getCustomerData);
       const checkoutInfo = JSON.parse(getLocalOrderData);
-      // console.log(, "TTTTST checkoutInfo");
 
       const orderData = {
         line_items: checkoutInfo.live.line_items,
@@ -72,6 +73,9 @@ const PaymentForm = ({
         },
       };
       captureCheckout(orderData, checkoutInfo.id);
+      emptyCart();
+      nextStep();
+      localStorage.clear();
     }
   };
 
