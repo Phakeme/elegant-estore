@@ -58,7 +58,7 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
   });
 
   return (
-    <form noValidate autoComplete="off" onSubmit={formik.handleSubmit}>
+    <form noValidate autoComplete="on" onSubmit={formik.handleSubmit}>
       <Grid container spacing={2}>
         <Grid item style={{ width: "100%" }}>
           <Paper style={{ padding: "10px 10px 30px 10px" }}>

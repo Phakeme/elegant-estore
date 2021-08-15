@@ -9,7 +9,7 @@ import { commerce } from "./lib/commerce";
 
 function App() {
   const [cart, setCart] = useState({});
-  // const [orderData, setOrderData] = useState(false);
+  const [orderData, setOrderData] = useState(false);
   const [checkoutToken, setCheckoutToken] = useState(false);
 
   useEffect(() => {
@@ -44,16 +44,16 @@ function App() {
       .then((checkout) =>
         setCheckoutToken(
           checkout,
-          localStorage.setItem("cart", JSON.stringify(cart)),
+          localStorage.setItem("checkoutData", JSON.stringify(checkout)),
           console.log(checkout, "checkout.id")
         )
       );
   };
 
-  // const getOrderData = (data) => {
-  //   // setOrderData(data);
-  //   console.log("OrderData");
-  // };
+  const getOrderData = (data) => {
+    setOrderData(data);
+    console.log("OrderData");
+  };
 
   const captureCheckout = (data, id) => {
     console.log(data, id, "CaptureCheckout");
@@ -87,7 +87,7 @@ function App() {
           <Checkout
             cart={cart}
             checkoutToken={checkoutToken}
-            // getOrderData={getOrderData}
+            getOrderData={getOrderData}
             captureCheckout={captureCheckout}
           />
         </Route>

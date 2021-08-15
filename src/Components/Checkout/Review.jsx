@@ -5,9 +5,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
 const OrderSummary = () => {
-  const localData = localStorage.getItem("cart");
-  // JSON.parse(checkoutToken);
-  const checkoutToken = JSON.parse(localData);
+  const localData = localStorage.getItem("checkoutData");
+
+  const checkoutData = JSON.parse(localData);
   // const [cartData, setCartData] = useState(localData);
 
   // useEffect(() => {
@@ -18,21 +18,22 @@ const OrderSummary = () => {
   return (
     <>
       <List disablePadding>
-        {checkoutToken.line_items.map((product) => (
-          <ListItem style={{ padding: "10px 0" }} key={product.name}>
-            <ListItemText
-              primary={product.name}
-              secondary={`Quantity: ${product.quantity}`}
-            />
-            <Typography variant="body2">
-              {product.line_total.formatted_with_symbol}
-            </Typography>
-          </ListItem>
-        ))}
+        {checkoutData &&
+          checkoutData.live.line_items.map((product, index) => (
+            <ListItem style={{ padding: "10px 0" }} key={index}>
+              <ListItemText
+                primary={product.name}
+                secondary={`Quantity: ${product.quantity}`}
+              />
+              <Typography variant="body2">
+                {product.price.formatted_with_symbol}
+              </Typography>
+            </ListItem>
+          ))}
         <ListItem style={{ padding: "10px 0" }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" style={{ fontWeight: 700 }}>
-            {checkoutToken.subtotal.formatted_with_symbol}
+            {checkoutData && checkoutData.live.total.formatted_with_symbol}
           </Typography>
         </ListItem>
       </List>

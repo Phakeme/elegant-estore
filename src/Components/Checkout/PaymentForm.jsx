@@ -75,7 +75,7 @@ const PaymentForm = ({ backStep, activeStep, captureCheckout }) => {
                   type="submit"
                   variant="contained"
                   disabled={!stripe}
-                  color="secondery"
+                  color="secondary"
                   onClick={() => captureCheckout()}
                 >
                   Pay Price
