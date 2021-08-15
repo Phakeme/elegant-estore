@@ -10,7 +10,12 @@ import {
 import { loadStripe } from "@stripe/stripe-js";
 import Styles from "./styles";
 
-const PaymentForm = ({ backStep, activeStep, captureCheckout }) => {
+const PaymentForm = ({
+  backStep,
+  activeStep,
+  captureCheckout,
+  getOrderData,
+}) => {
   const classes = Styles();
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -29,18 +34,36 @@ const PaymentForm = ({ backStep, activeStep, captureCheckout }) => {
     if (error) {
       console.log("[error]", error);
     } else {
+      const getCustomerData = localStorage.getItem("checkoutOrderData");
+      const getLocalOrderData = localStorage.getItem("checkoutData");
+      const dataInfo = JSON.parse(getCustomerData);
+      const checkoutInfo = JSON.parse(getLocalOrderData);
+      // console.log(, "TTTTST checkoutInfo");
+
       const orderData = {
-        line_items: "",
-        customer: { firstname: "", lastname: "", email: "" },
-        shipping: {
-          name: "",
-          street: "",
-          town_city: "",
-          county_state: "",
-          postal_zip_code: "",
-          country: "",
+        line_items: checkoutInfo.live.line_items,
+        customer: {
+          firstname: dataInfo.firstName,
+          lastname: dataInfo.lastName,
+          email: dataInfo.email,
         },
-        fulfillment: { shipping_method: "" },
+        shipping: {
+          name: dataInfo.firstName,
+          street: dataInfo.street,
+          town_city: dataInfo.city,
+          county_state: dataInfo.province,
+          postal_zip_code: dataInfo.zipcode,
+          country: "ZA",
+        },
+        fulfillment: { shipping_method: checkoutInfo.shipping_methods[0].id },
+        billing: {
+          name: `${dataInfo.firstName} ${dataInfo.lastName}`,
+          street: dataInfo.street,
+          town_city: dataInfo.city,
+          county_state: dataInfo.province,
+          postal_zip_code: dataInfo.zipcode,
+          country: "ZA",
+        },
         payment: {
           gateway: "stripe",
           stripe: {
@@ -48,6 +71,7 @@ const PaymentForm = ({ backStep, activeStep, captureCheckout }) => {
           },
         },
       };
+      captureCheckout(orderData, checkoutInfo.id);
     }
   };
 
@@ -76,7 +100,6 @@ const PaymentForm = ({ backStep, activeStep, captureCheckout }) => {
                   variant="contained"
                   disabled={!stripe}
                   color="secondary"
-                  onClick={() => captureCheckout()}
                 >
                   Pay Price
                 </Button>

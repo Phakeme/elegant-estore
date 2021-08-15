@@ -13,7 +13,14 @@ const HomeContainer = () => {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
-    commerce.products.list().then((product) => setProducts(product.data));
+    commerce.products
+      .list()
+      .then((product) =>
+        setProducts(
+          product.data,
+          console.log(product, "console.log(product.data)")
+        )
+      );
   }, []);
 
   return (

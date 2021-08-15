@@ -28,9 +28,13 @@ const Checkout = ({
 
   const CurrentForm = () =>
     activeStep === 0 ? (
-      <CheckoutForm nextStep={nextStep} getOrderData={getOrderData} />
+      <CheckoutForm nextStep={nextStep} />
     ) : (
-      <PaymentForm backStep={backStep} />
+      <PaymentForm
+        backStep={backStep}
+        getOrderData={getOrderData}
+        captureCheckout={captureCheckout}
+      />
     );
 
   return (

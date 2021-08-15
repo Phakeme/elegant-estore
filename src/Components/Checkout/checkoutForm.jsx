@@ -51,7 +51,7 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      getOrderData(values);
+      localStorage.setItem("checkoutOrderData", JSON.stringify(values));
       alert(JSON.stringify(values, null, 2));
       nextStep();
     },
@@ -160,7 +160,7 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
                             id="province"
                             name="province"
                             ref={wrapper}
-                            value={value}
+                            value={key}
                           >
                             {value}
                           </MenuItem>

@@ -9,16 +9,12 @@ import { commerce } from "./lib/commerce";
 
 function App() {
   const [cart, setCart] = useState({});
-  const [orderData, setOrderData] = useState(false);
+  const [checkoutData, setCheckoutData] = useState(null);
   const [checkoutToken, setCheckoutToken] = useState(false);
 
   useEffect(() => {
     commerce.cart.retrieve().then((cart) => setCart(cart));
   }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem("cart", JSON.stringify({ name: "Funda", age: 1 }));
-  // }, []);
 
   const addToCart = (productId, vgrpId, optnId) => {
     commerce.cart
@@ -42,21 +38,24 @@ function App() {
     commerce.checkout
       .generateTokenFrom("cart", id)
       .then((checkout) =>
-        setCheckoutToken(
-          checkout,
-          localStorage.setItem("checkoutData", JSON.stringify(checkout)),
-          console.log(checkout, "checkout.id")
+        localStorage.setItem(
+          "checkoutData",
+          JSON.stringify(checkout),
+          console.log(checkout, "checkout")
         )
       );
   };
 
   const getOrderData = (data) => {
-    setOrderData(data);
-    console.log("OrderData");
+    // localStorage.setItem("orderData", JSON.stringify(data));
+    setCheckoutData(data);
   };
 
-  const captureCheckout = (data, id) => {
-    console.log(data, id, "CaptureCheckout");
+  const captureCheckout = (orderData, id) => {
+    // console.log(orderData, id, "CaptureCheckout");
+    commerce.checkout
+      .capture(id, orderData)
+      .then((response) => console.log(response));
   };
 
   return (
