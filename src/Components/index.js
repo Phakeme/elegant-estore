@@ -6,4 +6,5 @@ export { default as Checkout } from "./Checkout/Checkout";
 export { default as HeroCarousel } from "./Hero/Carousel";
 export { default as InfoLink } from "./Hero/InfoLink";
 export { default as Product } from "./Product";
+export { default as Top4Links } from "./Top4Links/";
 export { default as AddToCartModal } from "./utils/AddToCartModal";

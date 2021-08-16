@@ -10,6 +10,7 @@ import ListItem from "@material-ui/core/ListItem";
 const Styles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginBottom: 8,
   },
   paper: {
     height: "100%",

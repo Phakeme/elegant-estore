@@ -5,6 +5,7 @@ import {
   HeroCarousel,
   ProductsSummary,
   InfoLink,
+  Top4Links,
 } from "../../Components";
 import { commerce } from "../../lib/commerce";
 import categories from "../../Data/categories";
@@ -51,6 +52,7 @@ const HomeContainer = () => {
           />
         </Hero.InformativeLinks>
       </Hero>
+      <Top4Links />
       <ProductsSummary products={products} title="Our Top Sellers" />
     </Container>
   );

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import Paper from "@material-ui/core/Paper";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 
@@ -10,7 +11,7 @@ const OrderSummary = () => {
   const checkoutData = JSON.parse(localData);
 
   return (
-    <>
+    <Paper style={{ padding: 10 }}>
       <Typography>Order Summary</Typography>
       <Divider />
       <List disablePadding>
@@ -33,7 +34,7 @@ const OrderSummary = () => {
           </Typography>
         </ListItem>
       </List>
-    </>
+    </Paper>
   );
 };
 
