@@ -3,7 +3,8 @@ import Container from "@material-ui/core/Container";
 import {
   Hero,
   HeroCarousel,
-  ProductsSummary,
+  Banner,
+  DoubleBanner,
   InfoLink,
   Top4Links,
 } from "../../Components";
@@ -53,7 +54,8 @@ const HomeContainer = () => {
         </Hero.InformativeLinks>
       </Hero>
       <Top4Links />
-      <ProductsSummary products={products} title="Our Top Sellers" />
+      <Banner products={products} title="Our Top Sellers" />
+      <DoubleBanner />
     </Container>
   );
 };

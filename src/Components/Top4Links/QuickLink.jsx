@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
 
@@ -28,9 +28,9 @@ const QuickLink = ({ icon, title, path }) => {
               <img src={icon} alt="" style={{ height: "40px" }} />
             </Grid>
             <Grid item xs={10} className={classes.title}>
-              <Typography variant="h6" component="span">
+              <span style={{ fontSize: "1rem", fontWeight: "bold" }}>
                 {title}
-              </Typography>
+              </span>
             </Grid>
           </Grid>
         </Paper>

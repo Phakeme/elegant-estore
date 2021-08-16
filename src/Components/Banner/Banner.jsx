@@ -6,30 +6,12 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
-import { makeStyles } from "@material-ui/core/styles";
+import Styles from "./styles";
 
-const Styles = makeStyles((theme) => ({
-  description: {
-    width: "180px",
-    fontSize: "12px",
-    margin: "5px",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-  },
-}));
-
-const ProductSummary = ({ products, title }) => {
+const Banner = ({ products, title }) => {
   const classes = Styles();
   return (
-    <Paper
-      style={{
-        marginTop: "16px",
-        width: "100%",
-        minHeight: "250px",
-        padding: "10px",
-      }}
-    >
+    <Paper className={classes.paper}>
       <Typography variant="h5" gutterBottom>
         {title}
       </Typography>
@@ -81,4 +63,4 @@ const ProductSummary = ({ products, title }) => {
   );
 };
 
-export default ProductSummary;
+export default Banner;

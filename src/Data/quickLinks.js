@@ -2,22 +2,22 @@ const quicklinks = [
   {
     title: "Women",
     path: "/women",
-    icon: "./images/Quicklink01-Women.jpg",
+    icon: "./images/quicklinks/Quicklink01-Women.jpg",
   },
   {
-    title: "Mem",
+    title: "Men",
     path: "/men",
-    icon: "./images/Quicklink02-Men.jpg",
+    icon: "./images/quicklinks/Quicklink02-Men.jpg",
   },
   {
     title: "Kids",
     path: "/kids",
-    icon: "./images/Quicklink03-Kids.jpg",
+    icon: "./images/quicklinks/Quicklink03-Kids.jpg",
   },
   {
     title: "Homeware",
     path: "/homeware",
-    icon: "./images/Quicklink04-homeware.jpg",
+    icon: "./images/quicklinks/Quicklink04-homeware.jpg",
   },
 ];
 
