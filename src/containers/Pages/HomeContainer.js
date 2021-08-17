@@ -58,7 +58,7 @@ const HomeContainer = () => {
       <Top4Links />
       <Banner products={products} title="Our Top Sellers" />
       <DoubleBanner />
-      <Thumbnails />
+      <Thumbnails thumbnails={thumbnails} />
     </Container>
   );
 };

@@ -1,37 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
-// import Card from "@material-ui/core/Card";
-// import Box from "@material-ui/core/Box";
-// import Typography from "@material-ui/core/Typography";
-// import CardActionArea from "@material-ui/core/CardActionArea";
-// import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
-import Styles from "./styles";
 
-const Thumbnails = ({ products, title }) => {
-  const classes = Styles();
+const Thumbnails = ({ thumbnails }) => {
   return (
-    <Paper className={classes.paper}>
-      <Grid container>
-        <Grid item xs={2}>
-          Test
-        </Grid>
-        <Grid item xs={2}>
-          Test
-        </Grid>
-        <Grid item xs={2}>
-          Test
-        </Grid>
-        <Grid item xs={2}>
-          Test
-        </Grid>
-        <Grid item xs={2}>
-          Test
-        </Grid>
-        <Grid item xs={2}>
-          Test
-        </Grid>
+    <Paper style={{ height: 173, padding: 15, marginBottom: 16 }}>
+      <Grid container spacing={0} style={{ height: "100%" }}>
+        {thumbnails.map(({ icon, path, title }, index) => (
+          <Grid key={index} item xs={2}>
+            <Link to={path}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  height: "100%",
+                }}
+              >
+                <img
+                  style={{ marginBottom: 10, width: "100%" }}
+                  src={icon}
+                  alt=""
+                />
+                <span>{title}</span>
+              </div>
+            </Link>
+          </Grid>
+        ))}
       </Grid>
     </Paper>
   );

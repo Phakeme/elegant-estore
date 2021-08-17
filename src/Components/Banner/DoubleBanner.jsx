@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-// import Typography from "@material-ui/core/Typography";
-// import CardActionArea from "@material-ui/core/CardActionArea";
-// import CardMedia from "@material-ui/core/CardMedia";
 import Styles from "./styles";
 
 const DoubleBanner = ({ products, title }) => {
