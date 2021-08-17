@@ -2,9 +2,9 @@ import { makeStyles } from "@material-ui/styles";
 
 export default makeStyles((theme) => ({
   paper: {
-    marginTop: "16px",
+    marginBottom: "16px",
     width: "100%",
-    minHeight: "250px",
+    minHeight: "173px",
     padding: "10px",
   },
   description: {

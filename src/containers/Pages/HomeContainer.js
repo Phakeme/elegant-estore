@@ -4,12 +4,14 @@ import {
   Hero,
   HeroCarousel,
   Banner,
+  Thumbnails,
   DoubleBanner,
   InfoLink,
   Top4Links,
 } from "../../Components";
 import { commerce } from "../../lib/commerce";
 import categories from "../../Data/categories";
+import thumbnails from "../../Data/thumbnails";
 
 const HomeContainer = () => {
   const [products, setProducts] = useState(null);
@@ -56,6 +58,7 @@ const HomeContainer = () => {
       <Top4Links />
       <Banner products={products} title="Our Top Sellers" />
       <DoubleBanner />
+      <Thumbnails />
     </Container>
   );
 };

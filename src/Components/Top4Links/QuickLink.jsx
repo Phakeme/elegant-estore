@@ -10,6 +10,7 @@ const QuickLink = ({ icon, title, path }) => {
     root: {
       height: 56,
       padding: 5,
+      marginBottom: 16,
     },
     icon: {
       display: "flex",
