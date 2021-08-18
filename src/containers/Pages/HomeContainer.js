@@ -6,6 +6,7 @@ import {
   Banner,
   Thumbnails,
   DoubleBanner,
+  SingleBanner,
   InfoLink,
   Top4Links,
 } from "../../Components";
@@ -58,7 +59,9 @@ const HomeContainer = () => {
       <Top4Links />
       <Banner products={products} title="Our Top Sellers" />
       <DoubleBanner />
+      <Banner products={products} title="Recently viewed" />
       <Thumbnails thumbnails={thumbnails} />
+      <SingleBanner />
     </Container>
   );
 };

@@ -3,6 +3,7 @@ export { default as Header } from "./Header";
 export { default as Banner } from "./Banner/Banner";
 export { default as Thumbnails } from "./Banner/Thumbnails";
 export { default as DoubleBanner } from "./Banner/DoubleBanner";
+export { default as SingleBanner } from "./Banner/SingleBanner";
 export { default as Cart } from "./Cart/Cart";
 export { default as Checkout } from "./Checkout/Checkout";
 export { default as HeroCarousel } from "./Hero/Carousel";
