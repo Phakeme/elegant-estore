@@ -42,12 +42,12 @@ const Footer = () => {
             <Link to="/">
               <img
                 style={{ height: "32px" }}
-                src="./images/elegant-logo.svg"
-                alt=""
+                src="./images/elegant-white-logo.svg"
+                alt="elegant-icon.svg"
               />
             </Link>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={5}>
             <h4 className={classes.heading}>NEW TO ELEGANT?</h4>
             <div className={classes.subHeading}>
               <span>SIGN UP AND GET UP TO R200 OFF</span>
@@ -93,8 +93,42 @@ const Footer = () => {
               </Grid>
             </form>
           </Grid>
-          <Grid item xs={3}>
-            Text
+          <Grid item xs={4}>
+            <Grid container>
+              <Grid item xs={2}>
+                <img
+                  style={{ height: "42px" }}
+                  src="./images/elegant-icon.svg"
+                  alt="elegant-icon.svg"
+                />
+              </Grid>
+              <Grid item xs={10}>
+                <h4 className={classes.heading}>
+                  DOWNLOAD THE ELEGANT FREE APP!
+                </h4>
+                <div className={classes.subHeading}>
+                  <span>Get access to exclusive offers!</span>
+                </div>
+              </Grid>
+              <Grid container>
+                <Grid item xs={12} style={{ height: 42 }}>
+                  <Link to="/" style={{ marginRight: 10 }}>
+                    <img
+                      style={{ height: "100%" }}
+                      src="./images/app-store-logo.svg"
+                      alt=""
+                    />
+                  </Link>
+                  <Link to="/">
+                    <img
+                      style={{ height: "100%" }}
+                      src="./images/google-play-logo.svg"
+                      alt=""
+                    />
+                  </Link>
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Container>
