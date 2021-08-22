@@ -14,6 +14,18 @@ const Footer = () => {
       minHeight: 200,
       color: "white",
       padding: 30,
+      width: "100%",
+      // background: "yellow",
+      "@media (max-width: 1057px)": {
+        width: "1040px",
+      },
+    },
+    inner: {
+      margin: "auto",
+      width: "1232px",
+      "@media (max-width: 1280px)": {
+        width: "100%",
+      },
     },
     heading: {
       margin: "0 0 10px 0",
@@ -37,102 +49,100 @@ const Footer = () => {
   const classes = Styles();
   return (
     <footer className={classes.root}>
-      <GlobalContainer>
-        <Grid container spacing={4}>
-          <Grid item xs={3}>
-            <Link to="/">
-              <img
-                style={{ height: "32px" }}
-                src="./images/elegant-white-logo.svg"
-                alt="elegant-icon.svg"
-              />
-            </Link>
-          </Grid>
-          <Grid item xs={5}>
-            <h4 className={classes.heading}>NEW TO ELEGANT?</h4>
-            <div className={classes.subHeading}>
-              <span>SIGN UP AND GET UP TO R200 OFF</span>
-            </div>
-            <form noValidate autoComplete="off">
-              <Grid container>
-                <Grid item xs={7}>
-                  <TextField
-                    className={classes.textField}
-                    color="secondary"
-                    label="Email"
-                    id="email"
-                    name="email"
-                    type="mail"
-                    fullWidth
-                    variant="filled"
-                  />
-                </Grid>
-                <Grid xs={5}>
-                  <Grid container spacing={1} className={classes.btns}>
-                    <Grid item xs={6}>
-                      <Button
-                        color="secondary"
-                        size="large"
-                        variant="outlined"
-                        fullWidth
-                      >
-                        Male
-                      </Button>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Button
-                        color="secondary"
-                        size="large"
-                        variant="outlined"
-                        fullWidth
-                      >
-                        Female
-                      </Button>
-                    </Grid>
+      <Grid container spacing={2} className={classes.inner}>
+        <Grid item xs={3}>
+          <Link to="/">
+            <img
+              style={{ height: "32px" }}
+              src="./images/elegant-white-logo.svg"
+              alt="elegant-icon.svg"
+            />
+          </Link>
+        </Grid>
+        <Grid item xs={5}>
+          <h4 className={classes.heading}>NEW TO ELEGANT?</h4>
+          <div className={classes.subHeading}>
+            <span>SIGN UP AND GET UP TO R200 OFF</span>
+          </div>
+          <form noValidate autoComplete="off">
+            <Grid container>
+              <Grid item xs={7}>
+                <TextField
+                  className={classes.textField}
+                  color="secondary"
+                  label="Email"
+                  id="email"
+                  name="email"
+                  type="mail"
+                  fullWidth
+                  variant="filled"
+                />
+              </Grid>
+              <Grid xs={5}>
+                <Grid container spacing={1} className={classes.btns}>
+                  <Grid item xs={6}>
+                    <Button
+                      color="secondary"
+                      size="large"
+                      variant="outlined"
+                      fullWidth
+                    >
+                      Male
+                    </Button>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Button
+                      color="secondary"
+                      size="large"
+                      variant="outlined"
+                      fullWidth
+                    >
+                      Female
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>
-            </form>
-          </Grid>
-          <Grid item xs={4}>
+            </Grid>
+          </form>
+        </Grid>
+        <Grid item xs={4}>
+          <Grid container>
+            <Grid item xs={2}>
+              <img
+                style={{ height: "42px" }}
+                src="./images/elegant-icon.svg"
+                alt="elegant-icon.svg"
+              />
+            </Grid>
+            <Grid item xs={10}>
+              <h4 className={classes.heading}>
+                DOWNLOAD THE ELEGANT FREE APP!
+              </h4>
+              <div className={classes.subHeading}>
+                <span>Get access to exclusive offers!</span>
+              </div>
+            </Grid>
             <Grid container>
-              <Grid item xs={2}>
-                <img
-                  style={{ height: "42px" }}
-                  src="./images/elegant-icon.svg"
-                  alt="elegant-icon.svg"
-                />
-              </Grid>
-              <Grid item xs={10}>
-                <h4 className={classes.heading}>
-                  DOWNLOAD THE ELEGANT FREE APP!
-                </h4>
-                <div className={classes.subHeading}>
-                  <span>Get access to exclusive offers!</span>
-                </div>
-              </Grid>
-              <Grid container>
-                <Grid item xs={12} style={{ height: 42 }}>
-                  <Link to="/" style={{ marginRight: 10 }}>
-                    <img
-                      style={{ height: "100%" }}
-                      src="./images/app-store-logo.svg"
-                      alt=""
-                    />
-                  </Link>
-                  <Link to="/">
-                    <img
-                      style={{ height: "100%" }}
-                      src="./images/google-play-logo.svg"
-                      alt=""
-                    />
-                  </Link>
-                </Grid>
+              <Grid item xs={12} style={{ height: 42 }}>
+                <Link to="/" style={{ marginRight: 10 }}>
+                  <img
+                    style={{ height: "100%" }}
+                    src="./images/app-store-logo.svg"
+                    alt=""
+                  />
+                </Link>
+                <Link to="/">
+                  <img
+                    style={{ height: "100%" }}
+                    src="./images/google-play-logo.svg"
+                    alt=""
+                  />
+                </Link>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </GlobalContainer>
+      </Grid>
     </footer>
   );
 };
