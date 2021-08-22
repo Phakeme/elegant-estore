@@ -10,7 +10,7 @@ const Footer = () => {
   const Styles = makeStyles((theme) => ({
     root: {
       background: theme.palette.grey[900],
-      minHeight: 150,
+      minHeight: 200,
       color: "white",
       padding: 30,
     },
