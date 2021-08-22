@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
+import GlobalContainer from "../utils/Container";
 
 const Footer = () => {
   const Styles = makeStyles((theme) => ({
@@ -36,7 +37,7 @@ const Footer = () => {
   const classes = Styles();
   return (
     <footer className={classes.root}>
-      <Container>
+      <GlobalContainer>
         <Grid container spacing={4}>
           <Grid item xs={3}>
             <Link to="/">
@@ -131,7 +132,7 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Grid>
-      </Container>
+      </GlobalContainer>
     </footer>
   );
 };

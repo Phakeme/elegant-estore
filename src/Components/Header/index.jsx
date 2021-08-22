@@ -4,13 +4,13 @@ import { fade } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import useStyles from "./styles";
 import Admin from "./Admin/";
+import GlobalContainer from "../utils/Container";
 
 export default function Header({ cart }) {
   const classes = useStyles();
@@ -20,7 +20,7 @@ export default function Header({ cart }) {
       elevation={1}
       style={{ minHeight: "76px", display: "flex", justifyContent: "center" }}
     >
-      <Container>
+      <GlobalContainer>
         <Toolbar disableGutters>
           <Grid
             container
@@ -107,7 +107,7 @@ export default function Header({ cart }) {
             <Admin cart={cart} />
           </Grid>
         </Toolbar>
-      </Container>
+      </GlobalContainer>
     </AppBar>
   );
 }

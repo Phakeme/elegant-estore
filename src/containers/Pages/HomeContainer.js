@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Container from "@material-ui/core/Container";
 import {
   Hero,
   HeroCarousel,
@@ -13,6 +12,15 @@ import {
 import { commerce } from "../../lib/commerce";
 import categories from "../../Data/categories";
 import thumbnails from "../../Data/thumbnails";
+import { makeStyles } from "@material-ui/core/styles";
+import GlobalContainer from "../../Components/utils/Container";
+
+const Styles = makeStyles((theme) => ({
+  container: {
+    height: "392px",
+    marginBottom: 8,
+  },
+}));
 
 const HomeContainer = () => {
   const [products, setProducts] = useState(null);
@@ -27,9 +35,9 @@ const HomeContainer = () => {
         )
       );
   }, []);
-
+  const classes = Styles();
   return (
-    <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
+    <GlobalContainer className={classes.container}>
       <Hero>
         <Hero.Categories categories={categories} />
         <Hero.ImageSlide>
@@ -62,7 +70,7 @@ const HomeContainer = () => {
       <Banner products={products} title="Recently viewed" />
       <Thumbnails thumbnails={thumbnails} />
       <SingleBanner />
-    </Container>
+    </GlobalContainer>
   );
 };
 

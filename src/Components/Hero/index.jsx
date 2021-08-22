@@ -10,12 +10,8 @@ import ListItem from "@material-ui/core/ListItem";
 const Styles = makeStyles((theme) => ({
   root: {
     height: "392px",
-    width: "1248px",
     marginBottom: 8,
-    "@media (max-width: 1280px)": {
-      width: "1040px",
-      margin: "auto",
-    },
+    marginTop: `${76 + 8}px`,
   },
   paper: {
     height: "100%",
