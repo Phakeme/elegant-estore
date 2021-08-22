@@ -14,5 +14,8 @@ export default makeStyles((theme) => ({
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
+    "@media (max-width: 1280px)": {
+      width: "150px",
+    },
   },
 }));

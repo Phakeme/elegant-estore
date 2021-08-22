@@ -11,7 +11,15 @@ const SingleBanner = () => {
       <Grid container spacing={0}>
         <Grid item xs={12} style={{ background: "" }}>
           <Link to="/">
-            <img src="./images/1608-DT-Single-banner-Athleisure.jpg" alt="" />
+            <div
+              style={{
+                height: 258,
+                backgroundImage:
+                  "url(./images/doubleBanner/DT-Double-banner-Women-shoes.jpg)",
+                backgroundPosition: "right",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
           </Link>
         </Grid>
       </Grid>

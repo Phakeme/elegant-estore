@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
-import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -15,24 +15,17 @@ const Banner = ({ products, title }) => {
       <Typography variant="h5" gutterBottom>
         {title}
       </Typography>
-      <Box
-        spacin={0}
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr",
-          gap: "10px",
-        }}
-      >
+      <Grid container spacing={1}>
         {Array.isArray(products) &&
           products.slice(0, 6).map((product, i) => (
-            <Box xs={2} key={i}>
+            <Grid item xs={2} key={i}>
               <Link
                 key={i}
                 to={`product/${product.name.split(" ").join("-")}/${
                   product.id
                 }`}
               >
-                <Card key={i} elevation={0}>
+                <Card elevation={0}>
                   <CardActionArea key={i}>
                     {product.assets.slice(0, 1).map((image, i) => (
                       <CardMedia
@@ -56,9 +49,9 @@ const Banner = ({ products, title }) => {
                   </CardActionArea>
                 </Card>
               </Link>
-            </Box>
+            </Grid>
           ))}
-      </Box>
+      </Grid>
     </Paper>
   );
 };

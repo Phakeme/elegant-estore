@@ -4,22 +4,35 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Styles from "./styles";
 
-const DoubleBanner = ({ products, title }) => {
+const DoubleBanner = () => {
   const classes = Styles();
   return (
     <Paper className={classes.paper}>
       <Grid container spacing={0}>
-        <Grid item xs={6} style={{ background: "" }}>
+        <Grid item xs={6}>
           <Link to="">
-            <img
-              src="./images/doubleBanner/DT-Double-banner-Women.jpg"
-              alt=""
-            />
+            <div
+              style={{
+                height: 258,
+                backgroundImage:
+                  "url(./images/doubleBanner/DT-Double-banner-Women.jpg)",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
           </Link>
         </Grid>
-        <Grid item xs={6} style={{ background: "" }}>
+        <Grid item xs={6}>
           <Link to="">
-            <img src="./images/doubleBanner/DT-Double-banner-Men.jpg" alt="" />
+            <div
+              style={{
+                height: 258,
+                backgroundImage:
+                  "url(./images/doubleBanner/DT-Double-banner-Men.jpg)",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
           </Link>
         </Grid>
       </Grid>
