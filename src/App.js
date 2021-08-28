@@ -5,16 +5,37 @@ import Cart from "./containers/Pages/CartContainer";
 import Checkout from "./containers/Pages/CheckoutContainer";
 import Home from "./containers/Pages/HomeContainer";
 import ProductContainer from "./containers/Pages/ProductContainer";
+import QueryContainer from "./containers/Pages/QueryContainer";
 import { commerce } from "./lib/commerce";
 
 function App() {
   const [cart, setCart] = useState({});
   const [checkoutData, setCheckoutData] = useState(null);
   const [checkoutToken, setCheckoutToken] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [sortedProducts, SetSortedProducts] = useState([]);
+  const [query, SetQuery] = useState("");
 
   useEffect(() => {
     commerce.cart.retrieve().then((cart) => setCart(cart));
+    commerce.products
+      .list()
+      .then((product) =>
+        setProducts(product.data, console.log(product.data, "product.data"))
+      );
   }, []);
+
+  const searchProducts = (query) => {
+    let currProd = [];
+    products.map((res) => {
+      if (res.seo.title && res.name.includes(query)) {
+        currProd.push(res);
+      }
+    });
+    SetSortedProducts(currProd);
+    SetQuery(query);
+    // console.log(sortedProducts, "Sothile");
+  };
 
   const addToCart = (productId, vgrpId, optnId) => {
     commerce.cart
@@ -65,7 +86,7 @@ function App() {
 
   return (
     <Router>
-      <Header cart={cart} />
+      <Header cart={cart} searchProducts={searchProducts} />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -95,6 +116,9 @@ function App() {
             captureCheckout={captureCheckout}
             emptyCart={emptyCart}
           />
+        </Route>
+        <Route path="/query">
+          <QueryContainer sortedProducts={sortedProducts} query={query} />
         </Route>
       </Switch>
       <Footer />

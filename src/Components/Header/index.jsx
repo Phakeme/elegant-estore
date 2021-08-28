@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { fade } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,7 +12,8 @@ import useStyles from "./styles";
 import Admin from "./Admin/";
 import GlobalContainer from "../utils/Container";
 
-export default function Header({ cart }) {
+export default function Header({ cart, searchProducts }) {
+  let history = useHistory();
   const classes = useStyles();
   const [query, setQuery] = useState("");
 
@@ -25,6 +26,8 @@ export default function Header({ cart }) {
     if (query.length > 0) {
       console.log(query);
       setQuery("");
+      searchProducts(query);
+      history.push("/query");
     }
   };
 
