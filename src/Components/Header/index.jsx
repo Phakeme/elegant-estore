@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { fade } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -14,6 +14,19 @@ import GlobalContainer from "../utils/Container";
 
 export default function Header({ cart }) {
   const classes = useStyles();
+  const [query, setQuery] = useState("");
+
+  const storeQuery = (value) => {
+    const query = value.replace(/ /g, "");
+    setQuery(query);
+  };
+
+  const search = () => {
+    if (query.length > 0) {
+      console.log(query);
+      setQuery("");
+    }
+  };
 
   return (
     <AppBar
@@ -75,6 +88,10 @@ export default function Header({ cart }) {
                       </div>
                       <InputBase
                         placeholder="Search products, brands and categories"
+                        value={query}
+                        onChange={(e) => {
+                          storeQuery(e.target.value);
+                        }}
                         inputProps={{
                           "aria-label":
                             "Search products, brands and categories",
@@ -97,6 +114,8 @@ export default function Header({ cart }) {
                       }}
                       variant="contained"
                       color="secondary"
+                      // disabled={query.length}
+                      onClick={() => search()}
                     >
                       Search
                     </Button>

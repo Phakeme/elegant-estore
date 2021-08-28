@@ -15,7 +15,6 @@ const Footer = () => {
       color: "white",
       padding: 30,
       width: "100%",
-      // background: "yellow",
       "@media (max-width: 1057px)": {
         width: "1040px",
       },
