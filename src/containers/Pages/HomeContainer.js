@@ -12,15 +12,7 @@ import {
 import { commerce } from "../../lib/commerce";
 import categories from "../../Data/categories";
 import thumbnails from "../../Data/thumbnails";
-import { makeStyles } from "@material-ui/core/styles";
 import GlobalContainer from "../../Components/utils/Container";
-
-const Styles = makeStyles((theme) => ({
-  container: {
-    height: "392px",
-    marginBottom: 8,
-  },
-}));
 
 const HomeContainer = () => {
   const [products, setProducts] = useState(null);
@@ -35,9 +27,8 @@ const HomeContainer = () => {
         )
       );
   }, []);
-  const classes = Styles();
   return (
-    <GlobalContainer className={classes.container}>
+    <GlobalContainer>
       <Hero>
         <Hero.Categories categories={categories} />
         <Hero.ImageSlide>
