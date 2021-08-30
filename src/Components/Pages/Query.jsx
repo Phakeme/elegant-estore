@@ -6,8 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 const Styles = makeStyles((theme) => ({
   root: {
     marginTop: `${76 + 8 + 25}px`,
-    minHeight: 300,
-    textAlign: "center",
   },
   btn: {
     color: theme.palette.primary.main,
@@ -15,15 +13,15 @@ const Styles = makeStyles((theme) => ({
   },
 }));
 
-const Query = ({ title, sortedProducts, query }) => {
+const Query = ({ children, sortedProducts, query }) => {
   console.log(sortedProducts, "From Query Page");
   const classes = Styles();
   return (
     <section className={classes.root}>
       {sortedProducts.length ? (
-        <h1>{sortedProducts.length}</h1>
+        <div>{children}</div>
       ) : (
-        <>
+        <div style={{ minHeight: 300, textAlign: "center" }}>
           <div
             style={{
               background: "white",
@@ -58,7 +56,7 @@ const Query = ({ title, sortedProducts, query }) => {
               Go To HomePage
             </Button>
           </Link>
-        </>
+        </div>
       )}
     </section>
   );
