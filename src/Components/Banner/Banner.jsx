@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
@@ -8,8 +9,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import Styles from "./styles";
 
-const Banner = ({ products, title }) => {
-  const [allProducts, SetAllProducts] = useState(false);
+const Banner = ({ products, title, numOfProds }) => {
   const classes = Styles();
   return (
     <Paper className={classes.paper}>
@@ -18,7 +18,7 @@ const Banner = ({ products, title }) => {
       </Typography>
       <Grid container spacing={1}>
         {Array.isArray(products) &&
-          products.slice(0, 6).map((product, i) => (
+          products.slice(0, numOfProds).map((product, i) => (
             <Grid item xs={2} key={i}>
               <Link
                 key={i}
@@ -55,6 +55,17 @@ const Banner = ({ products, title }) => {
       </Grid>
     </Paper>
   );
+};
+
+Banner.defaultProps = {
+  title: "Stranger",
+  numOfProds: 6,
+};
+
+Banner.propTypes = {
+  title: PropTypes.string,
+  trim: PropTypes.bool,
+  numOfProds: PropTypes.number,
 };
 
 export default Banner;

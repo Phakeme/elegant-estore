@@ -7,7 +7,7 @@ const QueryContainer = ({ sortedProducts, query }) => {
   return (
     <GlobalContainer>
       <Query sortedProducts={sortedProducts} query={query}>
-        <Banner products={sortedProducts} />
+        <Banner numOfProds={50} products={sortedProducts} />
       </Query>
     </GlobalContainer>
   );
