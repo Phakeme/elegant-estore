@@ -5,9 +5,9 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import { FaRegUser, FaRegQuestionCircle } from "react-icons/fa";
+import { FaRegUser, FaRegQuestionCircle, FaShoppingCart } from "react-icons/fa";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
-import { GrCart } from "react-icons/gr/";
+// import { GrCart } from "react-icons/gr/";
 import DropDownLink from "./DropDownLink";
 import { Link } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
@@ -63,63 +63,12 @@ const Admin = ({ cart }) => {
           <label>
             <span>
               <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />{" "}
-              Help {!helpOpen ? <BiChevronDown /> : <BiChevronUp />}
+              Help
             </span>
           </label>
-          {/* {helpOpen && (
-            <Paper
-              elevation={5}
-              style={{
-                position: "absolute",
-                marginTop: "1px",
-                padding: "10px",
-                width: "206px",
-                height: "269px",
-                right: "115px",
-                top: "50px",
-              }}
-            >
-              <Button
-                variant="contained"
-                color="secondary"
-                size="medium"
-                fullWidth
-                style={{
-                  color: "white",
-                  marginBottom: "10px",
-                }}
-              >
-                <span style={{ fontWeight: 500 }}>Login</span>
-              </Button>
-              <span>OR</span>
-              <Button
-                size="medium"
-                variant="outlined"
-                color="secondary"
-                fullWidth
-                style={{
-                  fontSize: "0.875rem",
-                  fontWeight: "bold",
-                  marginBottom: "16px",
-                  marginTop: "10px",
-                }}
-              >
-                <span style={{ fontWeight: 700 }}>CREATE ACCOUNT</span>
-              </Button>
-              <Divider />
-              <Box
-                style={{
-                  marginTop: "16px",
-                  textAlign: "left",
-                }}
-              >
-                <DropDownLink />
-              </Box>
-            </Paper>
-          )} */}
         </Grid>
         {/* -------------- CART LINK -------------- */}
-        <Grid item xs={4}>
+        <Grid item xs={4} className={classes.link}>
           <Link to="/cart">
             <Box
               style={{
@@ -130,16 +79,12 @@ const Admin = ({ cart }) => {
               }}
             >
               <span>
-                <Badge
-                  badgeContent={cart.total_items}
-                  color="secondary"
-                  classes={{ badge: classes.badge }}
-                >
-                  <GrCart fontSize={20} />
+                <Badge badgeContent={cart.total_items} color="secondary">
+                  <FaShoppingCart fontSize={20} />
                 </Badge>
               </span>
 
-              <span style={{ marginLeft: "15px" }}>Cart</span>
+              <span style={{ marginLeft: "10px" }}>Cart</span>
             </Box>
           </Link>
         </Grid>

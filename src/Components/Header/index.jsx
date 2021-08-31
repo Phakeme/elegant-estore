@@ -31,6 +31,12 @@ export default function Header({ cart, searchProducts }) {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      search();
+    }
+  };
+
   return (
     <AppBar
       elevation={1}
@@ -95,6 +101,7 @@ export default function Header({ cart, searchProducts }) {
                         onChange={(e) => {
                           storeQuery(e.target.value);
                         }}
+                        onKeyPress={handleKeyPress}
                         inputProps={{
                           "aria-label":
                             "Search products, brands and categories",
@@ -117,7 +124,6 @@ export default function Header({ cart, searchProducts }) {
                       }}
                       variant="contained"
                       color="secondary"
-                      // disabled={query.length}
                       onClick={() => search()}
                     >
                       Search
