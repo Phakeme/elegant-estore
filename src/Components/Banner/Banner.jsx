@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
+import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -16,6 +17,16 @@ const Banner = ({ products, title, numOfProds }) => {
       <Typography variant="h5" gutterBottom>
         {title}
       </Typography>
+      {numOfProds > 6 && (
+        <>
+          <div style={{ marginBottom: 10 }}>
+            <p style={{ paddingBottom: 20, margin: 0 }}>
+              {products.length} product(s) found
+            </p>
+            <Divider />
+          </div>
+        </>
+      )}
       <Grid container spacing={1}>
         {Array.isArray(products) &&
           products.slice(0, numOfProds).map((product, i) => (
@@ -58,13 +69,11 @@ const Banner = ({ products, title, numOfProds }) => {
 };
 
 Banner.defaultProps = {
-  title: "Stranger",
   numOfProds: 6,
 };
 
 Banner.propTypes = {
   title: PropTypes.string,
-  trim: PropTypes.bool,
   numOfProds: PropTypes.number,
 };
 
