@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Chip from "@material-ui/core/Chip";
@@ -41,32 +41,11 @@ const Styles = makeStyles((theme) => ({
   },
 }));
 
-const Product = ({ product, children }) => {
-  const classes = Styles();
-
+const Product = ({ children }) => {
   return (
-    <>
-      <Box style={{ marginBottom: "8px" }}>
-        <Grid container>
-          <Grid item>
-            <Link to="/" className={classes.navigation}>
-              Home
-            </Link>
-          </Grid>
-
-          {Array.isArray(product.categories) &&
-            product.categories.map(({ id, name }, i) => (
-              <Grid item key={id}>
-                <span> {`${" > "}`} </span>
-                <Link to={`/`} className={classes.navigation}>{`${name}`}</Link>
-              </Grid>
-            ))}
-        </Grid>
-      </Box>
-      <Grid container spacing={2} style={{ height: "567px" }}>
-        {children}
-      </Grid>
-    </>
+    <Grid container spacing={2} style={{ height: "567px" }}>
+      {children}
+    </Grid>
   );
 };
 

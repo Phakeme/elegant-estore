@@ -1,6 +1,8 @@
 export { default as Hero } from "./Hero";
 export { default as Header } from "./Header";
 export { default as Container } from "./utils/Container";
+export { default as CurrentPath } from "./utils/CurrentPath";
+export { default as GlobalContainer } from "./utils/Container";
 export { default as Banner } from "./Banner/Banner";
 export { default as Thumbnails } from "./Banner/Thumbnails";
 export { default as DoubleBanner } from "./Banner/DoubleBanner";

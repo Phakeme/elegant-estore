@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Container from "@material-ui/core/Container";
 import { commerce } from "../../lib/commerce";
-import { Product, AddToCartModal } from "../../Components";
+import {
+  Product,
+  AddToCartModal,
+  GlobalContainer,
+  CurrentPath,
+} from "../../Components";
 import Modal from "@material-ui/core/Modal";
 
 const ProductContainer = ({ cart, addToCart, decrementCart }) => {
@@ -31,14 +35,16 @@ const ProductContainer = ({ cart, addToCart, decrementCart }) => {
   // };
 
   return (
-    <Container style={{ marginTop: `${76 + 8}px` }}>
+    <GlobalContainer>
       {product.hasOwnProperty("id") && (
-        <Product product={product}>
-          <Product.View product={product} handleOpen={handleOpen} />
-          <Product.Form />
-        </Product>
+        <section style={{ marginTop: 76 }}>
+          <CurrentPath />
+          <Product product={product}>
+            <Product.View product={product} handleOpen={handleOpen} />
+            <Product.Form />
+          </Product>
+        </section>
       )}
-
       <Modal
         open={open}
         onClose={handleClose}
@@ -54,7 +60,7 @@ const ProductContainer = ({ cart, addToCart, decrementCart }) => {
           />
         </div>
       </Modal>
-    </Container>
+    </GlobalContainer>
   );
 };
 

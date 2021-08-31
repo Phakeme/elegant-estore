@@ -170,10 +170,11 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
               <div
                 style={{
                   display: "grid",
-                  gap: "40px",
+                  gap: "10px",
                   alignItems: "center",
                   justifyContent: "center",
                   textAlign: "center",
+                  marginBottom: 40,
                 }}
               >
                 <div

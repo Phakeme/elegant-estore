@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const Styles = makeStyles((theme) => ({
   root: {
-    marginTop: `${76 + 8 + 25}px`,
+    marginTop: `${76}px`,
   },
   btn: {
     color: theme.palette.primary.main,
@@ -21,7 +21,9 @@ const Query = ({ children, sortedProducts, query }) => {
       {sortedProducts.length ? (
         <div>{children}</div>
       ) : (
-        <div style={{ minHeight: 300, textAlign: "center" }}>
+        <div
+          style={{ minHeight: 300, textAlign: "center", marginTop: `${110}px` }}
+        >
           <div
             style={{
               background: "white",
