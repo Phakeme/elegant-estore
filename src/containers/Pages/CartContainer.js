@@ -1,18 +1,18 @@
 import React from "react";
-import Container from "@material-ui/core/Container";
-import { Cart } from "../../Components";
+import { Cart, GlobalContainer } from "../../Components";
 
 const CartContainer = ({ cart, removeFromCart, generateToken }) => {
+  // <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
   return (
-    <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
-      <main style={{ maxWidth: "950px", margin: "auto" }}>
+    <GlobalContainer>
+      <main style={{ margin: "auto" }}>
         <Cart
           cart={cart}
           removeFromCart={removeFromCart}
           generateToken={generateToken}
         />
       </main>
-    </Container>
+    </GlobalContainer>
   );
 };
 

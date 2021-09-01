@@ -39,9 +39,9 @@ const ProductContainer = ({ cart, addToCart, decrementCart }) => {
       {product.hasOwnProperty("id") && (
         <section style={{ marginTop: 76 }}>
           <CurrentPath />
-          <Product product={product}>
+          <Product product={product} handleClose={handleClose}>
             <Product.View product={product} handleOpen={handleOpen} />
-            <Product.Form />
+            {/* <Product.Form /> */}
           </Product>
         </section>
       )}
@@ -53,6 +53,7 @@ const ProductContainer = ({ cart, addToCart, decrementCart }) => {
       >
         <div>
           <AddToCartModal
+            handleClose={handleClose}
             addToCart={addToCart}
             decrementCart={decrementCart}
             product={product}

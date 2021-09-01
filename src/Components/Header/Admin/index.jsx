@@ -7,7 +7,6 @@ import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import { FaRegUser, FaRegQuestionCircle, FaShoppingCart } from "react-icons/fa";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
-// import { GrCart } from "react-icons/gr/";
 import DropDownLink from "./DropDownLink";
 import { Link } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";

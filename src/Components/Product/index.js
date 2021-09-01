@@ -43,7 +43,11 @@ const Styles = makeStyles((theme) => ({
 
 const Product = ({ children }) => {
   return (
-    <Grid container spacing={2} style={{ height: "567px" }}>
+    <Grid
+      container
+      spacing={2}
+      style={{ minHeight: "567px", marginBottom: 16 }}
+    >
       {children}
     </Grid>
   );
@@ -52,7 +56,7 @@ const Product = ({ children }) => {
 Product.View = ({ product, handleOpen, addToCart }) => {
   const classes = Styles();
   return (
-    <Grid item xs={9}>
+    <Grid item xs={12}>
       <Paper className={classes.mainPaper} style={{ padding: "16px" }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
@@ -187,7 +191,7 @@ Product.View = ({ product, handleOpen, addToCart }) => {
                         <Box fontWeight="fontWeightBold">PROMOTIONS</Box>
                       </Typography>
                       <Typography gutterBottom variant="body1" component="div">
-                        Take R250 off your first Zando order on the app*
+                        Take R250 off your first Elegant order on the app*
                       </Typography>
                       <Typography gutterBottom variant="body1" component="div">
                         Free Delivery above R400*
@@ -207,13 +211,13 @@ Product.View = ({ product, handleOpen, addToCart }) => {
   );
 };
 
-Product.Form = () => {
-  const classes = Styles();
-  return (
-    <Grid item xs={3}>
-      <Paper className={classes.mainPaper}></Paper>
-    </Grid>
-  );
-};
+// Product.Form = () => {
+//   const classes = Styles();
+//   return (
+//     <Grid item xs={3}>
+//       <Paper className={classes.mainPaper}></Paper>
+//     </Grid>
+//   );
+// };
 
 export default Product;
