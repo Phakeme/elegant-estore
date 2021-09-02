@@ -146,15 +146,17 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
                       </Button>
                     </div>
                     <div>
-                      <Button
-                        className={classes.actionBtn}
-                        variant="contained"
-                        color="secondary"
-                        startIcon={<FiCheckCircle />}
-                        onClick={() => generateToken(cart.id)}
-                      >
-                        <Link to="/checkout">Checkout</Link>
-                      </Button>
+                      <Link to="/checkout">
+                        <Button
+                          className={classes.actionBtn}
+                          variant="contained"
+                          color="secondary"
+                          startIcon={<FiCheckCircle />}
+                          onClick={() => generateToken(cart.id)}
+                        >
+                          Checkout
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </Paper>
