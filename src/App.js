@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Header, Footer } from "./Components/";
+import { Header, Footer, ScrollToTop } from "./Components/";
 import Cart from "./containers/Pages/CartContainer";
 import Checkout from "./containers/Pages/CheckoutContainer";
 import Home from "./containers/Pages/HomeContainer";
@@ -86,6 +86,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Header cart={cart} searchProducts={searchProducts} />
       <Switch>
         <Route exact path="/">

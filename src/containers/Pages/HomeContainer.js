@@ -8,6 +8,7 @@ import {
   SingleBanner,
   InfoLink,
   Top4Links,
+  // ScrollToTop,
 } from "../../Components";
 import { commerce } from "../../lib/commerce";
 import categories from "../../Data/categories";
@@ -29,6 +30,7 @@ const HomeContainer = () => {
   }, []);
   return (
     <GlobalContainer>
+      {/* <ScrollToTop /> */}
       <Hero>
         <Hero.Categories categories={categories} />
         <Hero.ImageSlide>
