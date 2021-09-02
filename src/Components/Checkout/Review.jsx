@@ -21,7 +21,11 @@ const OrderSummary = () => {
           checkoutData.live.line_items.map((product, index) => (
             <ListItem style={{ padding: "10px 0" }} key={index}>
               <div>
-                <img style={{ height: 80 }} src={product.media.source} alt="" />
+                <img
+                  style={{ height: 80, marginRight: 10 }}
+                  src={product.media.source}
+                  alt=""
+                />
               </div>
               <ListItemText
                 primary={product.name}

@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-// import { Link, useHistory } from "react-router-dom";
+import React, { useState } from "react";
 import Stepper from "@material-ui/core/Stepper";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-// import Button from "@material-ui/core/Button";
 import StepLabel from "@material-ui/core/StepLabel";
 import Step from "@material-ui/core/Step";
 import CheckoutForm from "./CheckoutForm";
@@ -11,7 +9,7 @@ import Styles from "./styles";
 import PaymentForm from "./PaymentForm";
 import OrderSummary from "./Review";
 
-const steps = ["Checkout", "Confirmation", "Payment", "Success"];
+const steps = ["Checkout", "Payment", "Success"];
 
 const Checkout = ({
   cart,
@@ -43,20 +41,18 @@ const Checkout = ({
   return (
     <Grid container spacing={2}>
       <Grid item xs={8}>
-        <div>
-          <Stepper
-            elevation={1}
-            activeStep={activeStep}
-            className={classes.stepper}
-          >
-            {steps.map((label, index) => (
-              <Step key={index}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <CurrentForm />
-        </div>
+        <Stepper
+          elevation={1}
+          activeStep={activeStep}
+          className={classes.stepper}
+        >
+          {steps.map((label, index) => (
+            <Step key={index}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <CurrentForm />
       </Grid>
 
       <Grid item xs={4}>

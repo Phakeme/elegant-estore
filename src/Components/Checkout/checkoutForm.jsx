@@ -107,7 +107,7 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
                       fullWidth
                     />
                   </Grid>
-                  <div style={{ padding: "0 8px", width: "100%" }}>
+                  <div style={{ padding: "0 8px", width: "50%" }}>
                     <TextField
                       className={classes.textField}
                       color="secondary"

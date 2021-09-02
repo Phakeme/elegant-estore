@@ -13,7 +13,7 @@ const CheckoutContainer = ({
 }) => {
   return (
     <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
-      <main style={{ maxWidth: "950px", margin: "auto" }}>
+      <main style={{ margin: "auto" }}>
         <Checkout
           checkoutToken={checkoutToken}
           captureCheckout={captureCheckout}
