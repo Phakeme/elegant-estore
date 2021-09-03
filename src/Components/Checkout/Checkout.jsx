@@ -18,6 +18,7 @@ const Checkout = ({
   captureCheckout,
   getOrderData,
   emptyCart,
+  children,
 }) => {
   const [activeStep, setActiveStep] = useState(0);
   const classes = Styles();
@@ -52,7 +53,10 @@ const Checkout = ({
             </Step>
           ))}
         </Stepper>
-        <CurrentForm />
+        <div style={{ marginBottom: 16 }}>
+          <CurrentForm />
+        </div>
+        {activeStep === 1 && children}
       </Grid>
 
       <Grid item xs={4}>

@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import {
   Elements,
@@ -34,7 +35,7 @@ const PaymentForm = ({
     });
 
     if (error) {
-      console.log("[error]", error);
+      console.log("[strip error]", error);
     } else {
       const getCustomerData = localStorage.getItem("checkoutOrderData");
       const getLocalOrderData = localStorage.getItem("checkoutData");
@@ -66,8 +67,8 @@ const PaymentForm = ({
           country: "ZA",
         },
         payment: {
-          gateway: "stripe",
-          stripe: {
+          gateway: "strip",
+          strip: {
             payment_method_id: paymentMethod.id,
           },
         },
@@ -81,6 +82,11 @@ const PaymentForm = ({
 
   return (
     <Paper style={{ padding: 10 }}>
+      <span>
+        Please use this demo card number to make your paymant:
+        42424242424242424242424242
+      </span>
+      {/* <h4></h4> */}
       <Typography variant="h6" gutterBottom style={{ margin: "20px 0" }}>
         Payment method
       </Typography>
@@ -88,26 +94,39 @@ const PaymentForm = ({
         <ElementsConsumer>
           {({ elements, stripe }) => (
             <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
-              <CardElement />
+              {stripe ? (
+                <CardElement />
+              ) : (
+                <p>Something went wrong, please try again later</p>
+              )}
               <br /> <br />
-              <div>
-                <Button
-                  variant="outlined"
-                  disabled={activeStep === 0}
-                  className={classes.backButton}
-                  onClick={backStep}
-                >
-                  Back
-                </Button>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  disabled={!stripe}
-                  color="secondary"
-                >
-                  Pay Price
-                </Button>
-              </div>
+              <Grid container spacing={1}>
+                <Grid item xs={6}>
+                  <Button
+                    variant="outlined"
+                    fullWidth
+                    disabled={activeStep === 0}
+                    className={classes.backButton}
+                    onClick={backStep}
+                    size="large"
+                  >
+                    Back
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button
+                    style={{ color: "white" }}
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                    size="large"
+                    disabled={!stripe}
+                    color="secondary"
+                  >
+                    Pay Price
+                  </Button>
+                </Grid>
+              </Grid>
             </form>
           )}
         </ElementsConsumer>

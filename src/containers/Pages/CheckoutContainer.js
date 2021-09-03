@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
-import { Checkout } from "../../Components";
+import { Checkout, Banner } from "../../Components";
 
 const CheckoutContainer = ({
   cart,
@@ -10,6 +10,7 @@ const CheckoutContainer = ({
   captureCheckout,
   getOrderData,
   emptyCart,
+  products,
 }) => {
   return (
     <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
@@ -19,7 +20,14 @@ const CheckoutContainer = ({
           captureCheckout={captureCheckout}
           getOrderData={getOrderData}
           emptyCart={emptyCart}
-        />
+        >
+          <Banner
+            title="Ralated Products"
+            numOfProds={4}
+            xs={3}
+            products={products}
+          />
+        </Checkout>
       </main>
     </Container>
   );

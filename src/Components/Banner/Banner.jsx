@@ -10,7 +10,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import Styles from "./styles";
 
-const Banner = ({ products, title, numOfProds }) => {
+const Banner = ({ products, title, numOfProds, xs }) => {
   const classes = Styles();
   return (
     <Paper className={classes.paper}>
@@ -30,7 +30,7 @@ const Banner = ({ products, title, numOfProds }) => {
       <Grid container spacing={1}>
         {Array.isArray(products) &&
           products.slice(0, numOfProds).map((product, i) => (
-            <Grid item xs={2} key={i}>
+            <Grid item xs={xs} key={i}>
               <Link
                 key={i}
                 to={`product/${product.name.split(" ").join("-")}/${
@@ -70,11 +70,13 @@ const Banner = ({ products, title, numOfProds }) => {
 
 Banner.defaultProps = {
   numOfProds: 6,
+  xs: 2,
 };
 
 Banner.propTypes = {
   title: PropTypes.string,
   numOfProds: PropTypes.number,
+  xs: PropTypes.number,
 };
 
 export default Banner;

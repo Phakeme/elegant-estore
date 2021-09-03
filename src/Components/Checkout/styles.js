@@ -32,6 +32,9 @@ export default makeStyles((theme) => ({
   stepper: {
     marginBottom: 16,
     height: 10,
-    // padding: theme.spacing(3, 0, 5),
+  },
+  btnNext: {
+    margin: "16px 0",
+    color: theme.palette.primary.main,
   },
 }));

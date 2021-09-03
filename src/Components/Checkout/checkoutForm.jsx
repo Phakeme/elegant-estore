@@ -1,6 +1,5 @@
 import React from "react";
 import Select from "@material-ui/core/Select";
-// import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -231,8 +230,14 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
           </Paper>
         </Grid>
       </Grid>
-      {/* <button >submit</button> */}
-      <Button variant="contained" color="secondary" type="submit">
+      <Button
+        className={classes.btnNext}
+        variant="contained"
+        color="secondary"
+        type="submit"
+        size="large"
+        fullWidth
+      >
         Next
       </Button>
     </form>

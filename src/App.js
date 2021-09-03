@@ -116,6 +116,7 @@ function App() {
             getOrderData={getOrderData}
             captureCheckout={captureCheckout}
             emptyCart={emptyCart}
+            products={products}
           />
         </Route>
         <Route path="/query">
