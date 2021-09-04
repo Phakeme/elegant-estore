@@ -15,6 +15,7 @@ const Checkout = ({
   cart,
   generateToken,
   checkoutToken,
+  checkoutData,
   captureCheckout,
   getOrderData,
   emptyCart,
@@ -61,7 +62,7 @@ const Checkout = ({
 
       <Grid item xs={4}>
         <Paper style={{ padding: 10 }}>
-          <OrderSummary />
+          <OrderSummary checkoutData={checkoutData} />
         </Paper>
       </Grid>
     </Grid>

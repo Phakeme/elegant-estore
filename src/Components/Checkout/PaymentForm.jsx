@@ -86,7 +86,6 @@ const PaymentForm = ({
         Please use this demo card number to make your paymant:
         42424242424242424242424242
       </span>
-      {/* <h4></h4> */}
       <Typography variant="h6" gutterBottom style={{ margin: "20px 0" }}>
         Payment method
       </Typography>

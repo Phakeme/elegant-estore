@@ -7,6 +7,7 @@ const CheckoutContainer = ({
   removeFromCart,
   generateToken,
   checkoutToken,
+  checkoutData,
   captureCheckout,
   getOrderData,
   emptyCart,
@@ -20,6 +21,7 @@ const CheckoutContainer = ({
           captureCheckout={captureCheckout}
           getOrderData={getOrderData}
           emptyCart={emptyCart}
+          checkoutData={checkoutData}
         >
           <Banner
             title="Ralated Products"

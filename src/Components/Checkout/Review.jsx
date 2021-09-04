@@ -6,9 +6,10 @@ import Box from "@material-ui/core/Box";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 
-const OrderSummary = () => {
+const OrderSummary = ({ checkoutData }) => {
   const localData = localStorage.getItem("checkoutData");
-  const checkoutData = JSON.parse(localData);
+
+  if (!checkoutData) checkoutData = JSON.parse(localData);
 
   return (
     <Box style={{ padding: 0 }}>

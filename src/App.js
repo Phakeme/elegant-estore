@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header, Footer, ScrollToTop } from "./Components/";
 import Cart from "./containers/Pages/CartContainer";
-import Checkout from "./containers/Pages/CheckoutContainer";
+import CheckoutContainer from "./containers/Pages/CheckoutContainer";
 import Home from "./containers/Pages/HomeContainer";
 import ProductContainer from "./containers/Pages/ProductContainer";
 import QueryContainer from "./containers/Pages/QueryContainer";
@@ -10,7 +10,7 @@ import { commerce } from "./lib/commerce";
 
 function App() {
   const [cart, setCart] = useState({});
-  const [checkoutData, setCheckoutData] = useState(null);
+  const [checkoutData, setCheckoutData] = useState(false);
   const [checkoutToken, setCheckoutToken] = useState(false);
   const [products, setProducts] = useState([]);
   const [sortedProducts, SetSortedProducts] = useState([]);
@@ -59,10 +59,13 @@ function App() {
     commerce.checkout
       .generateTokenFrom("cart", id)
       .then((checkout) =>
-        localStorage.setItem(
-          "checkoutData",
-          JSON.stringify(checkout),
-          console.log(checkout, "checkout")
+        setCheckoutData(
+          checkout,
+          localStorage.setItem(
+            "checkoutData",
+            JSON.stringify(checkout),
+            console.log(checkout, "checkout")
+          )
         )
       );
   };
@@ -110,11 +113,12 @@ function App() {
           />
         </Route>
         <Route path="/checkout">
-          <Checkout
+          <CheckoutContainer
             cart={cart}
             checkoutToken={checkoutToken}
             getOrderData={getOrderData}
             captureCheckout={captureCheckout}
+            checkoutData={checkoutData}
             emptyCart={emptyCart}
             products={products}
           />
