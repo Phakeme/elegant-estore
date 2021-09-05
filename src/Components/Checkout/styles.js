@@ -37,4 +37,17 @@ export default makeStyles((theme) => ({
     margin: "16px 0",
     color: theme.palette.primary.main,
   },
+  paymentResults: {
+    padding: '10px 10px 30px 10px',
+    minHeight: 200,
+    textAlign: 'center'
+  },
+  paymentIcon: {
+    width: 100, height: 100, borderRadius: 250, background: theme.palette.secondary.main, margin: '20px auto', color: "white", textAlign: 'center', fontSize: 50, display: 'flex', alignItems: 'center', justifyContent: 'center'
+  },
+  textDecoration:{
+    fontWeight: 500,
+    color: theme.palette.secondary.main
+
+  }
 }));

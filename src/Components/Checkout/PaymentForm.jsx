@@ -67,8 +67,8 @@ const PaymentForm = ({
           country: "ZA",
         },
         payment: {
-          gateway: "strip",
-          strip: {
+          gateway: "stripe",
+          stripe: {
             payment_method_id: paymentMethod.id,
           },
         },

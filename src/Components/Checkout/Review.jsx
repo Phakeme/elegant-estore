@@ -3,6 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Box from "@material-ui/core/Box";
+import Paper from "@material-ui/core/Paper";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 
@@ -12,6 +13,8 @@ const OrderSummary = ({ checkoutData }) => {
   if (!checkoutData) checkoutData = JSON.parse(localData);
 
   return (
+    checkoutData ?
+    <Paper style={{ padding: 10 }}>
     <Box style={{ padding: 0 }}>
       <div style={{ marginBottom: 10 }}>
         <span style={{ fontSize: 14, fontWeight: 500 }}>ORDER SUMMARY</span>
@@ -42,7 +45,7 @@ const OrderSummary = ({ checkoutData }) => {
           </Typography>
         </ListItem>
       </List>
-    </Box>
+    </Box> </Paper>: null
   );
 };
 

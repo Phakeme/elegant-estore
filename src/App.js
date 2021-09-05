@@ -15,6 +15,11 @@ function App() {
   const [products, setProducts] = useState([]);
   const [sortedProducts, SetSortedProducts] = useState([]);
   const [query, SetQuery] = useState("");
+  const [paymentResults, SetPaymentResults] = useState(false)
+  
+  // const [paymentResults, SetPaymentResults] = useState({customer: {createdAt: "date", id: "123456", firstName: "Phakeme", lastName: "Fakazi", email: "phakemefakazi@yahoo.com"}, order_value: {formatted_with_symbol: "R 500.00"}});
+
+
 
   useEffect(() => {
     commerce.cart.retrieve().then((cart) => setCart(cart));
@@ -79,7 +84,11 @@ function App() {
     // console.log(orderData, id, "CaptureCheckout");
     commerce.checkout
       .capture(id, orderData)
-      .then((response) => console.log(response));
+      .then(({customer, order_value}) => SetPaymentResults({customer,order_value},console.log(customer, order_value,"customer, order_value"))
+      )
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const emptyCart = () => {
@@ -121,6 +130,7 @@ function App() {
             checkoutData={checkoutData}
             emptyCart={emptyCart}
             products={products}
+            paymentResults={paymentResults}
           />
         </Route>
         <Route path="/query">
