@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Link, useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Stepper from "@material-ui/core/Stepper";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -10,7 +10,7 @@ import CheckoutForm from "./CheckoutForm";
 import Styles from "./styles";
 import PaymentForm from "./PaymentForm";
 import OrderSummary from "./Review";
-import {MdPayment} from "react-icons/md"
+import { MdPayment } from "react-icons/md";
 
 const steps = ["Checkout", "Payment", "Success"];
 
@@ -23,7 +23,7 @@ const Checkout = ({
   getOrderData,
   emptyCart,
   children,
-  paymentResults
+  paymentResults,
 }) => {
   const [activeStep, setActiveStep] = useState(0);
   const classes = Styles();
@@ -32,10 +32,10 @@ const Checkout = ({
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
   const CurrentForm = () => {
-    const history = useHistory()
+    const history = useHistory();
     if (activeStep === 0) {
-      return <CheckoutForm nextStep={nextStep} />
-      } else if (activeStep === 1){
+      return <CheckoutForm nextStep={nextStep} />;
+    } else if (activeStep === 1) {
       return (
         <PaymentForm
           backStep={backStep}
@@ -44,12 +44,55 @@ const Checkout = ({
           getOrderData={getOrderData}
           captureCheckout={captureCheckout}
         />
-      )} else if (activeStep > 1 && paymentResults ) 
-    {
-      return (<Paper className={classes.paymentResults}><div className={classes.paymentIcon}><MdPayment/></div><h3>Payment of <span className={classes.textDecoration}>{paymentResults.order_value.formatted_with_symbol}</span> was successful.</h3> <h3>Confirmation email was sent to <span className={classes.textDecoration}> {paymentResults.customer.email}</span>.</h3><h3>Thank you <span className={classes.textDecoration}> {paymentResults.customer.firstName} </span> for being our valued customer.</h3><h3>We are so grateful for the pleasure of serving you and hope we met your expectations.   </h3> <Link to="/"><Button variant="contained" size="large" color="secondary" style={{color: 'white'}}>Continue shopping</Button></Link></Paper>)
+      );
+    } else if (activeStep > 1 && paymentResults) {
+      return (
+        <Paper className={classes.paymentResults}>
+          <div className={classes.paymentIcon}>
+            <MdPayment />
+          </div>
+          <h3>
+            Payment of{" "}
+            <span className={classes.textDecoration}>
+              {paymentResults.order_value.formatted_with_symbol}
+            </span>{" "}
+            was successful.
+          </h3>{" "}
+          <h3>
+            Confirmation email was sent to{" "}
+            <span className={classes.textDecoration}>
+              {" "}
+              {paymentResults.customer.email}
+            </span>
+            .
+          </h3>
+          <h3>
+            Thank you{" "}
+            <span className={classes.textDecoration}>
+              {" "}
+              {paymentResults.customer.firstName}{" "}
+            </span>{" "}
+            for being our valued customer.
+          </h3>
+          <h3>
+            We are so grateful for the pleasure of serving you and hope we met
+            your expectations.{" "}
+          </h3>{" "}
+          <Link to="/">
+            <Button
+              variant="contained"
+              size="large"
+              color="secondary"
+              style={{ color: "white" }}
+            >
+              Continue shopping
+            </Button>
+          </Link>
+        </Paper>
+      );
     } else {
-      // history.push("/");
-      return null
+      history.push("/");
+      return null;
     }
   };
 
@@ -72,11 +115,8 @@ const Checkout = ({
         </div>
         {activeStep === 1 && children}
       </Grid>
-
       <Grid item xs={4}>
-        
-          <OrderSummary checkoutData={checkoutData} />
-       
+        <OrderSummary checkoutData={checkoutData} />
       </Grid>
     </Grid>
   );
