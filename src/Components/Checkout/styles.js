@@ -38,16 +38,25 @@ export default makeStyles((theme) => ({
     color: theme.palette.primary.main,
   },
   paymentResults: {
-    padding: '10px 10px 30px 10px',
+    padding: "10px 10px 30px 10px",
     minHeight: 200,
-    textAlign: 'center'
+    textAlign: "center",
   },
   paymentIcon: {
-    width: 100, height: 100, borderRadius: 250, background: theme.palette.secondary.main, margin: '20px auto', color: "white", textAlign: 'center', fontSize: 50, display: 'flex', alignItems: 'center', justifyContent: 'center'
+    width: 100,
+    height: 100,
+    borderRadius: 250,
+    background: theme.palette.secondary.main,
+    margin: "20px auto",
+    color: "white",
+    textAlign: "center",
+    fontSize: 50,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  textDecoration:{
+  textDecoration: {
     fontWeight: 500,
-    color: theme.palette.secondary.main
-
-  }
+    color: theme.palette.secondary.main,
+  },
 }));
