@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Header, Footer, ScrollToTop } from "./Components/";
 import Cart from "./containers/Pages/CartContainer";
 import CheckoutContainer from "./containers/Pages/CheckoutContainer";
-import Home from "./containers/Pages/HomeContainer";
+import HomeContainer from "./containers/Pages/HomeContainer";
 import ProductContainer from "./containers/Pages/ProductContainer";
 import QueryContainer from "./containers/Pages/QueryContainer";
 import { commerce } from "./lib/commerce";
@@ -15,19 +15,18 @@ function App() {
   const [products, setProducts] = useState([]);
   const [sortedProducts, SetSortedProducts] = useState([]);
   const [query, SetQuery] = useState("");
-  const [paymentResults, SetPaymentResults] = useState(false)
-  
+  const [paymentResults, SetPaymentResults] = useState(false);
+  // const [loading, SetLoading] = useState(true);
+
   // const [paymentResults, SetPaymentResults] = useState({customer: {createdAt: "date", id: "123456", firstName: "Phakeme", lastName: "Fakazi", email: "phakemefakazi@yahoo.com"}, order_value: {formatted_with_symbol: "R 500.00"}});
 
-
-
   useEffect(() => {
+    //SetLoading(true)
     commerce.cart.retrieve().then((cart) => setCart(cart));
-    commerce.products
-      .list()
-      .then((product) =>
-        setProducts(product.data, console.log(product.data, "product.data"))
-      );
+    commerce.products.list().then((product) => {
+      setProducts(product.data, console.log(product.data, "product.data"));
+      // SetLoading(false)
+    });
   }, []);
 
   const searchProducts = (query) => {
@@ -84,7 +83,11 @@ function App() {
     // console.log(orderData, id, "CaptureCheckout");
     commerce.checkout
       .capture(id, orderData)
-      .then(({customer, order_value}) => SetPaymentResults({customer,order_value},console.log(customer, order_value,"customer, order_value"))
+      .then(({ customer, order_value }) =>
+        SetPaymentResults(
+          { customer, order_value },
+          console.log(customer, order_value, "customer, order_value")
+        )
       )
       .catch((error) => {
         console.error(error);
@@ -99,10 +102,10 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Header cart={cart} searchProducts={searchProducts} />
+      <Header cart={cart} searchProducts={searchProducts} loading="" />
       <Switch>
         <Route exact path="/">
-          <Home />
+          <HomeContainer loading="" />
         </Route>
         <Route exact path="/login">
           <h1 style={{ marginTop: `${76 + 8 + 8}px` }}>Login</h1>
@@ -124,6 +127,7 @@ function App() {
         <Route path="/checkout">
           <CheckoutContainer
             cart={cart}
+            loading=""
             checkoutToken={checkoutToken}
             getOrderData={getOrderData}
             captureCheckout={captureCheckout}
