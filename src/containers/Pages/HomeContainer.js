@@ -14,7 +14,7 @@ import categories from "../../Data/categories";
 import thumbnails from "../../Data/thumbnails";
 import GlobalContainer from "../../Components/utils/Container";
 
-const HomeContainer = () => {
+const HomeContainer = ({loading}) => {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const HomeContainer = () => {
         </Hero.InformativeLinks>
       </Hero>
       <Top4Links />
-      <Banner products={products} title="Our Top Sellers" />
+      <Banner products={products} loading={loading} title="Our Top Sellers" />
       <DoubleBanner />
       <Banner products={products} title="Recently viewed" />
       <Thumbnails thumbnails={thumbnails} />
