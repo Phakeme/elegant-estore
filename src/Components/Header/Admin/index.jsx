@@ -134,7 +134,7 @@ const Admin = ({ cart }) => {
                   style={{ fontWeight: 500, width: "100%", height: "100%" }}
                   to="/login"
                 >
-                  <span>Login</span>
+                  <span>Account</span>
                 </Link>
               </Button>
               <span>OR</span>
