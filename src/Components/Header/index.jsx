@@ -6,13 +6,15 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import useStyles from "./styles";
 import Admin from "./Admin/";
 import GlobalContainer from "../utils/Container";
+import logo from "../../img/elegant-logo.svg";
 
-export default function Header({ cart, searchProducts }) {
+export default function Header({ cart, searchProducts, loading }) {
   let history = useHistory();
   const classes = useStyles();
   const [query, setQuery] = useState("");
@@ -42,6 +44,7 @@ export default function Header({ cart, searchProducts }) {
       elevation={1}
       style={{ minHeight: "76px", display: "flex", justifyContent: "center" }}
     >
+      {loading && <LinearProgress color="secondary" />}
       <GlobalContainer>
         <Toolbar disableGutters>
           <Grid
@@ -68,7 +71,7 @@ export default function Header({ cart, searchProducts }) {
                   <Link to="/">
                     <img
                       style={{ height: "80%" }}
-                      src="./images/elegant-logo.svg"
+                      src={logo}
                       alt="brand-logo"
                     />
                   </Link>
