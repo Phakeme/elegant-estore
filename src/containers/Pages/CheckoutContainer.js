@@ -13,6 +13,7 @@ const CheckoutContainer = ({
   getOrderData,
   emptyCart,
   products,
+  loading,
 }) => {
   return (
     <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
@@ -22,6 +23,7 @@ const CheckoutContainer = ({
           captureCheckout={captureCheckout}
           getOrderData={getOrderData}
           emptyCart={emptyCart}
+          loading={loading}
           checkoutData={checkoutData}
           paymentResults={paymentResults}
         >
@@ -29,6 +31,7 @@ const CheckoutContainer = ({
             title="Ralated Products"
             numOfProds={4}
             xs={3}
+            loading={loading}
             products={products}
           />
         </Checkout>
