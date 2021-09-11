@@ -18,4 +18,14 @@ export default makeStyles((theme) => ({
       width: "150px",
     },
   },
+  placeholder: {
+    height: 257,
+    backgroundImage: "url('./image-placeholders.jpg')",
+    backgroundSize: "cover",
+    backgroundRepeat: "noRepeat",
+    backgroundPosition: "center",
+    "@media (max-width: 1280px)": {
+      height: 207,
+    },
+  },
 }));
