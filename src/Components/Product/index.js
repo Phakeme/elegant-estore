@@ -43,12 +43,11 @@ const Styles = makeStyles((theme) => ({
   placeholder: {
     height: 628,
     backgroundImage: `url(${logo})`,
-    backgroundSize: "cover",
+    backgroundSize: "contain",
     backgroundRepeat: "noRepeat",
-    // background: "red",
-    backgroundPosition: "center",
+    backgroundPosition: "left",
     "@media (max-width: 1280px)": {
-      height: 207,
+      height: 540,
     },
   },
 }));

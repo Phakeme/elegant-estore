@@ -6,6 +6,10 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
 // import GlobalContainer from "../utils/Container";
+import ElegantIcon from "../../img/elegant-icon.svg";
+import ElegantWhiteLogo from "../../img/footer/elegant-white-logo.svg";
+import GooglePlayLogo from "../../img/footer/google-play-logo.svg";
+import AppStoreLogo from "../../img/footer/app-store-logo.svg";
 
 const Footer = () => {
   const Styles = makeStyles((theme) => ({
@@ -53,7 +57,7 @@ const Footer = () => {
           <Link to="/">
             <img
               style={{ height: "32px" }}
-              src="./images/elegant-white-logo.svg"
+              src={ElegantWhiteLogo}
               alt="elegant-icon.svg"
             />
           </Link>
@@ -109,7 +113,7 @@ const Footer = () => {
             <Grid item xs={2}>
               <img
                 style={{ height: "42px" }}
-                src="./images/elegant-icon.svg"
+                src={ElegantIcon}
                 alt="elegant-icon.svg"
               />
             </Grid>
@@ -124,17 +128,13 @@ const Footer = () => {
             <Grid container>
               <Grid item xs={12} style={{ height: 42 }}>
                 <Link to="/" style={{ marginRight: 10 }}>
-                  <img
-                    style={{ height: "100%" }}
-                    src="./images/app-store-logo.svg"
-                    alt=""
-                  />
+                  <img style={{ height: "100%" }} src={AppStoreLogo} alt="" />
                 </Link>
                 <Link to="/">
                   <img
                     style={{ height: "100%" }}
-                    src="./images/google-play-logo.svg"
-                    alt=""
+                    src={GooglePlayLogo}
+                    alt="Google Play Logo"
                   />
                 </Link>
               </Grid>

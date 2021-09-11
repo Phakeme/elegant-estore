@@ -16,16 +16,16 @@ function App() {
   const [sortedProducts, SetSortedProducts] = useState([]);
   const [query, SetQuery] = useState("");
   const [paymentResults, SetPaymentResults] = useState(false);
-  // const [loading, SetLoading] = useState(true);
-
-  // const [paymentResults, SetPaymentResults] = useState({customer: {createdAt: "date", id: "123456", firstName: "Phakeme", lastName: "Fakazi", email: "phakemefakazi@yahoo.com"}, order_value: {formatted_with_symbol: "R 500.00"}});
+  const [loading, SetLoading] = useState(false);
+  const [isCartUpdating, SetIsCartUpdating] = useState({
+    state: true,
+    name: 7,
+  });
 
   useEffect(() => {
-    //SetLoading(true)
     commerce.cart.retrieve().then((cart) => setCart(cart));
     commerce.products.list().then((product) => {
       setProducts(product.data, console.log(product.data, "product.data"));
-      // SetLoading(false)
     });
   }, []);
 
@@ -41,10 +41,12 @@ function App() {
     // console.log(sortedProducts, "Sothile");
   };
 
-  const addToCart = (productId, vgrpId, optnId) => {
-    commerce.cart
-      .add(productId, 1, { [vgrpId]: optnId })
-      .then(({ cart }) => setCart(cart, console.log(cart, "AddToCart Cart")));
+  const addToCart = (productId, vgrpId, optnId, name) => {
+    SetIsCartUpdating({ state: true, name });
+    commerce.cart.add(productId, 1, { [vgrpId]: optnId }).then(({ cart }) => {
+      setCart(cart, console.log(cart, "AddToCart Cart"));
+      SetIsCartUpdating({ state: false, name: "zero" });
+    });
   };
 
   const removeFromCart = (id) => {
@@ -53,10 +55,12 @@ function App() {
       .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
   };
 
-  const decrementCart = (id, qty) => {
-    commerce.cart
-      .update(id, { quantity: qty })
-      .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
+  const decrementCart = (id, qty, name) => {
+    SetIsCartUpdating({ state: true, name });
+    commerce.cart.update(id, { quantity: qty }).then(({ cart }) => {
+      setCart(cart, console.log(cart, "removeCart"));
+      SetIsCartUpdating({ state: false, name: "zero" });
+    });
   };
 
   const generateToken = (id) => {
@@ -115,6 +119,7 @@ function App() {
             cart={cart}
             addToCart={addToCart}
             decrementCart={decrementCart}
+            isCartUpdating={isCartUpdating}
           />
         </Route>
         <Route path="/cart">

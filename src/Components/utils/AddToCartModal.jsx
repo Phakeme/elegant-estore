@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -47,12 +48,12 @@ const useStyles = makeStyles((theme) => ({
 const AddToCartModal = ({
   product,
   addToCart,
+  isCartUpdating,
   cart,
   decrementCart,
   handleClose,
 }) => {
   const classes = useStyles();
-
   const productId = product.id;
   const productPrice = product.price.formatted_with_symbol;
   const vgrpId = product.variant_groups[0].id;
@@ -118,23 +119,33 @@ const AddToCartModal = ({
                     variant="contained"
                     color="secondary"
                     disabled={getItemQty(id).disabled}
-                    onClick={() =>
+                    onClick={() => {
                       decrementCart(
                         getItemQty(id).cartItemId,
-                        getItemQty(id).quantity - 1
-                      )
-                    }
+                        getItemQty(id).quantity - 1,
+                        name
+                      );
+                    }}
                   >
                     <div className={classes.btnInnerBox}>
                       <FaMinus />
                     </div>
                   </Button>
-                  <div>{getItemQty(id).quantity}</div>
+                  {
+                    // eslint-disable-next-line eqeqeq
+                    isCartUpdating.state && isCartUpdating.name == name ? (
+                      <>
+                        <CircularProgress color="secondary" size="20px" />
+                      </>
+                    ) : (
+                      <div>{getItemQty(id).quantity}</div>
+                    )
+                  }
                   <Button
                     className={classes.variantBtn}
                     variant="contained"
                     color="secondary"
-                    onClick={() => addToCart(productId, vgrpId, id)}
+                    onClick={() => addToCart(productId, vgrpId, id, name)}
                   >
                     <div className={classes.btnInnerBox}>
                       <FaPlus />

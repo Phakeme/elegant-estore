@@ -9,7 +9,12 @@ import {
 } from "../../Components";
 import Modal from "@material-ui/core/Modal";
 
-const ProductContainer = ({ cart, addToCart, decrementCart }) => {
+const ProductContainer = ({
+  cart,
+  addToCart,
+  decrementCart,
+  isCartUpdating,
+}) => {
   const { id } = useParams();
 
   const [product, setProduct] = useState(false);
@@ -63,6 +68,7 @@ const ProductContainer = ({ cart, addToCart, decrementCart }) => {
             decrementCart={decrementCart}
             product={product}
             cart={cart}
+            isCartUpdating={isCartUpdating}
           />
         </div>
       </Modal>
