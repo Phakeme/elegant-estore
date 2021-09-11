@@ -16,4 +16,5 @@ export { default as Product } from "./Product";
 export { default as Top4Links } from "./Top4Links/";
 export { default as Footer } from "./Footer/";
 export { default as ScrollToTop } from "./utils/ScrollToTop";
+export { default as Progress } from "./utils/Progress";
 export { default as AddToCartModal } from "./utils/AddToCartModal";
