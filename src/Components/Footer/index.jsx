@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Container from "@material-ui/core/Container";
+// import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
-import GlobalContainer from "../utils/Container";
+// import GlobalContainer from "../utils/Container";
 
 const Footer = () => {
   const Styles = makeStyles((theme) => ({
