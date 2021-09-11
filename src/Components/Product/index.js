@@ -14,6 +14,7 @@ import { RiFacebookCircleFill } from "react-icons/ri";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { MdAddShoppingCart } from "react-icons/md";
 import { HiOutlineHeart } from "react-icons/hi";
+import logo from "../../img/product-placeholder.svg";
 
 const Styles = makeStyles((theme) => ({
   root: {
@@ -38,6 +39,17 @@ const Styles = makeStyles((theme) => ({
   },
   cartlink: {
     color: theme.palette.secondary.main,
+  },
+  placeholder: {
+    height: 628,
+    backgroundImage: `url(${logo})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "noRepeat",
+    // background: "red",
+    backgroundPosition: "center",
+    "@media (max-width: 1280px)": {
+      height: 207,
+    },
   },
 }));
 
@@ -211,13 +223,13 @@ Product.View = ({ product, handleOpen, addToCart }) => {
   );
 };
 
-// Product.Form = () => {
-//   const classes = Styles();
-//   return (
-//     <Grid item xs={3}>
-//       <Paper className={classes.mainPaper}></Paper>
-//     </Grid>
-//   );
-// };
+Product.Placeholder = () => {
+  const classes = Styles();
+  return (
+    <Grid item xs={12}>
+      <Paper className={classes.placeholder}></Paper>
+    </Grid>
+  );
+};
 
 export default Product;
