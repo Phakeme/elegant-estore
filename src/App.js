@@ -19,7 +19,7 @@ function App() {
   const [loading, SetLoading] = useState(false);
   const [isCartUpdating, SetIsCartUpdating] = useState({
     state: true,
-    name: 7,
+    name: "",
   });
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function App() {
     SetIsCartUpdating({ state: true, name });
     commerce.cart.add(productId, 1, { [vgrpId]: optnId }).then(({ cart }) => {
       setCart(cart, console.log(cart, "AddToCart Cart"));
-      SetIsCartUpdating({ state: false, name: "zero" });
+      SetIsCartUpdating({ state: false, name: "" });
     });
   };
 
@@ -59,7 +59,7 @@ function App() {
     SetIsCartUpdating({ state: true, name });
     commerce.cart.update(id, { quantity: qty }).then(({ cart }) => {
       setCart(cart, console.log(cart, "removeCart"));
-      SetIsCartUpdating({ state: false, name: "zero" });
+      SetIsCartUpdating({ state: false, name: "" });
     });
   };
 
