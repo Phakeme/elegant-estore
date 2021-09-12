@@ -75,9 +75,9 @@ const CartItem = ({
             </Typography>
           </div>
           <div style={{ height: 30 }}>
-            <Button color="secondary" startIcon={<HiOutlineHeart />}>
+            {/* <Button color="secondary" startIcon={<HiOutlineHeart />}>
               Move to wishlist
-            </Button>
+            </Button> */}
             <Button
               color="secondary"
               startIcon={<AiFillDelete />}
