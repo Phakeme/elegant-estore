@@ -39,7 +39,7 @@ export default makeStyles((theme) => ({
   },
   paymentResults: {
     padding: "10px 10px 30px 10px",
-    minHeight: 200,
+    minHeight: 396,
     textAlign: "center",
   },
   paymentIcon: {
