@@ -38,19 +38,41 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
   const classes = Styles();
   const wrapper = React.createRef();
 
+  const getCustomerData = sessionStorage.getItem("checkoutCustomerInfo");
+  // const getLocalOrderData = localStorage.getItem("checkoutData");
+  let dataInfo;
+  (() => {
+    if (getCustomerData == null) {
+      dataInfo = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        zipcode: "",
+        street: "",
+        city: "",
+        province: "",
+      };
+      return dataInfo;
+    } else {
+      dataInfo = JSON.parse(getCustomerData);
+      return dataInfo;
+    }
+  })();
+  // console.log(dataInfo.firstName, "dataInfo.firstNamedataInfo.firstName");
+
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      zipcode: "",
-      street: "",
-      city: "",
-      province: "KwaZulu-Natal",
+      firstName: dataInfo.firstName,
+      lastName: dataInfo.lastName,
+      email: dataInfo.email,
+      zipcode: dataInfo.zipcode,
+      street: dataInfo.street,
+      city: dataInfo.city,
+      province: dataInfo.province,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      localStorage.setItem("checkoutOrderData", JSON.stringify(values));
+      sessionStorage.setItem("checkoutCustomerInfo", JSON.stringify(values));
       alert(JSON.stringify(values, null, 2));
       nextStep();
     },
