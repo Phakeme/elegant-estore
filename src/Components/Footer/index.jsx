@@ -109,15 +109,13 @@ const Footer = () => {
           </form>
         </Grid>
         <Grid item xs={4}>
-          <Grid container>
-            <Grid item xs={2}>
-              <img
-                style={{ height: "42px" }}
-                src={ElegantIcon}
-                alt="elegant-icon.svg"
-              />
-            </Grid>
-            <Grid item xs={10}>
+          <Grid
+            container
+            style={{
+              textAlign: "right",
+            }}
+          >
+            <Grid item xs={12}>
               <h4 className={classes.heading}>
                 DOWNLOAD THE ELEGANT FREE APP!
               </h4>
