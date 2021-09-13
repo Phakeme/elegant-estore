@@ -10,6 +10,7 @@ import CheckoutForm from "./CheckoutForm";
 import Styles from "./styles";
 import PaymentForm from "./PaymentForm";
 import OrderSummary from "./Review";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { MdPayment } from "react-icons/md";
 
 const steps = ["Checkout", "Payment", "Success"];
@@ -33,6 +34,8 @@ const Checkout = ({
 
   const CurrentForm = () => {
     const history = useHistory();
+    if (cart && cart.total_items == 0) return <div>{history.push("/")}</div>;
+
     if (activeStep === 0) {
       return <CheckoutForm nextStep={nextStep} />;
     } else if (activeStep === 1) {
@@ -91,13 +94,22 @@ const Checkout = ({
         </Paper>
       );
     } else {
-      history.push("/");
-      return null;
+      // history.push("/");
+      return (
+        <Paper className={classes.paymentResults}>
+          <div style={{ marginTop: 110 }}>
+            <div className={classes.paymentIcon}>
+              <CircularProgress />
+            </div>
+            <h3>Processing payment...</h3>
+          </div>
+        </Paper>
+      );
     }
   };
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} style={{ marginTop: `${76 + 8 + 8}px` }}>
       <Grid item xs={8}>
         <Stepper
           elevation={1}
