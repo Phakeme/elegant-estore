@@ -37,7 +37,7 @@ const PaymentForm = ({
     if (error) {
       console.log("[strip error]", error);
     } else {
-      const getCustomerData = localStorage.getItem("checkoutOrderData");
+      const getCustomerData = sessionStorage.getItem("checkoutCustomerInfo");
       const getLocalOrderData = localStorage.getItem("checkoutData");
       const dataInfo = JSON.parse(getCustomerData);
       const checkoutInfo = JSON.parse(getLocalOrderData);
