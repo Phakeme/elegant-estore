@@ -74,9 +74,7 @@ const PaymentForm = ({
         },
       };
       captureCheckout(orderData, checkoutInfo.id);
-      emptyCart();
       nextStep();
-      localStorage.clear();
     }
   };
 

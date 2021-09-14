@@ -59,6 +59,7 @@ const AddToCartModal = ({
   const vgrpId = product.variant_groups[0].id;
 
   const getItemQty = (optionId) => {
+    console.log(cart, "Cartt");
     const item = cart.line_items.filter(
       (item) => item.selected_options[0].option_id === optionId
     );

@@ -39,8 +39,9 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
   const wrapper = React.createRef();
 
   const getCustomerData = sessionStorage.getItem("checkoutCustomerInfo");
-  // const getLocalOrderData = localStorage.getItem("checkoutData");
+
   let dataInfo;
+
   (() => {
     if (getCustomerData == null) {
       dataInfo = {
@@ -58,7 +59,6 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
       return dataInfo;
     }
   })();
-  // console.log(dataInfo.firstName, "dataInfo.firstNamedataInfo.firstName");
 
   const formik = useFormik({
     initialValues: {
@@ -73,7 +73,6 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       sessionStorage.setItem("checkoutCustomerInfo", JSON.stringify(values));
-      alert(JSON.stringify(values, null, 2));
       nextStep();
     },
   });

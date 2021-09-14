@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Stepper from "@material-ui/core/Stepper";
 import Paper from "@material-ui/core/Paper";
@@ -32,9 +32,15 @@ const Checkout = ({
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
   const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [activeStep]);
+
   const CurrentForm = () => {
     const history = useHistory();
-    if (cart && cart.total_items == 0) return <div>{history.push("/")}</div>;
+
+    if (cart.total_items === 0 && activeStep !== 2)
+      return <div>{history.push("/")}</div>;
 
     if (activeStep === 0) {
       return <CheckoutForm nextStep={nextStep} />;
@@ -94,7 +100,6 @@ const Checkout = ({
         </Paper>
       );
     } else {
-      // history.push("/");
       return (
         <Paper className={classes.paymentResults}>
           <div style={{ marginTop: 110 }}>

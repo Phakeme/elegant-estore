@@ -87,20 +87,26 @@ function App() {
     // console.log(orderData, id, "CaptureCheckout");
     commerce.checkout
       .capture(id, orderData)
-      .then(({ customer, order_value }) =>
-        SetPaymentResults(
-          { customer, order_value },
-          console.log(customer, order_value, "customer, order_value")
-        )
-      )
+      .then(({ customer, order_value }) => {
+        SetPaymentResults({ customer, order_value });
+        emptyCart();
+        localStorage.clear();
+        console.log(customer, order_value, "customer, order_value");
+      })
       .catch((error) => {
         console.error(error);
       });
   };
 
   const emptyCart = () => {
-    commerce.cart.empty().then((response) => console.log(response));
-    commerce.cart.refresh().then((cart) => console.log(cart));
+    commerce.cart.empty().then((response) => {
+      setCart(cart);
+      console.log(response, "empty()");
+    });
+    commerce.cart.refresh().then((cart) => {
+      console.log(cart);
+      setCart(cart);
+    });
   };
 
   return (
