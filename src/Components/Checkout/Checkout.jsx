@@ -42,6 +42,9 @@ const Checkout = ({
     if (cart.total_items === 0 && activeStep !== 2)
       return <div>{history.push("/")}</div>;
 
+    if (!checkoutData && activeStep === 1)
+      return <div>{history.push("/cart")}</div>;
+
     if (activeStep === 0) {
       return <CheckoutForm nextStep={nextStep} />;
     } else if (activeStep === 1) {
