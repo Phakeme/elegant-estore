@@ -5,8 +5,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core";
-// import GlobalContainer from "../utils/Container";
-import ElegantIcon from "../../img/elegant-icon.svg";
 import ElegantWhiteLogo from "../../img/footer/elegant-white-logo.svg";
 import GooglePlayLogo from "../../img/footer/google-play-logo.svg";
 import AppStoreLogo from "../../img/footer/app-store-logo.svg";

@@ -16,7 +16,7 @@ function App() {
   const [sortedProducts, SetSortedProducts] = useState([]);
   const [query, SetQuery] = useState("");
   const [paymentResults, SetPaymentResults] = useState(false);
-  const [loading, SetLoading] = useState(false);
+  const [paymentError, SetPaymentError] = useState(false);
   const [isCartUpdating, SetIsCartUpdating] = useState({
     state: true,
     name: "",
@@ -91,10 +91,11 @@ function App() {
         SetPaymentResults({ customer, order_value });
         emptyCart();
         localStorage.clear();
-        console.log(customer, order_value, "customer, order_value");
+        // console.log(customer, order_value, "customer, order_value");
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(({ data }) => {
+        SetPaymentError({ data });
+        // console.error(data);
       });
   };
 
@@ -108,10 +109,10 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Header cart={cart} searchProducts={searchProducts} loading="" />
+      <Header cart={cart} searchProducts={searchProducts} />
       <Switch>
         <Route exact path="/">
-          <HomeContainer loading="" />
+          <HomeContainer />
         </Route>
         <Route exact path="/login">
           <h1 style={{ marginTop: `${76 + 8 + 8}px` }}>Login</h1>
@@ -134,7 +135,6 @@ function App() {
         <Route path="/checkout">
           <CheckoutContainer
             cart={cart}
-            loading=""
             checkoutToken={checkoutToken}
             getOrderData={getOrderData}
             captureCheckout={captureCheckout}
@@ -142,13 +142,13 @@ function App() {
             emptyCart={emptyCart}
             products={products}
             paymentResults={paymentResults}
+            paymentError={paymentError}
           />
         </Route>
         <Route path="/query">
           <QueryContainer sortedProducts={sortedProducts} query={query} />
         </Route>
       </Switch>
-      <Footer />
       <Footer />
     </Router>
   );
