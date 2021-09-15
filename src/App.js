@@ -100,12 +100,8 @@ function App() {
 
   const emptyCart = () => {
     commerce.cart.empty().then((response) => {
-      setCart(cart);
-      console.log(response, "empty()");
-    });
-    commerce.cart.refresh().then((cart) => {
-      console.log(cart);
-      setCart(cart);
+      setCart(response);
+      console.log(response, "response empty()");
     });
   };
 
