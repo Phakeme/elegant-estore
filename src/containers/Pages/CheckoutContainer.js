@@ -9,6 +9,7 @@ const CheckoutContainer = ({
   checkoutData,
   captureCheckout,
   paymentResults,
+  paymentError,
   getOrderData,
   emptyCart,
   products,
@@ -26,6 +27,7 @@ const CheckoutContainer = ({
           loading={loading}
           checkoutData={checkoutData}
           paymentResults={paymentResults}
+          paymentError={paymentError}
         >
           <Banner
             title="Ralated Products"
