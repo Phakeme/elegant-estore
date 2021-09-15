@@ -57,7 +57,12 @@ const PaymentForm = ({
           postal_zip_code: dataInfo.zipcode,
           country: "ZA",
         },
-        fulfillment: { shipping_method: checkoutInfo.shipping_methods[0].id },
+        fulfillment: {
+          shipping_method:
+            checkoutInfo.shipping_methods[
+              checkoutInfo.shipping_methods.length - 1
+            ].id,
+        },
         billing: {
           name: `${dataInfo.firstName} ${dataInfo.lastName}`,
           street: dataInfo.street,
