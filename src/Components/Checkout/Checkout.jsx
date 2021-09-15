@@ -12,6 +12,7 @@ import PaymentForm from "./PaymentForm";
 import OrderSummary from "./Review";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { MdPayment } from "react-icons/md";
+import {BiErrorCircle} from "react-icons/bi"
 
 const steps = ["Checkout", "Payment", "Success"];
 
@@ -23,6 +24,7 @@ const Checkout = ({
   captureCheckout,
   getOrderData,
   emptyCart,
+  paymentError,
   children,
   paymentResults,
 }) => {
@@ -100,6 +102,19 @@ const Checkout = ({
               Continue shopping
             </Button>
           </Link>
+        </Paper>
+      );
+    } else if (activeStep > 1 && paymentError) {
+      return (
+        <Paper className={classes.paymentResults}>
+               <div style={{ marginTop: 110 }}>
+            <div className={classes.paymentIcon}>
+              <BiErrorCircle/>
+            </div>
+             <h3>
+            Something went wrong please try again later!
+          </h3>
+          </div>
         </Paper>
       );
     } else {
