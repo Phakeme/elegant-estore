@@ -10,7 +10,7 @@ const DoubleBanner = () => {
     <Paper className={classes.paper}>
       <Grid container spacing={0}>
         <Grid item xs={6}>
-          <Link to="">
+          <Link to="/search/women">
             <div
               style={{
                 height: 258,
@@ -23,7 +23,7 @@ const DoubleBanner = () => {
           </Link>
         </Grid>
         <Grid item xs={6}>
-          <Link to="">
+          <Link to="/search/men">
             <div
               style={{
                 height: 258,
