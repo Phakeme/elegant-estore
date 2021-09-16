@@ -9,9 +9,14 @@ import ListItem from "@material-ui/core/ListItem";
 
 const Styles = makeStyles((theme) => ({
   root: {
-    height: "392px",
-    marginBottom: 8,
+    display: "grid",
+    gridTemplateColumns: "1fr 4fr 1fr",
+    gridGap: 16,
+    marginBottom: 16,
     marginTop: `${76 + 8}px`,
+    "@media (max-width: 1280px)": {
+      gridTemplateColumns: "1fr 5fr",
+    },
   },
   paper: {
     height: "100%",
@@ -33,17 +38,13 @@ const Styles = makeStyles((theme) => ({
 
 const Hero = ({ children }) => {
   const classes = Styles();
-  return (
-    <Grid container spacing={2} className={classes.root} style={{}}>
-      {children}
-    </Grid>
-  );
+  return <div className={classes.root}>{children}</div>;
 };
 
 Hero.Categories = ({ categories }) => {
   const classes = Styles();
   return (
-    <Grid item lg={2} xs={3} className={classes.categories}>
+    <div className={classes.categories}>
       <Paper className={classes.paper}>
         <List component="nav" aria-label="main categories">
           {Array.isArray(categories) &&
@@ -82,23 +83,23 @@ Hero.Categories = ({ categories }) => {
             ))}
         </List>
       </Paper>
-    </Grid>
+    </div>
   );
 };
 
 Hero.ImageSlide = ({ children }) => {
   const classes = Styles();
   return (
-    <Grid item lg={8} xs={9}>
+    <div>
       <Paper className={classes.paper}>{children}</Paper>
-    </Grid>
+    </div>
   );
 };
 
 Hero.InformativeLinks = ({ children }) => {
   const classes = Styles();
   return (
-    <Grid item lg={2} className={classes.informativeLinks}>
+    <div className={classes.informativeLinks}>
       <Box
         style={{
           display: "grid",
@@ -143,7 +144,7 @@ Hero.InformativeLinks = ({ children }) => {
           </Link>
         </Box>
       </Box>
-    </Grid>
+    </div>
   );
 };
 
