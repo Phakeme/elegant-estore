@@ -145,7 +145,7 @@ function App() {
             paymentError={paymentError}
           />
         </Route>
-        <Route path="/query">
+        <Route path="/search/:name">
           <QueryContainer sortedProducts={sortedProducts} query={query} />
         </Route>
       </Switch>
