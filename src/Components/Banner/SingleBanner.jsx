@@ -9,8 +9,8 @@ const SingleBanner = () => {
   return (
     <Paper className={classes.paper}>
       <Grid container spacing={0}>
-        <Grid item xs={12} style={{ background: "" }}>
-          <Link to="/">
+        <Grid item xs={12}>
+          <Link to="/search/women">
             <div
               style={{
                 height: 258,

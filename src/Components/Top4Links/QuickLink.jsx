@@ -22,7 +22,7 @@ const QuickLink = ({ icon, title, path }) => {
   const classes = Styles();
   return (
     <Grid item xs={3}>
-      <Link to={path}>
+      <Link to={`/search/${path}`}>
         <Paper className={classes.root}>
           <Grid container alignItems="center">
             <Grid item xs={2} className={classes.icon}>

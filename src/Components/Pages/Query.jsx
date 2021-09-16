@@ -1,7 +1,9 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import searchIcon from "../../img/binoculars.41e1bc35.svg";
 
 const Styles = makeStyles((theme) => ({
   root: {
@@ -15,6 +17,7 @@ const Styles = makeStyles((theme) => ({
 
 const Query = ({ children, sortedProducts, query }) => {
   console.log(sortedProducts, "From Query Page");
+  const { name } = useParams();
   const classes = Styles();
   return (
     <section className={classes.root}>
@@ -33,15 +36,11 @@ const Query = ({ children, sortedProducts, query }) => {
               margin: "auto",
             }}
           >
-            <img
-              style={{ height: "100%" }}
-              src="./images/QueryPage/binoculars.41e1bc35.svg"
-              alt=""
-            />
+            <img style={{ height: "100%" }} src={searchIcon} alt="" />
           </div>
           <h2
             style={{ fontSize: "1rem", fontWeight: 500, marginBottom: 15 }}
-          >{`There are no results for "${query}"`}</h2>
+          >{`There are no results for "${name}"`}</h2>
           <p>
             - Check your spelling for typing errors
             <br />- Try searching with short and simple keywords

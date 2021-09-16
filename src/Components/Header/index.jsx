@@ -29,7 +29,7 @@ export default function Header({ cart, searchProducts, loading }) {
       console.log(query);
       setQuery("");
       searchProducts(query);
-      history.push("/query");
+      history.push(`/search/${query}`);
     }
   };
 

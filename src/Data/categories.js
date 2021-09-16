@@ -12,57 +12,57 @@ import { FaHeartbeat, FaShoppingCart } from "react-icons/fa";
 const categories = [
   {
     name: "Women",
-    path: "/women",
+    path: "women",
     icon: <GrRestroomWomen />,
   },
   {
     name: "Men",
-    path: "/men",
+    path: "men",
     icon: <GrRestroomMen />,
   },
   {
     name: "Kids & Babies",
-    path: "/kids",
+    path: "kids",
     icon: <GiBabyFace />,
   },
   {
     name: "Homeware",
-    path: "/homeware",
+    path: "homeware",
     icon: <BiHomeAlt />,
   },
   {
     name: "Sport",
-    path: "/sport",
+    path: "sport",
     icon: <FaHeartbeat />,
   },
   {
     name: "Beauty",
-    path: "/beauty",
+    path: "beauty",
     icon: <GiPencilBrush />,
   },
   {
     name: "Grooming",
-    path: "/grooming",
+    path: "grooming",
     icon: <GiHeartBottle />,
   },
   {
     name: "Brands",
-    path: "/brands",
+    path: "brands",
     icon: <BiShoppingBag />,
   },
   {
     name: "New Arrivals",
-    path: "/arrivals",
+    path: "arrivals",
     icon: <GiAlliedStar />,
   },
   {
     name: "Sales & Deals",
-    path: "/sales",
+    path: "sales",
     icon: <FaShoppingCart />,
   },
   {
     name: "Fashion",
-    path: "/fashion",
+    path: "fashion",
     icon: <GiTShirt />,
   },
 ];

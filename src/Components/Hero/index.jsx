@@ -49,7 +49,7 @@ Hero.Categories = ({ categories }) => {
         <List component="nav" aria-label="main categories">
           {Array.isArray(categories) &&
             categories.map(({ name, icon, path }, i) => (
-              <Link to={path} key={i}>
+              <Link to={`/search/${path}`} key={i}>
                 <ListItem
                   button
                   style={{

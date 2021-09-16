@@ -9,7 +9,7 @@ const Thumbnails = ({ thumbnails }) => {
       <Grid container spacing={0} style={{ height: "100%" }}>
         {thumbnails.map(({ icon, path, title }, index) => (
           <Grid key={index} item xs={2}>
-            <Link to={path}>
+            <Link to={`/search/${path}`}>
               <div
                 style={{
                   display: "flex",
