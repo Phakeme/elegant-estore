@@ -6,9 +6,9 @@ import { AiOutlineHeart, AiOutlineInbox } from "react-icons/ai";
 import { makeStyles } from "@material-ui/core/styles";
 
 const links = [
-  { title: "Account", path: "/account", icon: <FaRegUser /> },
-  { title: "My Order", path: "/my-order", icon: <AiOutlineInbox /> },
-  { title: "Wishlist", path: "/wishlist", icon: <AiOutlineHeart /> },
+  { title: "Account", path: "/sp-help", icon: <FaRegUser /> },
+  { title: "My Order", path: "/sp-help", icon: <AiOutlineInbox /> },
+  { title: "Wishlist", path: "/sp-help", icon: <AiOutlineHeart /> },
 ];
 
 const useStyles = makeStyles((theme) => ({
