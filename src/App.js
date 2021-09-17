@@ -6,6 +6,7 @@ import CheckoutContainer from "./containers/Pages/CheckoutContainer";
 import HomeContainer from "./containers/Pages/HomeContainer";
 import ProductContainer from "./containers/Pages/ProductContainer";
 import QueryContainer from "./containers/Pages/QueryContainer";
+import SPHelpContainer from "./containers/Pages/SPHelpContainer";
 import { commerce } from "./lib/commerce";
 
 function App() {
@@ -147,6 +148,9 @@ function App() {
         </Route>
         <Route path="/search/:name">
           <QueryContainer sortedProducts={sortedProducts} query={query} />
+        </Route>
+        <Route path="/sp-help">
+          <SPHelpContainer />
         </Route>
       </Switch>
       <Footer />
