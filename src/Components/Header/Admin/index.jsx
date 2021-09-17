@@ -59,12 +59,14 @@ const Admin = ({ cart }) => {
           onMouseLeave={() => setHelpOpen(false)}
           onClick={() => setHelpOpen(!helpOpen)}
         >
-          <label>
-            <span>
-              <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />{" "}
-              Help
-            </span>
-          </label>
+          <Link to="/sp-help">
+            <label>
+              <span>
+                <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />{" "}
+                Help
+              </span>
+            </label>
+          </Link>
         </Grid>
         {/* -------------- CART LINK -------------- */}
         <Grid item xs={4} className={classes.link}>
@@ -115,34 +117,30 @@ const Admin = ({ cart }) => {
                 marginTop: "1px",
                 padding: "10px",
                 width: "206px",
-                height: "269px",
+                height: "235px",
                 right: "0px",
                 top: "50px",
               }}
             >
-              <Button
-                variant="contained"
-                color="secondary"
-                size="medium"
-                fullWidth
-                style={{
-                  color: "white",
-                  marginBottom: "10px",
-                }}
+              <Link
+                style={{ fontWeight: 500, marginBottom: "0px" }}
+                to="/sp-help"
               >
-                <Link
-                  style={{ fontWeight: 500, width: "100%", height: "100%" }}
-                  to="/login"
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  size="medium"
+                  fullWidth
+                  style={{
+                    color: "white",
+                  }}
                 >
                   <span>Account</span>
-                </Link>
-              </Button>
+                </Button>
+              </Link>
               <span>OR</span>
-              <Button
-                size="medium"
-                variant="outlined"
-                color="secondary"
-                fullWidth
+              <Link
+                to="/sp-help"
                 style={{
                   fontSize: "0.875rem",
                   fontWeight: "bold",
@@ -150,8 +148,15 @@ const Admin = ({ cart }) => {
                   marginTop: "10px",
                 }}
               >
-                <span style={{ fontWeight: 700 }}>CREATE ACCOUNT</span>
-              </Button>
+                <Button
+                  size="medium"
+                  variant="outlined"
+                  color="secondary"
+                  fullWidth
+                >
+                  <span style={{ fontWeight: 700 }}>CREATE ACCOUNT</span>
+                </Button>
+              </Link>
               <Divider />
               <Box
                 style={{
