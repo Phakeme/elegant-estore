@@ -9,6 +9,7 @@ export { default as DoubleBanner } from "./Banner/DoubleBanner";
 export { default as SingleBanner } from "./Banner/SingleBanner";
 export { default as Cart } from "./Cart/Cart";
 export { default as Query } from "./Pages/Query";
+export { default as SPHelp } from "./SPHelp/SPHelp";
 export { default as Checkout } from "./Checkout/Checkout";
 export { default as HeroCarousel } from "./Hero/Carousel";
 export { default as InfoLink } from "./Hero/InfoLink";
