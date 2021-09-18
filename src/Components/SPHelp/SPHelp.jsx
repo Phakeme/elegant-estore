@@ -1,16 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardMedia from "@material-ui/core/CardMedia";
+import FAQ from "./Accordion";
 import Styles from "./styles";
 
-const SPHelp = () => {
+const SPHelp = ({ qaItems }) => {
   const classes = Styles();
   return (
     <Paper className={classes.paper}>
@@ -25,6 +23,8 @@ const SPHelp = () => {
             <div className={classes.iconLink}>Text</div>
             <div className={classes.iconLink}>Text</div>
           </div>
+          {console.log(qaItems, "SPHELP aqItems")}
+          <FAQ qaItems={qaItems} />
         </Grid>
         <Grid item xs={4}>
           Text
