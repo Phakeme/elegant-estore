@@ -1,12 +1,13 @@
 import React from "react";
 import { SPHelp, GlobalContainer } from "../../Components";
+import faq from "../../Data/faq";
 
-const QueryContainer = ({ sortedProducts, query }) => {
+const FaqContainer = ({ sortedProducts, query }) => {
   return (
     <GlobalContainer>
-      <SPHelp></SPHelp>
+      <SPHelp qaItems={faq}>{console.log(faq, "Conatiner: faq")}</SPHelp>
     </GlobalContainer>
   );
 };
 
-export default QueryContainer;
+export default FaqContainer;
