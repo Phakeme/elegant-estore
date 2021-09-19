@@ -131,17 +131,15 @@ Hero.InformativeLinks = ({ children }) => {
           </Paper>
         </Box>
         <Box flexGrow={1}>
-          <Link to="/address">
-            <Paper
-              style={{
-                height: "100%",
-                backgroundImage: "url(./images/Top-Right.gif)",
-                backgroundSize: "cover",
-                backgroundRepeat: "repeat",
-                backgroundPosition: "center",
-              }}
-            />
-          </Link>
+          <Paper
+            style={{
+              height: "100%",
+              backgroundImage: "url(./images/Top-Right.gif)",
+              backgroundSize: "cover",
+              backgroundRepeat: "repeat",
+              backgroundPosition: "center",
+            }}
+          />
         </Box>
       </Box>
     </div>
