@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,9 +16,11 @@ const Styles = makeStyles((theme) => ({
 }));
 
 const Query = ({ children, sortedProducts, query }) => {
-  console.log(sortedProducts, "From Query Page");
-  const { name } = useParams();
   const classes = Styles();
+  const { name } = useParams();
+  const location = useHistory();
+  if (name.trim().length === 0) location.push("/");
+
   return (
     <section className={classes.root}>
       {sortedProducts.length ? (
@@ -40,7 +42,9 @@ const Query = ({ children, sortedProducts, query }) => {
           </div>
           <h2
             style={{ fontSize: "1rem", fontWeight: 500, marginBottom: 15 }}
-          >{`There are no results for "${name}"`}</h2>
+          >{`There are no results for "${
+            query.length === 0 ? name : query
+          }" yet.`}</h2>
           <p>
             - Check your spelling for typing errors
             <br />- Try searching with short and simple keywords
