@@ -20,7 +20,7 @@ export default function Header({ cart, searchProducts, loading }) {
   const [query, setQuery] = useState("");
 
   const storeQuery = (value) => {
-    const query = value.replace(/ /g, "");
+    const query = value.split(" ").join(" ");
     setQuery(query);
   };
 
