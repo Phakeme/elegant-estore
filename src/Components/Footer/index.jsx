@@ -123,10 +123,10 @@ const Footer = () => {
             </Grid>
             <Grid container>
               <Grid item xs={12} style={{ height: 42 }}>
-                <Link to="/" style={{ marginRight: 10 }}>
+                <Link to="#" style={{ marginRight: 10 }}>
                   <img style={{ height: "100%" }} src={AppStoreLogo} alt="" />
                 </Link>
-                <Link to="/">
+                <Link to="#">
                   <img
                     style={{ height: "100%" }}
                     src={GooglePlayLogo}
