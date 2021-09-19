@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import { Header, Footer, ScrollToTop } from "./Components/";
 import Cart from "./containers/Pages/CartContainer";
 import CheckoutContainer from "./containers/Pages/CheckoutContainer";
@@ -39,7 +44,6 @@ function App() {
     });
     SetSortedProducts(currProd);
     SetQuery(query);
-    // console.log(sortedProducts, "Sothile");
   };
 
   const addToCart = (productId, vgrpId, optnId, name) => {
@@ -115,10 +119,7 @@ function App() {
         <Route exact path="/">
           <HomeContainer />
         </Route>
-        <Route exact path="/login">
-          <h1 style={{ marginTop: `${76 + 8 + 8}px` }}>Login</h1>
-        </Route>
-        <Route path="/product/:slug/:id">
+        <Route path="/product/:slug/:id" exact>
           <ProductContainer
             cart={cart}
             addToCart={addToCart}
@@ -126,14 +127,14 @@ function App() {
             isCartUpdating={isCartUpdating}
           />
         </Route>
-        <Route path="/cart">
+        <Route path="/cart" exact>
           <Cart
             cart={cart}
             removeFromCart={removeFromCart}
             generateToken={generateToken}
           />
         </Route>
-        <Route path="/checkout">
+        <Route path="/checkout" exact>
           <CheckoutContainer
             cart={cart}
             checkoutToken={checkoutToken}
@@ -146,11 +147,18 @@ function App() {
             paymentError={paymentError}
           />
         </Route>
-        <Route path="/search/:name">
-          <QueryContainer sortedProducts={sortedProducts} query={query} />
+        <Route path="/search/:name" exact>
+          <QueryContainer
+            sortedProducts={sortedProducts}
+            query={query}
+            searchProducts={searchProducts}
+          />
         </Route>
         <Route path="/sp-help">
           <SPHelpContainer />
+        </Route>
+        <Route path="*">
+          <Route render={() => <Redirect to="/" />} />
         </Route>
       </Switch>
       <Footer />
