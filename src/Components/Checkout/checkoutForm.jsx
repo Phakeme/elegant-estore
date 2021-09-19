@@ -11,7 +11,7 @@ import Styles from "./styles";
 import provinces from "../../Data/provinces";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import FormSubHeader from "./formSubHeader";
+import FormSubHeader from "./formSubHeader.js";
 
 const validationSchema = yup.object({
   email: yup
