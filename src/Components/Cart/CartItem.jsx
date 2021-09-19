@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
-import { HiOutlineHeart } from "react-icons/hi";
 import { AiFillDelete } from "react-icons/ai";
 import { makeStyles } from "@material-ui/styles";
 

@@ -17,7 +17,7 @@ import { commerce } from "./lib/commerce";
 function App() {
   const [cart, setCart] = useState({});
   const [checkoutData, setCheckoutData] = useState(false);
-  const [checkoutToken, setCheckoutToken] = useState(false);
+  const [checkoutToken] = useState(false);
   const [products, setProducts] = useState([]);
   const [sortedProducts, SetSortedProducts] = useState([]);
   const [query, SetQuery] = useState("");
@@ -37,7 +37,7 @@ function App() {
 
   const searchProducts = (query) => {
     let currProd = [];
-    products.map((res) => {
+    products.forEach((res) => {
       if (res.seo.title && res.name.includes(query)) {
         currProd.push(res);
       }

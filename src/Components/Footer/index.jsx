@@ -79,7 +79,7 @@ const Footer = () => {
                   variant="filled"
                 />
               </Grid>
-              <Grid xs={5}>
+              <Grid item xs={5}>
                 <Grid container spacing={1} className={classes.btns}>
                   <Grid item xs={6}>
                     <Button
