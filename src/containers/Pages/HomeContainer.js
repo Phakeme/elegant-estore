@@ -14,7 +14,7 @@ import categories from "../../Data/categories";
 import thumbnails from "../../Data/thumbnails";
 import GlobalContainer from "../../Components/utils/Container";
 
-const HomeContainer = ({loading}) => {
+const HomeContainer = ({ loading }) => {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
@@ -36,19 +36,19 @@ const HomeContainer = ({loading}) => {
         </Hero.ImageSlide>
         <Hero.InformativeLinks>
           <InfoLink
-            path="/brands"
+            path="/sp-help"
             icon="./images/usp-africa.jpg"
             title="WIDE VARIETY"
             subTitle="Shop over 800 brands"
           />
           <InfoLink
-            path="/payments"
+            path="/sp-help"
             icon="./images/usp-cod.jpg"
             title="SECURE PAYMENTS"
             subTitle="Cards, Instant EFT & COD"
           />
           <InfoLink
-            path="/returns"
+            path="/sp-help"
             icon="./images/usp-returns.jpg"
             title="FREE RETURNS"
             subTitle="Easy & Fast Process"
@@ -58,7 +58,7 @@ const HomeContainer = ({loading}) => {
       <Top4Links />
       <Banner products={products} loading={loading} title="Our Top Sellers" />
       <DoubleBanner />
-      <Banner products={products} title="Recently viewed" />
+      <Banner products={products} title="New Arrivals" />
       <Thumbnails thumbnails={thumbnails} />
       <SingleBanner />
     </GlobalContainer>
