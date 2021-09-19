@@ -10,7 +10,7 @@ export { default as SingleBanner } from "./Banner/SingleBanner";
 export { default as Cart } from "./Cart/Cart";
 export { default as Query } from "./Pages/Query";
 export { default as SPHelp } from "./SPHelp/";
-export { default as Checkout } from "./Checkout/Checkout.jsx";
+export { default as Checkout } from "./Checkout/index.js";
 export { default as HeroCarousel } from "./Hero/Carousel";
 export { default as InfoLink } from "./Hero/InfoLink";
 export { default as Product } from "./Product";
