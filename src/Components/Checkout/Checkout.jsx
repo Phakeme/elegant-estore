@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import StepLabel from "@material-ui/core/StepLabel";
 import Step from "@material-ui/core/Step";
-import CheckoutForm from "./CheckoutForm";
+import CheckoutForm from "./CheckoutForm.jsx";
 import Styles from "./styles";
 import PaymentForm from "./PaymentForm.jsx";
 import OrderSummary from "./Review.jsx";
