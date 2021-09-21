@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { commerce } from "../../lib/commerce";
 import {
   Product,
   AddToCartModal,
@@ -13,11 +12,12 @@ const ProductContainer = ({
   cart,
   addToCart,
   decrementCart,
+  getProduct,
+  product,
   isCartUpdating,
 }) => {
   const { id } = useParams();
 
-  const [product, setProduct] = useState(false);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -29,24 +29,17 @@ const ProductContainer = ({
   };
 
   useEffect(() => {
-    commerce.products
-      .retrieve(id)
-      .then((product) => setProduct(product, console.log(product, "product")));
+    getProduct(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // const handleClick = () => {
-  //   console.info("You clicked the Chip.");
-  // };
-
   return (
     <GlobalContainer>
-      {product.hasOwnProperty("id") ? (
+      {product ? (
         <section style={{ marginTop: 76 }}>
           <CurrentPath />
           <Product product={product} handleClose={handleClose}>
             <Product.View product={product} handleOpen={handleOpen} />
-            {/* <Product.Form /> */}
           </Product>
         </section>
       ) : (
