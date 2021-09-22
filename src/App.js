@@ -23,6 +23,7 @@ function App() {
   const [query, SetQuery] = useState("");
   const [paymentResults, SetPaymentResults] = useState(false);
   const [paymentError, SetPaymentError] = useState(false);
+  const [product, setProduct] = useState(false);
   const [isCartUpdating, SetIsCartUpdating] = useState({
     state: true,
     name: "",
@@ -34,6 +35,15 @@ function App() {
       setProducts(product.data, console.log(product.data, "product.data"));
     });
   }, []);
+
+  const getProduct = (id) => {
+    setProduct(false);
+    commerce.products.retrieve(id).then((product) => {
+      setProduct(product);
+      // setRecentlyViewed((oldArray) => [...oldArray, product]);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
 
   const searchProducts = (query) => {
     let currProd = [];
@@ -107,7 +117,7 @@ function App() {
   const emptyCart = () => {
     commerce.cart.empty().then((response) => {
       setCart(response);
-      console.log(response, "response empty()");
+      // console.log(response, "response empty()");
     });
   };
 
@@ -122,6 +132,8 @@ function App() {
         <Route path="/product/:slug/:id" exact>
           <ProductContainer
             cart={cart}
+            getProduct={getProduct}
+            product={product}
             addToCart={addToCart}
             decrementCart={decrementCart}
             isCartUpdating={isCartUpdating}
