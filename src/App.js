@@ -18,7 +18,7 @@ function App() {
   const [cart, setCart] = useState({});
   const [checkoutData, setCheckoutData] = useState(false);
   const [checkoutToken] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState(null);
   const [sortedProducts, SetSortedProducts] = useState([]);
   const [query, SetQuery] = useState("");
   const [paymentResults, SetPaymentResults] = useState(false);
@@ -127,7 +127,7 @@ function App() {
       <Header cart={cart} searchProducts={searchProducts} />
       <Switch>
         <Route exact path="/">
-          <HomeContainer />
+          <HomeContainer products={products} />
         </Route>
         <Route path="/product/:slug/:id" exact>
           <ProductContainer
@@ -136,12 +136,14 @@ function App() {
             product={product}
             addToCart={addToCart}
             decrementCart={decrementCart}
+            products={products}
             isCartUpdating={isCartUpdating}
           />
         </Route>
         <Route path="/cart" exact>
           <Cart
             cart={cart}
+            products={products}
             removeFromCart={removeFromCart}
             generateToken={generateToken}
           />
@@ -163,6 +165,7 @@ function App() {
           <QueryContainer
             sortedProducts={sortedProducts}
             query={query}
+            products={products}
             searchProducts={searchProducts}
           />
         </Route>
