@@ -31,5 +31,9 @@ yup
 -- Navbar
 -- Forms in react
 
+// Not Yet Implemented
+Same url, params id change (Product Page)
+Recently Viewed Products
+
 About Me
 I am a graphic designer & front-end engineer, which gives me the unique ability to think as both the designer, the front end developer. This philosophy is reflected in the design & structure of my Projects.
