@@ -37,7 +37,7 @@ const Banner = ({ products, title, numOfProds, xs, getProduct }) => {
               <Grid item xs={xs} key={i}>
                 <Link
                   key={i}
-                  to={`product/${product.name.split(" ").join("-")}/${
+                  to={`/product/${product.name.split(" ").join("-")}/${
                     product.id
                   }`}
                 >
