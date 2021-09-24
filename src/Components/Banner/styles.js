@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/styles";
+import logo from "../../img/image-placeholders.jpg";
 
 export default makeStyles((theme) => ({
   paper: {
@@ -20,7 +21,7 @@ export default makeStyles((theme) => ({
   },
   placeholder: {
     height: 257,
-    backgroundImage: "url('./image-placeholders.jpg')",
+    backgroundImage: `url(${logo})`,
     backgroundSize: "cover",
     backgroundRepeat: "noRepeat",
     backgroundPosition: "center",

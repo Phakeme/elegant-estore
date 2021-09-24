@@ -30,7 +30,7 @@ const CheckoutContainer = ({
           paymentError={paymentError}
         >
           <Banner
-            title="Ralated Products"
+            title="On special"
             numOfProds={4}
             xs={3}
             loading={loading}

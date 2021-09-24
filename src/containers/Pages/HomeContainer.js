@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Hero,
   HeroCarousel,
@@ -8,25 +8,13 @@ import {
   SingleBanner,
   InfoLink,
   Top4Links,
+  NewArrivalsBanner,
 } from "../../Components";
-import { commerce } from "../../lib/commerce";
 import categories from "../../Data/categories";
 import thumbnails from "../../Data/thumbnails";
 import GlobalContainer from "../../Components/utils/Container";
 
-const HomeContainer = ({ loading }) => {
-  const [products, setProducts] = useState(null);
-
-  useEffect(() => {
-    commerce.products
-      .list()
-      .then((product) =>
-        setProducts(
-          product.data,
-          console.log(product, "console.log(product.data)")
-        )
-      );
-  }, []);
+const HomeContainer = ({ products }) => {
   return (
     <GlobalContainer>
       <Hero>
@@ -56,9 +44,9 @@ const HomeContainer = ({ loading }) => {
         </Hero.InformativeLinks>
       </Hero>
       <Top4Links />
-      <Banner products={products} loading={loading} title="Our Top Sellers" />
+      <Banner products={products} title="Our Top Sellers" />
       <DoubleBanner />
-      <Banner products={products} title="New Arrivals" />
+      <NewArrivalsBanner products={products} title="New Arrivals" />
       <Thumbnails thumbnails={thumbnails} />
       <SingleBanner />
     </GlobalContainer>

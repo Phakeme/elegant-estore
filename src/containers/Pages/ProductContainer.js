@@ -13,6 +13,7 @@ const ProductContainer = ({
   addToCart,
   decrementCart,
   getProduct,
+  products,
   product,
   isCartUpdating,
 }) => {

@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 const Thumbnails = ({ thumbnails }) => {
   return (
     <Paper style={{ height: 173, padding: 15, marginBottom: 16 }}>
+      <h5 data-testid="test">Test</h5>
       <Grid container spacing={0} style={{ height: "100%" }}>
         {thumbnails.map(({ icon, path, title }, index) => (
           <Grid key={index} item xs={2}>

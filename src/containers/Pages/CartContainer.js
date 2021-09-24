@@ -1,7 +1,7 @@
 import React from "react";
-import { Cart, GlobalContainer } from "../../Components";
+import { Cart, GlobalContainer, NewArrivalsBanner } from "../../Components";
 
-const CartContainer = ({ cart, removeFromCart, generateToken }) => {
+const CartContainer = ({ cart, removeFromCart, generateToken, products }) => {
   // <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
   return (
     <GlobalContainer>
@@ -12,6 +12,10 @@ const CartContainer = ({ cart, removeFromCart, generateToken }) => {
           generateToken={generateToken}
         />
       </main>
+
+      {cart.total_items === 0 && (
+        <NewArrivalsBanner products={products} title="Start shopping" />
+      )}
     </GlobalContainer>
   );
 };

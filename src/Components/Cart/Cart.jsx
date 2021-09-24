@@ -57,7 +57,7 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
       return (
         <div>
           <Typography variant="h5" paragraph component="h2">
-            <Box>Cart</Box>
+            <Box data-testid="cart">Cart</Box>
           </Typography>
           <div>
             <div

@@ -54,11 +54,7 @@ const Styles = makeStyles((theme) => ({
 
 const Product = ({ children }) => {
   return (
-    <Grid
-      container
-      spacing={2}
-      style={{ minHeight: "567px", marginBottom: 16 }}
-    >
+    <Grid container spacing={2} style={{ minHeight: "567px", marginBottom: 8 }}>
       {children}
     </Grid>
   );
@@ -138,7 +134,7 @@ Product.View = ({ product, handleOpen, addToCart }) => {
                     </Box>
                     <Box style={{ background: "", marginBottom: 10 }}>
                       <Typography variant="body2" component="h2">
-                        Brand:
+                        Brand: Elengant
                       </Typography>
                       <Typography variant="body2" component="h2">
                         Rating(6)
