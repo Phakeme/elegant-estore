@@ -14,7 +14,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { MdPayment } from "react-icons/md";
 import { BiErrorCircle } from "react-icons/bi";
 
-const steps = ["Checkout", "Payment", "Success"];
+const steps = ["Checkout", "Payment", "Complete"];
 
 const Checkout = ({
   cart,
