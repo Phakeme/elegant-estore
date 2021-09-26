@@ -50,6 +50,19 @@ const Styles = makeStyles((theme) => ({
       height: 540,
     },
   },
+  inforHeading: {
+    fontSize: ".875rem",
+    textTransform: "uppercase",
+    margin: 0,
+    fontWeight: "bold",
+  },
+  information: {
+    padding: 10,
+    width: "100%",
+  },
+  info_delivery: {
+    padding: 10,
+  },
 }));
 
 const Product = ({ children }) => {
@@ -60,10 +73,10 @@ const Product = ({ children }) => {
   );
 };
 
-Product.View = ({ product, handleOpen, addToCart }) => {
+Product.View = ({ product, handleOpen }) => {
   const classes = Styles();
   return (
-    <Grid item xs={12}>
+    <Grid item xs={9}>
       <Paper className={classes.mainPaper} style={{ padding: "16px" }}>
         <Grid container spacing={2}>
           <Grid item xs={4}>
@@ -172,7 +185,6 @@ Product.View = ({ product, handleOpen, addToCart }) => {
                         ))}
                       </div>
                       <Button
-                        // onClick={addToCart}
                         onClick={handleOpen}
                         variant="contained"
                         color="secondary"
@@ -223,6 +235,29 @@ Product.Placeholder = () => {
   return (
     <Grid item xs={12}>
       <Paper className={classes.placeholder}></Paper>
+    </Grid>
+  );
+};
+
+Product.Information = () => {
+  const classes = Styles();
+  return (
+    <Grid item xs={3}>
+      <Paper>
+        <div className={classes.information}>
+          <h2 className={classes.inforHeading}>Delivery & Returns</h2>
+        </div>
+        <Divider />
+        <div className={classes.info_delivery}>
+          <h3 style={{ margin: 0, fontSize: "0.875rem", fontWeight: "bold" }}>
+            Elegant Express
+          </h3>
+          <p style={{ margin: 0, fontSize: "0.875rem" }}>
+            Express delivery in main cities
+          </p>
+        </div>
+        <Divider />
+      </Paper>
     </Grid>
   );
 };
