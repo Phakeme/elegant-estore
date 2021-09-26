@@ -41,6 +41,7 @@ const ProductContainer = ({
           <CurrentPath />
           <Product product={product} handleClose={handleClose}>
             <Product.View product={product} handleOpen={handleOpen} />
+            <Product.Information></Product.Information>
           </Product>
         </section>
       ) : (
