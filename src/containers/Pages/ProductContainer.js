@@ -7,6 +7,7 @@ import {
   CurrentPath,
 } from "../../Components";
 import Modal from "@material-ui/core/Modal";
+import Divider from "@material-ui/core/Divider";
 
 const ProductContainer = ({
   cart,
