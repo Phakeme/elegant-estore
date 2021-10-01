@@ -1,9 +1,11 @@
 import React from "react";
 // import { Link } from "react-router-dom";
+import * as dayjs from "dayjs";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Chip from "@material-ui/core/Chip";
 import Typography from "@material-ui/core/Typography";
+import Rating from "@material-ui/lab/Rating";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
@@ -12,8 +14,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import { AiFillTwitterCircle } from "react-icons/ai";
-import { MdAddShoppingCart } from "react-icons/md";
-import { HiOutlineHeart } from "react-icons/hi";
+import { MdAddShoppingCart, MdAssignmentReturn } from "react-icons/md";
+import { FaTruck } from "react-icons/fa";
 import logo from "../../img/product-placeholder.svg";
 
 const Styles = makeStyles((theme) => ({
@@ -62,6 +64,15 @@ const Styles = makeStyles((theme) => ({
   },
   info_delivery: {
     padding: 10,
+  },
+  delivery: {
+    padding: 10,
+  },
+  icon: {
+    fontSize: "1.5rem",
+    color: theme.palette.secondary.main,
+    margin: "5px 0 0 0px",
+    width: "100%",
   },
 }));
 
@@ -129,29 +140,19 @@ Product.View = ({ product, handleOpen }) => {
                       }}
                     >
                       <Typography variant="h6" component="h2">
-                        <Box fontWeight="fontWeightBold">{product.name}</Box>
+                        <Box fontWeight="fontWeightRegular">{product.name}</Box>
                       </Typography>
-                      <Button
-                        style={{
-                          minWidth: "50px",
-                          minHeight: "50px",
-                          borderRadius: "50px",
-                          fontSize: "25px",
-                          top: "-10px",
-                          right: "-10px",
-                        }}
-                        className={classes.cartlink}
-                      >
-                        <HiOutlineHeart />
-                      </Button>
                     </Box>
                     <Box style={{ background: "", marginBottom: 10 }}>
                       <Typography variant="body2" component="h2">
                         Brand: Elengant
                       </Typography>
-                      <Typography variant="body2" component="h2">
-                        Rating(6)
-                      </Typography>
+                      <div style={{ display: "flex", justifuContent: "cent" }}>
+                        <Rating name="no-value" value={null} />{" "}
+                        <Typography variant="body2" component="h2">
+                          (No ratings available)
+                        </Typography>
+                      </div>
                     </Box>
                     <Divider />
                     <Box style={{ padding: "10px 0" }}>
@@ -213,7 +214,7 @@ Product.View = ({ product, handleOpen }) => {
                         Take R250 off your first Elegant order on the app*
                       </Typography>
                       <Typography gutterBottom variant="body1" component="div">
-                        Free Delivery above R400*
+                        Free Delivery on all products*
                       </Typography>
                       <Typography gutterBottom variant="body1" component="div">
                         Free Returns*
@@ -233,31 +234,95 @@ Product.View = ({ product, handleOpen }) => {
 Product.Placeholder = () => {
   const classes = Styles();
   return (
-    <Grid item xs={12}>
+    <Grid item xs={9}>
       <Paper className={classes.placeholder}></Paper>
+    </Grid>
+  );
+};
+
+const InfoSection = ({ icon, title, body }) => {
+  return (
+    <Grid container style={{ padding: 10, marginBottom: 5 }}>
+      <Grid item xs={2}>
+        {icon}
+      </Grid>
+      <Grid item xs={10}>
+        <h3 style={{ margin: 0, fontSize: "0.875rem", fontWeight: "bold" }}>
+          {title}
+        </h3>
+        <p style={{ margin: 0, fontSize: "0.875rem" }}>{body}</p>
+      </Grid>
     </Grid>
   );
 };
 
 Product.Information = () => {
   const classes = Styles();
+  const sixdaysfromToday = dayjs()
+    .add(6, "day")
+    .toString()
+    .split(" ")
+    .slice(0, 3)
+    .join(" ");
+  const sevendaysfromToday = dayjs()
+    .add(7, "day")
+    .toString()
+    .split(" ")
+    .slice(0, 3)
+    .join(" ");
   return (
     <Grid item xs={3}>
-      <Paper>
-        <div className={classes.information}>
-          <h2 className={classes.inforHeading}>Delivery & Returns</h2>
-        </div>
-        <Divider />
-        <div className={classes.info_delivery}>
-          <h3 style={{ margin: 0, fontSize: "0.875rem", fontWeight: "bold" }}>
-            Elegant Express
-          </h3>
-          <p style={{ margin: 0, fontSize: "0.875rem" }}>
-            Express delivery in main cities
-          </p>
-        </div>
-        <Divider />
-      </Paper>
+      <Grid container spacing={2}>
+        <Grid item>
+          <Paper>
+            <div className={classes.information}>
+              <h2 className={classes.inforHeading}>Delivery & Returns</h2>
+            </div>
+            <Divider />
+            <div className={classes.info_delivery}>
+              <h3
+                style={{ margin: 0, fontSize: "0.875rem", fontWeight: "bold" }}
+              >
+                Elegant Express
+              </h3>
+              <p style={{ margin: 0, fontSize: "0.875rem" }}>
+                Express delivery in main cities
+              </p>
+            </div>
+            <Divider />
+            <InfoSection
+              title="Door Delivery"
+              body={`Shipping is FREE, ready for delivery between ${sixdaysfromToday} & ${sevendaysfromToday} when you order within next 24hrs.`}
+              icon={<FaTruck className={classes.icon} />}
+            />
+            <Divider />
+            <InfoSection
+              title="Return Policy"
+              body="Free 14 days return on all products"
+              icon={<MdAssignmentReturn className={classes.icon} />}
+            />
+            <Divider />
+          </Paper>
+        </Grid>
+        <Grid item style={{ width: "100%" }}>
+          <Paper>
+            <div className={classes.information}>
+              <h2 className={classes.inforHeading}>SELLER INFORMATION</h2>
+            </div>
+            <Divider />
+            <div className={classes.info_delivery}>
+              <h3
+                style={{ margin: 0, fontSize: "0.875rem", fontWeight: "bold" }}
+              >
+                Elegant
+              </h3>
+              <p style={{ margin: 0, fontSize: "0.875rem" }}>
+                100%Positive Seller Score
+              </p>
+            </div>
+          </Paper>
+        </Grid>
+      </Grid>
     </Grid>
   );
 };
