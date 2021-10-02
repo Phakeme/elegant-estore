@@ -1,5 +1,4 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import * as dayjs from "dayjs";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -17,6 +16,7 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 import { MdAddShoppingCart, MdAssignmentReturn } from "react-icons/md";
 import { FaTruck } from "react-icons/fa";
 import logo from "../../img/product-placeholder.svg";
+import NoResultsErr from "../utils/NoResultsErr";
 
 const Styles = makeStyles((theme) => ({
   root: {
@@ -32,7 +32,7 @@ const Styles = makeStyles((theme) => ({
     marginRight: "8px",
   },
   mainPaper: {
-    height: "100%",
+    minHeight: "551px",
   },
   link: {
     "&:hover": {
@@ -80,145 +80,154 @@ const Product = ({ children }) => {
   return <div>{children}</div>;
 };
 
-Product.View = ({ product, handleOpen }) => {
+Product.View = ({ product, handleOpen, productError }) => {
   const classes = Styles();
   return (
     <Paper className={classes.mainPaper} style={{ padding: "16px" }}>
-      <Grid container spacing={2}>
-        <Grid item xs={4}>
-          <Box>
+      {productError.state === false ? (
+        <Grid container spacing={2}>
+          <Grid item xs={4}>
             <Box>
-              <Carousel showThumbs useKeyboardArrows showStatus={false}>
-                {Array.isArray(product.assets) &&
-                  product.assets.map((image, i) => (
-                    <img key={i} src={image.url} alt="product" />
-                  ))}
-              </Carousel>
-            </Box>
-            <Divider />
-            <Box>
-              <h2 style={{ fontSize: "14px", fontWeight: "bold" }}>
-                SHARE THIS PRODUCT
-              </h2>
-              <div style={{ fontSize: "30px" }}>
-                <a
-                  href="https://www.facebook.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={classes.link}
-                >
-                  <RiFacebookCircleFill />
-                </a>
-                <a
-                  href="https://twitter.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={classes.link}
-                >
-                  <AiFillTwitterCircle />
-                </a>
-              </div>
-            </Box>
-          </Box>
-        </Grid>
-        <Grid item xs={8}>
-          <Box>
-            <Box>
-              {product.hasOwnProperty("name") && (
-                <Box>
-                  <Box
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      background: "",
-                      height: "35px",
-                    }}
+              <Box>
+                <Carousel showThumbs useKeyboardArrows showStatus={false}>
+                  {Array.isArray(product.assets) &&
+                    product.assets.map((image, i) => (
+                      <img key={i} src={image.url} alt="product" />
+                    ))}
+                </Carousel>
+              </Box>
+              <Divider />
+              <Box>
+                <h2 style={{ fontSize: "14px", fontWeight: "bold" }}>
+                  SHARE THIS PRODUCT
+                </h2>
+                <div style={{ fontSize: "30px" }}>
+                  <a
+                    href="https://www.facebook.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className={classes.link}
                   >
-                    <Typography variant="h6" component="h2">
-                      <Box fontWeight="fontWeightRegular">{product.name}</Box>
-                    </Typography>
-                  </Box>
-                  <Box style={{ background: "", marginBottom: 10 }}>
-                    <Typography variant="body2" component="h2">
-                      Brand: Elengant
-                    </Typography>
-                    <div style={{ display: "flex", justifuContent: "cent" }}>
-                      <Rating name="no-value" value={null} />{" "}
-                      <Typography variant="body2" component="h2">
-                        (No ratings available)
-                      </Typography>
-                    </div>
-                  </Box>
-                  <Divider />
-                  <Box style={{ padding: "10px 0" }}>
-                    <Typography variant="h4" component="h2">
-                      <Box fontWeight="fontWeightBold">
-                        {product.price.formatted_with_symbol}
-                      </Box>
-                    </Typography>
-                    <Typography variant="body2" component="h2">
-                      + shipping from <em>R60</em> to Edenvale | 1609
-                    </Typography>
-                  </Box>
-                  <Divider />
-                  <Box style={{ padding: "10px 0" }}>
-                    <Typography
-                      gutterBottom
-                      variant="subtitle2"
-                      component="div"
-                    >
-                      <Box fontWeight="fontWeightBold">VARIATION AVAILABLE</Box>
-                    </Typography>
-                    <div className={classes.root}>
-                      {product.variant_groups.map(({ id, options }, i) => (
-                        <div key={id} className={classes.root}>
-                          {options.map(({ id, name }) => (
-                            <Chip key={id} clickable label={`size ${name}`} />
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                    <Button
-                      onClick={handleOpen}
-                      variant="contained"
-                      color="secondary"
-                      size="large"
-                      fullWidth
-                      style={{
-                        color: "white",
-                        margin: "15px 0 10px 0",
-                      }}
-                      startIcon={<MdAddShoppingCart />}
-                    >
-                      Add to cart
-                    </Button>
-                  </Box>
-                  <Divider />
-                  <Box style={{ padding: "10px 0" }}>
-                    <Typography
-                      gutterBottom
-                      variant="subtitle2"
-                      paragraph
-                      component="div"
-                    >
-                      <Box fontWeight="fontWeightBold">PROMOTIONS</Box>
-                    </Typography>
-                    <Typography gutterBottom variant="body1" component="div">
-                      Take R250 off your first Elegant order on the app*
-                    </Typography>
-                    <Typography gutterBottom variant="body1" component="div">
-                      Free Delivery on all products*
-                    </Typography>
-                    <Typography gutterBottom variant="body1" component="div">
-                      Free Returns*
-                    </Typography>
-                  </Box>
-                </Box>
-              )}
+                    <RiFacebookCircleFill />
+                  </a>
+                  <a
+                    href="https://twitter.com/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className={classes.link}
+                  >
+                    <AiFillTwitterCircle />
+                  </a>
+                </div>
+              </Box>
             </Box>
-          </Box>
+          </Grid>
+          <Grid item xs={8}>
+            <Box>
+              <Box>
+                {product.hasOwnProperty("name") && (
+                  <Box>
+                    <Box
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        background: "",
+                        height: "35px",
+                      }}
+                    >
+                      <Typography variant="h6" component="h2">
+                        <Box fontWeight="fontWeightRegular">{product.name}</Box>
+                      </Typography>
+                    </Box>
+                    <Box style={{ background: "", marginBottom: 10 }}>
+                      <Typography variant="body2" component="h2">
+                        Brand: Elengant
+                      </Typography>
+                      <div style={{ display: "flex", justifuContent: "cent" }}>
+                        <Rating name="no-value" value={null} />{" "}
+                        <Typography variant="body2" component="h2">
+                          (No ratings available)
+                        </Typography>
+                      </div>
+                    </Box>
+                    <Divider />
+                    <Box style={{ padding: "10px 0" }}>
+                      <Typography variant="h4" component="h2">
+                        <Box fontWeight="fontWeightBold">
+                          {product.price.formatted_with_symbol}
+                        </Box>
+                      </Typography>
+                      <Typography variant="body2" component="h2">
+                        + shipping from <em>R60</em> to Edenvale | 1609
+                      </Typography>
+                    </Box>
+                    <Divider />
+                    <Box style={{ padding: "10px 0" }}>
+                      <Typography
+                        gutterBottom
+                        variant="subtitle2"
+                        component="div"
+                      >
+                        <Box fontWeight="fontWeightBold">
+                          VARIATION AVAILABLE
+                        </Box>
+                      </Typography>
+                      <div className={classes.root}>
+                        {product.variant_groups.map(({ id, options }, i) => (
+                          <div key={id} className={classes.root}>
+                            {options.map(({ id, name }) => (
+                              <Chip key={id} clickable label={`size ${name}`} />
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                      <Button
+                        onClick={handleOpen}
+                        variant="contained"
+                        color="secondary"
+                        size="large"
+                        fullWidth
+                        style={{
+                          color: "white",
+                          margin: "15px 0 10px 0",
+                        }}
+                        startIcon={<MdAddShoppingCart />}
+                      >
+                        Add to cart
+                      </Button>
+                    </Box>
+                    <Divider />
+                    <Box style={{ padding: "10px 0" }}>
+                      <Typography
+                        gutterBottom
+                        variant="subtitle2"
+                        paragraph
+                        component="div"
+                      >
+                        <Box fontWeight="fontWeightBold">PROMOTIONS</Box>
+                      </Typography>
+                      <Typography gutterBottom variant="body1" component="div">
+                        Take R250 off your first Elegant order on the app*
+                      </Typography>
+                      <Typography gutterBottom variant="body1" component="div">
+                        Free Delivery on all products*
+                      </Typography>
+                      <Typography gutterBottom variant="body1" component="div">
+                        Free Returns*
+                      </Typography>
+                    </Box>
+                  </Box>
+                )}
+              </Box>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
+      ) : (
+        <NoResultsErr
+          tipOne="Something went wrong."
+          tipTwo={productError.message}
+        />
+      )}
     </Paper>
   );
 };
