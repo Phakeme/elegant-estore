@@ -25,14 +25,20 @@ function App() {
   const [paymentError, SetPaymentError] = useState(false);
   const [product, setProduct] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [isCartUpdating, SetIsCartUpdating] = useState({
+  const [productError, setProductError] = useState({
+    state: false,
+    message: "",
+  });
+  const [isCartUpdating, setIsCartUpdating] = useState({
     state: true,
     name: "",
   });
 
   useEffect(() => {
+    setLoading(true);
     commerce.cart.retrieve().then((cart) => setCart(cart));
     commerce.products.list().then((product) => {
+      setLoading(false);
       setProducts(product.data, console.log(product.data, "product.data"));
     });
   }, []);
@@ -40,6 +46,7 @@ function App() {
   const getProduct = (id) => {
     setLoading(true);
     setProduct(false);
+    setProductError({ state: false });
     commerce.products
       .retrieve(id)
       .then((product) => {
@@ -49,7 +56,8 @@ function App() {
       })
       .catch(({ data }) => {
         setLoading(false);
-        // console.error(data);
+        setProductError({ state: true, message: data.error.message });
+        // console.error(data, "DATA");
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
@@ -66,11 +74,18 @@ function App() {
   };
 
   const addToCart = (productId, vgrpId, optnId, name) => {
-    SetIsCartUpdating({ state: true, name });
-    commerce.cart.add(productId, 1, { [vgrpId]: optnId }).then(({ cart }) => {
-      setCart(cart, console.log(cart, "AddToCart Cart"));
-      SetIsCartUpdating({ state: false, name: "" });
-    });
+    setLoading(true);
+    setIsCartUpdating({ state: true, name });
+    commerce.cart
+      .add(productId, 1, { [vgrpId]: optnId })
+      .then(({ cart }) => {
+        setLoading(false);
+        setCart(cart, console.log(cart, "AddToCart Cart"));
+        setIsCartUpdating({ state: false, name: "" });
+      })
+      .catch(({ data }) => {
+        setLoading(false);
+      });
   };
 
   const removeFromCart = (id) => {
@@ -80,10 +95,10 @@ function App() {
   };
 
   const decrementCart = (id, qty, name) => {
-    SetIsCartUpdating({ state: true, name });
+    setIsCartUpdating({ state: true, name });
     commerce.cart.update(id, { quantity: qty }).then(({ cart }) => {
       setCart(cart, console.log(cart, "removeCart"));
-      SetIsCartUpdating({ state: false, name: "" });
+      setIsCartUpdating({ state: false, name: "" });
     });
   };
 
@@ -141,6 +156,8 @@ function App() {
         <Route path="/product/:slug/:id" exact>
           <ProductContainer
             cart={cart}
+            loading={loading}
+            productError={productError}
             getProduct={getProduct}
             product={product}
             addToCart={addToCart}
