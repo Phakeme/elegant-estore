@@ -7,7 +7,7 @@ import {
   CurrentPath,
 } from "../../Components";
 import Modal from "@material-ui/core/Modal";
-import Divider from "@material-ui/core/Divider";
+import Grid from "@material-ui/core/Grid";
 
 const ProductContainer = ({
   cart,
@@ -37,20 +37,34 @@ const ProductContainer = ({
 
   return (
     <GlobalContainer>
-      {product ? (
-        <section style={{ marginTop: 76 }}>
-          <CurrentPath />
-          <Product product={product} handleClose={handleClose}>
-            <Product.View product={product} handleOpen={handleOpen} />
+      <section style={{ margin: "76px 0 16px 0" }}>
+        <CurrentPath />
+        <Grid container spacing={2}>
+          <Grid item xs={9}>
+            {product ? (
+              <Product product={product} handleClose={handleClose}>
+                <Product.View product={product} handleOpen={handleOpen} />
+              </Product>
+            ) : (
+              <section>
+                {/* <CurrentPath /> */}
+                <Product.Placeholder />
+              </section>
+            )}
+          </Grid>
+          <Grid item xs={3}>
             <Product.Information></Product.Information>
-          </Product>
-        </section>
-      ) : (
-        <section style={{ margin: "76px 0 16px 0" }}>
-          <CurrentPath />
-          <Product.Placeholder />
-        </section>
-      )}
+          </Grid>
+        </Grid>
+      </section>
+
+      {/* // : ( //{" "}
+      <section style={{ margin: "76px 0 16px 0" }}>
+        // <CurrentPath />
+        // <Product.Placeholder />
+        //{" "}
+      </section>
+      // ) } */}
       <Modal
         open={open}
         onClose={handleClose}

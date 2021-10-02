@@ -24,6 +24,7 @@ function App() {
   const [paymentResults, SetPaymentResults] = useState(false);
   const [paymentError, SetPaymentError] = useState(false);
   const [product, setProduct] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [isCartUpdating, SetIsCartUpdating] = useState({
     state: true,
     name: "",
@@ -37,11 +38,19 @@ function App() {
   }, []);
 
   const getProduct = (id) => {
+    setLoading(true);
     setProduct(false);
-    commerce.products.retrieve(id).then((product) => {
-      setProduct(product);
-      // setRecentlyViewed((oldArray) => [...oldArray, product]);
-    });
+    commerce.products
+      .retrieve(id)
+      .then((product) => {
+        setProduct(product);
+        setLoading(false);
+        // setRecentlyViewed((oldArray) => [...oldArray, product]);
+      })
+      .catch(({ data }) => {
+        setLoading(false);
+        // console.error(data);
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
@@ -124,7 +133,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Header cart={cart} searchProducts={searchProducts} />
+      <Header loading={loading} cart={cart} searchProducts={searchProducts} />
       <Switch>
         <Route exact path="/">
           <HomeContainer products={products} />
