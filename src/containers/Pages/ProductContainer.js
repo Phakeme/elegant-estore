@@ -14,7 +14,8 @@ const ProductContainer = ({
   addToCart,
   decrementCart,
   getProduct,
-  products,
+  productError,
+  loading,
   product,
   isCartUpdating,
 }) => {
@@ -41,13 +42,16 @@ const ProductContainer = ({
         <CurrentPath />
         <Grid container spacing={2}>
           <Grid item xs={9}>
-            {product ? (
+            {!loading ? (
               <Product product={product} handleClose={handleClose}>
-                <Product.View product={product} handleOpen={handleOpen} />
+                <Product.View
+                  product={product}
+                  productError={productError}
+                  handleOpen={handleOpen}
+                />
               </Product>
             ) : (
               <section>
-                {/* <CurrentPath /> */}
                 <Product.Placeholder />
               </section>
             )}
@@ -57,14 +61,6 @@ const ProductContainer = ({
           </Grid>
         </Grid>
       </section>
-
-      {/* // : ( //{" "}
-      <section style={{ margin: "76px 0 16px 0" }}>
-        // <CurrentPath />
-        // <Product.Placeholder />
-        //{" "}
-      </section>
-      // ) } */}
       <Modal
         open={open}
         onClose={handleClose}
