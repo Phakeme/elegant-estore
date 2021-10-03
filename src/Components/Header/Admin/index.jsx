@@ -101,7 +101,7 @@ const Admin = ({ cart }) => {
           }}
           onMouseEnter={() => setLoginOpen(true)}
           onMouseLeave={() => setLoginOpen(false)}
-          // onClick={() => setLoginOpen(!loginOpen)}
+          onClick={() => setLoginOpen(!loginOpen)}
         >
           <label>
             <span>
