@@ -22,14 +22,12 @@ const Banner = ({ products, title, numOfProds, xs, getProduct }) => {
         {title}
       </Typography>
       {numOfProds > 6 && (
-        <>
-          <div style={{ marginBottom: 10 }}>
-            <p style={{ paddingBottom: 20, margin: 0 }}>
-              {products.length} product(s) found
-            </p>
-            <Divider />
-          </div>
-        </>
+        <div style={{ marginBottom: 10 }}>
+          <p style={{ paddingBottom: 20, margin: 0 }}>
+            {products.length} product(s) found
+          </p>
+          <Divider />
+        </div>
       )}
       <Grid container spacing={1}>
         {Array.isArray(products)
