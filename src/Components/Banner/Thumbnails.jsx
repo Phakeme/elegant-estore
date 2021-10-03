@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
-const Thumbnails = ({ thumbnails }) => {
+const Thumbnails = ({ thumbnails, searchProducts }) => {
   return (
     <Paper style={{ height: 173, padding: 15, marginBottom: 16 }}>
       <Grid container spacing={0} style={{ height: "100%" }}>
         {thumbnails.map(({ icon, path, title }, index) => (
-          <Grid key={index} item xs={2}>
+          <Grid key={index} item xs={2} onClick={() => searchProducts(path)}>
             <Link to={`/search/${path}`}>
               <div
                 style={{
