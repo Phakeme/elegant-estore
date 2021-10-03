@@ -40,7 +40,7 @@ const Hero = ({ children }) => {
   return <div className={classes.root}>{children}</div>;
 };
 
-Hero.Categories = ({ categories }) => {
+Hero.Categories = ({ categories, searchProducts }) => {
   const classes = Styles();
   return (
     <div className={classes.categories}>
@@ -49,35 +49,37 @@ Hero.Categories = ({ categories }) => {
           {Array.isArray(categories) &&
             categories.map(({ name, icon, path }, i) => (
               <Link to={`/search/${path}`} key={i}>
-                <ListItem
-                  button
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    paddingLeft: "8px",
-                    height: "32px",
-                  }}
-                  className={classes.link}
-                >
-                  <span
-                    style={{
-                      width: "20px",
-                      fontSize: "20px",
-                    }}
-                  >
-                    {icon}
-                  </span>
-                  <span
+                <div onClick={() => searchProducts(path)}>
+                  <ListItem
+                    button
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      fontSize: ".80rem",
-                      padding: " 0 0 4px 4px",
+                      paddingLeft: "8px",
+                      height: "32px",
                     }}
+                    className={classes.link}
                   >
-                    {name}
-                  </span>
-                </ListItem>
+                    <span
+                      style={{
+                        width: "20px",
+                        fontSize: "20px",
+                      }}
+                    >
+                      {icon}
+                    </span>
+                    <span
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        fontSize: ".80rem",
+                        padding: " 0 0 4px 4px",
+                      }}
+                    >
+                      {name}
+                    </span>
+                  </ListItem>
+                </div>
               </Link>
             ))}
         </List>
