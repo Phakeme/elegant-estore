@@ -8,6 +8,11 @@ import searchIcon from "../../img/binoculars.41e1bc35.svg";
 const Styles = makeStyles((theme) => ({
   root: {
     marginTop: `${76}px`,
+    marginBottom: 16,
+    minHeight: "50vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   btn: {
     color: theme.palette.primary.main,
@@ -24,11 +29,9 @@ const Query = ({ children, sortedProducts, query }) => {
   return (
     <section className={classes.root}>
       {sortedProducts.length ? (
-        <div>{children}</div>
+        <div style={{ width: "100%" }}>{children}</div>
       ) : (
-        <div
-          style={{ minHeight: 300, textAlign: "center", marginTop: `${110}px` }}
-        >
+        <div style={{ minHeight: 300, textAlign: "center", marginTop: "50px" }}>
           <div
             style={{
               background: "white",
