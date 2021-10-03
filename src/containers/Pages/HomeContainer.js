@@ -14,11 +14,14 @@ import categories from "../../Data/categories";
 import thumbnails from "../../Data/thumbnails";
 import GlobalContainer from "../../Components/utils/Container";
 
-const HomeContainer = ({ products }) => {
+const HomeContainer = ({ products, searchProducts }) => {
   return (
     <GlobalContainer>
-      <Hero>
-        <Hero.Categories categories={categories} />
+      <Hero searchProducts={searchProducts}>
+        <Hero.Categories
+          categories={categories}
+          searchProducts={searchProducts}
+        />
         <Hero.ImageSlide>
           <HeroCarousel />
         </Hero.ImageSlide>
@@ -43,12 +46,12 @@ const HomeContainer = ({ products }) => {
           />
         </Hero.InformativeLinks>
       </Hero>
-      <Top4Links />
+      <Top4Links searchProducts={searchProducts} />
       <Banner products={products} title="Our Top Sellers" />
-      <DoubleBanner />
+      <DoubleBanner searchProducts={searchProducts} />
       <NewArrivalsBanner products={products} title="New Arrivals" />
-      <Thumbnails thumbnails={thumbnails} />
-      <SingleBanner />
+      <Thumbnails thumbnails={thumbnails} searchProducts={searchProducts} />
+      <SingleBanner searchProducts={searchProducts} />
     </GlobalContainer>
   );
 };
