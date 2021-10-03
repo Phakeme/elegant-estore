@@ -106,37 +106,40 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
                 alignItems: "center",
                 justifyContent: "center",
                 textAlign: "center",
+                minHeight: "50vh",
                 marginBottom: 40,
               }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: "white",
-                  width: "150px",
-                  height: "150px",
-                  margin: "auto",
-                  borderRadius: 150,
-                }}
-              >
-                <GiShoppingCart fontSize={100} />
-              </div>
               <div>
-                <h3>Your cart is empty!</h3>
-              </div>
-              <div>
-                <Link to="/">
-                  <Button
-                    style={{ color: "white" }}
-                    variant="contained"
-                    size="large"
-                    color="secondary"
-                  >
-                    Start Shopping
-                  </Button>
-                </Link>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background: "white",
+                    width: "150px",
+                    height: "150px",
+                    margin: "auto",
+                    borderRadius: 150,
+                  }}
+                >
+                  <GiShoppingCart fontSize={100} />
+                </div>
+                <div>
+                  <h3>Your cart is empty!</h3>
+                </div>
+                <div>
+                  <Link to="/">
+                    <Button
+                      style={{ color: "white" }}
+                      variant="contained"
+                      size="large"
+                      color="secondary"
+                    >
+                      Start Shopping
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -185,7 +188,7 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
               </Typography>
             </div>
           </div>
-          <div style={{ minHeight: "110px" }}>
+          <div style={{ minHeight: "50vh" }}>
             <FormGroup>
               {cart.line_items.map(
                 (
@@ -220,7 +223,7 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
                   Total: {cart.subtotal.formatted_with_symbol}
                 </Typography>
                 <Typography variant="body1" component="p" align="right">
-                  Shipping fees not included yet
+                  Shipping fees included{" "}
                 </Typography>
                 <Paper style={{ padding: 10, marginTop: 15 }}>
                   <div className={classes.actionBtns}>
