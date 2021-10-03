@@ -65,7 +65,7 @@ export default function Header({ cart, searchProducts, loading }) {
                     display: "flex",
                     width: "27%",
                     height: "40px",
-                    marginRight: "17px",
+                    marginRight: "25px",
                   }}
                 >
                   <Link to="/">
