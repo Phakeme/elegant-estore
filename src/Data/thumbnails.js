@@ -6,7 +6,7 @@ const thumbnails = [
   },
   {
     title: "Men's jackets",
-    path: "men",
+    path: "men jacket",
     icon: "./images/thumbnails/2007-__jackets_dt_Thumbnails-13.jpg",
   },
   {
