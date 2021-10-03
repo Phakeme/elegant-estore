@@ -19,8 +19,8 @@ function App() {
   const [checkoutData, setCheckoutData] = useState(false);
   const [checkoutToken] = useState(false);
   const [products, setProducts] = useState(null);
-  const [sortedProducts, SetSortedProducts] = useState([]);
-  const [query, SetQuery] = useState("");
+  const [sortedProducts, setSortedProducts] = useState([]);
+  const [query, setQuery] = useState("");
   const [paymentResults, SetPaymentResults] = useState(false);
   const [paymentError, SetPaymentError] = useState(false);
   const [product, setProduct] = useState(false);
@@ -63,14 +63,15 @@ function App() {
   };
 
   const searchProducts = (query) => {
+    if (!products) return;
     let currProd = [];
     products.forEach((res) => {
       if (res.seo.title && res.name.includes(query)) {
         currProd.push(res);
       }
     });
-    SetSortedProducts(currProd);
-    SetQuery(query);
+    setSortedProducts(currProd);
+    setQuery(query);
   };
 
   const addToCart = (productId, vgrpId, optnId, name) => {
@@ -151,7 +152,7 @@ function App() {
       <Header loading={loading} cart={cart} searchProducts={searchProducts} />
       <Switch>
         <Route exact path="/">
-          <HomeContainer products={products} />
+          <HomeContainer products={products} searchProducts={searchProducts} />
         </Route>
         <Route path="/product/:slug/:id" exact>
           <ProductContainer
