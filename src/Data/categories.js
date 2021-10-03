@@ -21,7 +21,7 @@ const categories = [
     icon: <GrRestroomMen />,
   },
   {
-    name: "Kids & Babies",
+    name: "Kids & babies",
     path: "kids",
     icon: <GiBabyFace />,
   },
