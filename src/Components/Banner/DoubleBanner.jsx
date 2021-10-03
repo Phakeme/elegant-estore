@@ -4,12 +4,12 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Styles from "./styles";
 
-const DoubleBanner = () => {
+const DoubleBanner = ({ searchProducts }) => {
   const classes = Styles();
   return (
     <Paper className={classes.paper}>
       <Grid container spacing={0}>
-        <Grid item xs={6}>
+        <Grid item xs={6} onClick={() => searchProducts("women")}>
           <Link to="/search/women">
             <div
               style={{
@@ -22,7 +22,7 @@ const DoubleBanner = () => {
             ></div>
           </Link>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} onClick={() => searchProducts("men")}>
           <Link to="/search/men">
             <div
               style={{
