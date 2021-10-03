@@ -5,7 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core";
 
-const QuickLink = ({ icon, title, path }) => {
+const QuickLink = ({ icon, title, path, searchProducts }) => {
   const Styles = makeStyles((theme) => ({
     root: {
       height: 56,
@@ -21,7 +21,7 @@ const QuickLink = ({ icon, title, path }) => {
   }));
   const classes = Styles();
   return (
-    <Grid item xs={3}>
+    <Grid item xs={3} onClick={() => searchProducts(path)}>
       <Link to={`/search/${path}`}>
         <Paper className={classes.root}>
           <Grid container alignItems="center">
