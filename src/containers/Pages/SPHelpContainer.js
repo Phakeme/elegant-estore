@@ -4,11 +4,14 @@ import categories from "../../Data/categories";
 import faq from "../../Data/faq";
 import { Hero } from "../../Components";
 
-const FaqContainer = () => {
+const FaqContainer = ({ searchProducts }) => {
   return (
     <GlobalContainer>
       <SPHelp qaItems={faq}>
-        <Hero.Categories categories={categories} />
+        <Hero.Categories
+          categories={categories}
+          searchProducts={searchProducts}
+        />
       </SPHelp>
     </GlobalContainer>
   );
