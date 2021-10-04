@@ -197,7 +197,7 @@ function App() {
           />
         </Route>
         <Route path="/sp-help">
-          <SPHelpContainer />
+          <SPHelpContainer searchProducts={searchProducts} />
         </Route>
         <Route path="*">
           <Route render={() => <Redirect to="/" />} />
