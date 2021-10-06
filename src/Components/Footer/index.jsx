@@ -16,9 +16,6 @@ const Footer = () => {
       color: "white",
       padding: 30,
       width: "100%",
-      "@media (max-width: 1057px)": {
-        width: "1040px",
-      },
     },
     inner: {
       margin: "auto",
