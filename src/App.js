@@ -37,10 +37,16 @@ function App() {
   useEffect(() => {
     setLoading(true);
     commerce.cart.retrieve().then((cart) => setCart(cart));
-    commerce.products.list().then((product) => {
-      setLoading(false);
-      setProducts(product.data, console.log(product.data, "product.data"));
-    });
+    commerce.products
+      .list()
+      .then((product) => {
+        setLoading(false);
+        setProducts(product.data, console.log(product.data, "product.data"));
+      })
+      .catch(({ data }) => {
+        setLoading(false);
+        console.error(data, "DATA");
+      });
   }, []);
 
   const getProduct = (id) => {
