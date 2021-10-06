@@ -16,6 +16,9 @@ const Styles = makeStyles((theme) => ({
     "@media (max-width: 1280px)": {
       gridTemplateColumns: "1fr 5fr",
     },
+    "@media (max-width: 1030px)": {
+      gridTemplateColumns: "1fr",
+    },
   },
   paper: {
     height: "100%",
@@ -30,6 +33,11 @@ const Styles = makeStyles((theme) => ({
   },
   informativeLinks: {
     "@media (max-width: 1280px)": {
+      display: "none",
+    },
+  },
+  categories: {
+    "@media (max-width: 1030px)": {
       display: "none",
     },
   },
