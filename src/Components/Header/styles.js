@@ -23,4 +23,9 @@ export default makeStyles((theme) => ({
   info: {
     minWidth: "200px",
   },
+  search: {
+    "@media (max-width: 959px)": {
+      display: "none",
+    },
+  },
 }));
