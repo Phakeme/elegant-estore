@@ -36,141 +36,122 @@ const Admin = ({ cart }) => {
   const classes = styles();
 
   return (
-    <Box
+    <Grid
+      container
+      alignItems="center"
       style={{
-        height: "40px",
-        width: "280px",
+        height: "100%",
+        textAlign: "center",
       }}
     >
+      {/* -------------- HELP LINK AND SUBLINKS -------------- */}
       <Grid
-        container
-        style={{
-          height: "100%",
-          alignItems: "center",
-          textAlign: "center",
-        }}
+        className={classes.link + " " + classes.adminBtn}
+        item
+        xs={4}
+        onMouseEnter={() => setHelpOpen(true)}
+        onMouseLeave={() => setHelpOpen(false)}
+        onClick={() => setHelpOpen(!helpOpen)}
       >
-        {/* -------------- HELP LINK AND SUBLINKS -------------- */}
-        <Grid
-          className={classes.link + " " + classes.adminBtn}
-          item
-          xs={4}
-          onMouseEnter={() => setHelpOpen(true)}
-          onMouseLeave={() => setHelpOpen(false)}
-          onClick={() => setHelpOpen(!helpOpen)}
-        >
-          <Link to="/sp-help">
-            <label>
-              <span>
-                <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />{" "}
-                Help
-              </span>
-            </label>
-          </Link>
-        </Grid>
-        {/* -------------- CART LINK -------------- */}
-        <Grid item xs={4} className={classes.link}>
-          <Link to="/cart">
-            <Box
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "100%",
-              }}
-            >
-              <span>
-                <Badge badgeContent={cart.total_items} color="secondary">
-                  <FaShoppingCart fontSize={20} />
-                </Badge>
-              </span>
-
-              <span style={{ marginLeft: "10px" }}>Cart</span>
-            </Box>
-          </Link>
-        </Grid>
-        {/* -------------- LOGIN AND SUBLINKS -------------- */}
-        <Grid
-          className={classes.link}
-          item
-          xs={4}
-          style={{
-            height: "100%",
-            display: "grid",
-            alignItems: "center",
-          }}
-          onMouseEnter={() => setLoginOpen(true)}
-          onMouseLeave={() => setLoginOpen(false)}
-          onClick={() => setLoginOpen(!loginOpen)}
-        >
+        <Link to="/sp-help">
           <label>
             <span>
-              <FaRegUser fontSize={20} style={{ marginRight: 5 }} /> Login{" "}
-              {!loginOpen ? <BiChevronDown /> : <BiChevronUp />}
+              <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />{" "}
+              Help
             </span>
           </label>
-          {loginOpen && (
-            <Paper
-              elevation={5}
+        </Link>
+      </Grid>
+      {/* -------------- CART LINK -------------- */}
+      <Grid item xs={4} className={classes.link}>
+        <Link to="/cart">
+          <Box>
+            <span>
+              <Badge badgeContent={cart.total_items} color="secondary">
+                <FaShoppingCart fontSize={20} />
+              </Badge>
+            </span>
+
+            <span style={{ marginLeft: "10px" }}>Cart</span>
+          </Box>
+        </Link>
+      </Grid>
+      {/* -------------- LOGIN AND SUBLINKS -------------- */}
+      <Grid
+        className={classes.link}
+        item
+        xs={4}
+        onMouseEnter={() => setLoginOpen(true)}
+        onMouseLeave={() => setLoginOpen(false)}
+        onClick={() => setLoginOpen(!loginOpen)}
+      >
+        <label>
+          <span>
+            <FaRegUser fontSize={20} style={{ marginRight: 5 }} /> Login{" "}
+            {!loginOpen ? <BiChevronDown /> : <BiChevronUp />}
+          </span>
+        </label>
+        {loginOpen && (
+          <Paper
+            elevation={5}
+            style={{
+              position: "absolute",
+              marginTop: "1px",
+              padding: "10px",
+              width: "206px",
+              height: "235px",
+              right: "0px",
+              top: "50px",
+            }}
+          >
+            <Link
+              style={{ fontWeight: 500, marginBottom: "0px" }}
+              to="/sp-help"
+            >
+              <Button
+                variant="contained"
+                color="secondary"
+                size="medium"
+                fullWidth
+                style={{
+                  color: "white",
+                }}
+              >
+                <span>Account</span>
+              </Button>
+            </Link>
+            <span>OR</span>
+            <Link
+              to="/sp-help"
               style={{
-                position: "absolute",
-                marginTop: "1px",
-                padding: "10px",
-                width: "206px",
-                height: "235px",
-                right: "0px",
-                top: "50px",
+                fontSize: "0.875rem",
+                fontWeight: "bold",
+                marginBottom: "16px",
+                marginTop: "10px",
               }}
             >
-              <Link
-                style={{ fontWeight: 500, marginBottom: "0px" }}
-                to="/sp-help"
+              <Button
+                size="medium"
+                variant="outlined"
+                color="secondary"
+                fullWidth
               >
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  size="medium"
-                  fullWidth
-                  style={{
-                    color: "white",
-                  }}
-                >
-                  <span>Account</span>
-                </Button>
-              </Link>
-              <span>OR</span>
-              <Link
-                to="/sp-help"
-                style={{
-                  fontSize: "0.875rem",
-                  fontWeight: "bold",
-                  marginBottom: "16px",
-                  marginTop: "10px",
-                }}
-              >
-                <Button
-                  size="medium"
-                  variant="outlined"
-                  color="secondary"
-                  fullWidth
-                >
-                  <span style={{ fontWeight: 700 }}>CREATE ACCOUNT</span>
-                </Button>
-              </Link>
-              <Divider />
-              <Box
-                style={{
-                  marginTop: "16px",
-                  textAlign: "left",
-                }}
-              >
-                <DropDownLink />
-              </Box>
-            </Paper>
-          )}
-        </Grid>
+                <span style={{ fontWeight: 700 }}>CREATE ACCOUNT</span>
+              </Button>
+            </Link>
+            <Divider />
+            <Box
+              style={{
+                marginTop: "16px",
+                textAlign: "left",
+              }}
+            >
+              <DropDownLink />
+            </Box>
+          </Paper>
+        )}
       </Grid>
-    </Box>
+    </Grid>
   );
 };
 
