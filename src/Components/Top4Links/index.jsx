@@ -7,8 +7,9 @@ import { makeStyles } from "@material-ui/core";
 
 const Styles = makeStyles((theme) => ({
   root: {
+    margin: "0px 0px 16px -8px",
     "@media (max-width: 960px)": {
-      margin: "0px 0px 0px -8px",
+      margin: "0px 0px 16px -8px",
     },
   },
   icon: {},
@@ -18,19 +19,17 @@ const Styles = makeStyles((theme) => ({
 const QuickLinks = ({ searchProducts }) => {
   const classes = Styles();
   return (
-    <section>
-      <Grid container spacing={2} className={classes.root}>
-        {quicklinks.map(({ title, icon, path }, index) => (
-          <QuickLink
-            key={index}
-            title={title}
-            icon={icon}
-            path={path}
-            searchProducts={searchProducts}
-          />
-        ))}
-      </Grid>
-    </section>
+    <Grid container spacing={2} className={classes.root}>
+      {quicklinks.map(({ title, icon, path }, index) => (
+        <QuickLink
+          key={index}
+          title={title}
+          icon={icon}
+          path={path}
+          searchProducts={searchProducts}
+        />
+      ))}
+    </Grid>
   );
 };
 
