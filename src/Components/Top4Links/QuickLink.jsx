@@ -12,7 +12,7 @@ const QuickLink = ({ icon, title, path, searchProducts }) => {
       justifyContent: "center",
       height: 56,
       padding: 5,
-      marginBottom: 16,
+      // marginBottom: 16,
       "@media (max-width: 960px)": {
         // background: "red",
         padding: "0 8px",
