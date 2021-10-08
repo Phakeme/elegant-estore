@@ -19,6 +19,9 @@ const Styles = makeStyles((theme) => ({
     "@media (max-width: 1030px)": {
       gridTemplateColumns: "1fr",
     },
+    "@media (max-width: 960px)": {
+      marginTop: `${76 + 8 + 35}px`,
+    },
   },
   paper: {
     height: "100%",
