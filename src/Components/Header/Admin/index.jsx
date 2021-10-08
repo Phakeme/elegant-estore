@@ -27,6 +27,11 @@ const styles = makeStyles((theme) => ({
   badge: {
     color: theme.palette.primary.main,
   },
+  textLabel: {
+    "@media (max-width: 600px)": {
+      display: "none",
+    },
+  },
 }));
 
 const Admin = ({ cart }) => {
@@ -54,11 +59,11 @@ const Admin = ({ cart }) => {
         onClick={() => setHelpOpen(!helpOpen)}
       >
         <Link to="/sp-help">
-          <label>
+          <label className={classes.textLabel}>
             <span>
-              <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />{" "}
-              Help
+              <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />
             </span>
+            <span>Help</span>
           </label>
         </Link>
       </Grid>
@@ -71,8 +76,9 @@ const Admin = ({ cart }) => {
                 <FaShoppingCart fontSize={20} />
               </Badge>
             </span>
-
-            <span style={{ marginLeft: "10px" }}>Cart</span>
+            <span style={{ marginLeft: "10px" }} className={classes.textLabel}>
+              Cart
+            </span>
           </Box>
         </Link>
       </Grid>
@@ -87,7 +93,10 @@ const Admin = ({ cart }) => {
       >
         <label>
           <span>
-            <FaRegUser fontSize={20} style={{ marginRight: 5 }} /> Login{" "}
+            <FaRegUser fontSize={20} style={{ marginRight: 5 }} />
+          </span>
+          <span className={classes.textLabel}>Login</span>
+          <span className={classes.textLabel}>
             {!loginOpen ? <BiChevronDown /> : <BiChevronUp />}
           </span>
         </label>
