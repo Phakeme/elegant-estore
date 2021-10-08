@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { fade } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import Box from "@material-ui/core/Box";
@@ -20,7 +18,7 @@ const Search = ({ searchProducts }) => {
 
   const search = () => {
     if (query.length > 0) {
-      console.log(query);
+      // console.log(query);
       setQuery("");
       searchProducts(query);
       history.push(`/search/${query}`);
@@ -38,21 +36,10 @@ const Search = ({ searchProducts }) => {
       flexGrow={1}
       style={{
         display: "flex",
-        width: "100%",
-        marginLeft: 8,
       }}
     >
-      <Grid item style={{ width: "100%" }}>
-        <div
-          style={{
-            position: "relative",
-            border: "1px solid #c8c8c8",
-            borderRadius: "3px",
-            backgroundColor: fade("#fff", 0.15),
-            marginLeft: 0,
-            height: "100%",
-          }}
-        >
+      <Box flexGrow={1}>
+        <div className={classes.searchBox}>
           <div className={classes.searchIcon}>
             <SearchIcon />
           </div>
@@ -73,14 +60,13 @@ const Search = ({ searchProducts }) => {
             }}
           />
         </div>
-      </Grid>
-      <Grid item>
+      </Box>
+      <Box className={classes.searchBtn}>
         <Button
           style={{
-            height: "40px",
+            height: "95%",
             width: "100%",
             color: "white",
-            marginLeft: "10px",
           }}
           variant="contained"
           color="secondary"
@@ -88,7 +74,7 @@ const Search = ({ searchProducts }) => {
         >
           Search
         </Button>
-      </Grid>
+      </Box>
     </Box>
   );
 };
