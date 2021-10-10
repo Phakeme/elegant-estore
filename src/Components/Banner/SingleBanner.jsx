@@ -7,23 +7,25 @@ import Styles from "./styles";
 const SingleBanner = ({ searchProducts }) => {
   const classes = Styles();
   return (
-    <Paper className={classes.paper}>
-      <Grid container spacing={0}>
-        <Grid item xs={12} onClick={() => searchProducts("women")}>
-          <Link to="/search/women">
-            <div
-              style={{
-                height: 258,
-                backgroundImage:
-                  "url(./images/doubleBanner/DT-Double-banner-Women-shoes.jpg)",
-                backgroundPosition: "right",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-          </Link>
+    <div className={classes.fluidBox}>
+      <Paper className={classes.paper}>
+        <Grid container spacing={0}>
+          <Grid item xs={12} onClick={() => searchProducts("women")}>
+            <Link to="/search/women">
+              <div
+                style={{
+                  height: 258,
+                  backgroundImage:
+                    "url(./images/doubleBanner/DT-Double-banner-Women-shoes.jpg)",
+                  backgroundPosition: "right",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+            </Link>
+          </Grid>
         </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </div>
   );
 };
 
