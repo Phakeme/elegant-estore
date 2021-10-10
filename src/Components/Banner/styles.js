@@ -5,6 +5,7 @@ export default makeStyles((theme) => ({
   paper: {
     marginBottom: "16px",
     width: "100%",
+    minWidth: "960px",
     minHeight: "173px",
     padding: "10px",
   },
@@ -28,5 +29,9 @@ export default makeStyles((theme) => ({
     "@media (max-width: 1280px)": {
       height: 207,
     },
+  },
+  fluidBox: {
+    overflow: "auto",
+    whiteSpace: "nowrap",
   },
 }));

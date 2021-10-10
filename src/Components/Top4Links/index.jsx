@@ -9,7 +9,7 @@ const Styles = makeStyles((theme) => ({
   root: {
     margin: "0px 0px 16px -8px",
     "@media (max-width: 960px)": {
-      margin: "0px 0px 16px -8px",
+      display: "none",
     },
   },
   icon: {},

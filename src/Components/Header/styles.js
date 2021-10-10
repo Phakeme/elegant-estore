@@ -30,7 +30,7 @@ export default makeStyles((theme) => ({
     },
   },
   appBar: {
-    "@media (max-width: 959px)": {
+    "@media (max-width: 960px)": {
       height: "110px",
     },
   },
