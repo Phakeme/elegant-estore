@@ -7,36 +7,38 @@ import Styles from "./styles";
 const DoubleBanner = ({ searchProducts }) => {
   const classes = Styles();
   return (
-    <Paper className={classes.paper}>
-      <Grid container spacing={0}>
-        <Grid item xs={6} onClick={() => searchProducts("women")}>
-          <Link to="/search/women">
-            <div
-              style={{
-                height: 258,
-                backgroundImage:
-                  "url(./images/doubleBanner/DT-Double-banner-Women.jpg)",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-          </Link>
+    <div className={classes.fluidBox}>
+      <Paper className={classes.paper}>
+        <Grid container spacing={0}>
+          <Grid item xs={6} onClick={() => searchProducts("women")}>
+            <Link to="/search/women">
+              <div
+                style={{
+                  height: 258,
+                  backgroundImage:
+                    "url(./images/doubleBanner/DT-Double-banner-Women.jpg)",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+            </Link>
+          </Grid>
+          <Grid item xs={6} onClick={() => searchProducts("men")}>
+            <Link to="/search/men">
+              <div
+                style={{
+                  height: 258,
+                  backgroundImage:
+                    "url(./images/doubleBanner/DT-Double-banner-Men.jpg)",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
+              ></div>
+            </Link>
+          </Grid>
         </Grid>
-        <Grid item xs={6} onClick={() => searchProducts("men")}>
-          <Link to="/search/men">
-            <div
-              style={{
-                height: 258,
-                backgroundImage:
-                  "url(./images/doubleBanner/DT-Double-banner-Men.jpg)",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-              }}
-            ></div>
-          </Link>
-        </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </div>
   );
 };
 
