@@ -19,7 +19,7 @@ const Banner = ({ products, title, numOfProds, xs, getProduct }) => {
   return (
     <div className={classes.fluidBox}>
       <Paper className={classes.paper}>
-        <Typography variant="h5" gutterBottom>
+        <Typography variant="h5" gutterBottom className={classes.bannerTitle}>
           {title}
         </Typography>
         {numOfProds > 6 && (
