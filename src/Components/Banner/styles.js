@@ -5,8 +5,12 @@ export default makeStyles((theme) => ({
   paper: {
     marginBottom: "16px",
     width: "100%",
-    minWidth: "960px",
-    minHeight: "173px",
+    minWidth: "700px",
+    padding: "10px",
+  },
+  DoubleBannerpaper: {
+    marginBottom: "16px",
+    width: "100%",
     padding: "10px",
   },
   description: {
@@ -33,5 +37,15 @@ export default makeStyles((theme) => ({
   fluidBox: {
     overflow: "auto",
     whiteSpace: "nowrap",
+  },
+  bannerTitle: {
+    "@media (max-width: 600px)": {
+      fontSize: 16,
+    },
+  },
+  thumbnailsTitle: {
+    "@media (max-width: 800px)": {
+      display: "none",
+    },
   },
 }));
