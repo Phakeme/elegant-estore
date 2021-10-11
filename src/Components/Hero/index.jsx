@@ -17,10 +17,14 @@ const Styles = makeStyles((theme) => ({
       gridTemplateColumns: "1fr 5fr",
     },
     "@media (max-width: 1030px)": {
+      marginBottom: 16,
       gridTemplateColumns: "1fr",
     },
     "@media (max-width: 960px)": {
-      marginTop: `${76 + 8 + 45}px`,
+      marginTop: `${76 + 8 + 37}px`,
+    },
+    "@media (max-width: 600px)": {
+      marginBottom: 16,
     },
   },
   paper: {
