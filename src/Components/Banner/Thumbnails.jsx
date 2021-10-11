@@ -8,7 +8,7 @@ const Thumbnails = ({ thumbnails, searchProducts }) => {
   const classes = Styles();
   return (
     <div className={classes.fluidBox}>
-      <Paper style={{ height: 173, padding: 15, marginBottom: 16 }}>
+      <Paper className={classes.paper}>
         <Grid container spacing={0} style={{ height: "100%" }}>
           {thumbnails.map(({ icon, path, title }, index) => (
             <Grid key={index} item xs={2} onClick={() => searchProducts(path)}>
@@ -27,7 +27,7 @@ const Thumbnails = ({ thumbnails, searchProducts }) => {
                     src={icon}
                     alt=""
                   />
-                  <span>{title}</span>
+                  <span className={classes.thumbnailsTitle}>{title}</span>
                 </div>
               </Link>
             </Grid>
