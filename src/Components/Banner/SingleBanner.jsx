@@ -7,7 +7,7 @@ import Styles from "./styles";
 const SingleBanner = ({ searchProducts }) => {
   const classes = Styles();
   return (
-    <div className={classes.fluidBox}>
+    <div className={`${classes.fluidBox} + ${classes.singleBanner}`}>
       <Paper className={classes.paper}>
         <Grid container spacing={0}>
           <Grid item xs={12} onClick={() => searchProducts("women")}>

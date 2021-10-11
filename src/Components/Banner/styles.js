@@ -48,4 +48,9 @@ export default makeStyles((theme) => ({
       display: "none",
     },
   },
+  singleBanner: {
+    "@media (max-width: 800px)": {
+      display: "none",
+    },
+  },
 }));
