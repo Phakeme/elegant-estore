@@ -34,7 +34,6 @@ export default function Header({ cart, searchProducts, loading }) {
         </Toolbar>
         <div className={classes.mobileSearch}>
           <Search searchProducts={searchProducts} />
-          {/* Test */}
         </div>
       </GlobalContainer>
     </AppBar>
