@@ -15,6 +15,7 @@ const styles = makeStyles((theme) => ({
   adminBtn: {
     display: "flex",
     height: "100%",
+    width: "100%",
     alignItems: "center",
     borderRadius: " 4px",
     justifyContent: "center",
@@ -88,7 +89,6 @@ const Admin = ({ cart }) => {
         item
         xs={4}
         onMouseEnter={() => setLoginOpen(true)}
-        onMouseLeave={() => setLoginOpen(false)}
         onClick={() => setLoginOpen(!loginOpen)}
       >
         <label>
@@ -112,6 +112,7 @@ const Admin = ({ cart }) => {
               right: "0px",
               top: "50px",
             }}
+            onMouseLeave={() => setLoginOpen(false)}
           >
             <Link
               style={{ fontWeight: 500, marginBottom: "0px" }}
