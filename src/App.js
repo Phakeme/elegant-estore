@@ -5,8 +5,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { Header, ScrollToTop } from "./Components/";
-// import { Header, Footer, ScrollToTop } from "./Components/";
+// import { Header, ScrollToTop } from "./Components/";
+import { Header, Footer, ScrollToTop } from "./Components/";
 import Cart from "./containers/Pages/CartContainer";
 import CheckoutContainer from "./containers/Pages/CheckoutContainer";
 import HomeContainer from "./containers/Pages/HomeContainer";
@@ -210,7 +210,7 @@ function App() {
           <Route render={() => <Redirect to="/" />} />
         </Route>
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }
