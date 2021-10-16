@@ -12,9 +12,9 @@ const Footer = () => {
   const Styles = makeStyles((theme) => ({
     root: {
       background: theme.palette.grey[900],
-      minHeight: 200,
+      minHeight: 300,
       color: "white",
-      padding: 30,
+      padding: "50px 30px",
       width: "100%",
     },
     inner: {
@@ -39,15 +39,13 @@ const Footer = () => {
         height: 42,
       },
     },
-    btns: {
-      paddingLeft: 10,
-    },
+    btns: {},
   }));
   const classes = Styles();
   return (
     <footer className={classes.root}>
       <Grid container spacing={2} className={classes.inner}>
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={3}>
           <Link to="/">
             <img
               style={{ height: "32px" }}
@@ -56,14 +54,14 @@ const Footer = () => {
             />
           </Link>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={12} sm={5}>
           <h4 className={classes.heading}>NEW TO ELEGANT?</h4>
           <div className={classes.subHeading}>
             <span>SIGN UP AND GET UP TO R200 OFF</span>
           </div>
           <form noValidate autoComplete="off">
-            <Grid container>
-              <Grid item xs={7}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={7}>
                 <TextField
                   className={classes.textField}
                   color="secondary"
@@ -75,9 +73,9 @@ const Footer = () => {
                   variant="filled"
                 />
               </Grid>
-              <Grid item xs={5}>
-                <Grid container spacing={1} className={classes.btns}>
-                  <Grid item xs={6}>
+              <Grid item xs={12} sm={5}>
+                <Grid container spacing={2} className={classes.btns}>
+                  <Grid item xs={12} md={6}>
                     <Button
                       color="secondary"
                       size="large"
@@ -87,7 +85,7 @@ const Footer = () => {
                       Male
                     </Button>
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={12} md={6}>
                     <Button
                       color="secondary"
                       size="large"
@@ -102,7 +100,7 @@ const Footer = () => {
             </Grid>
           </form>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xm={12} sm={4}>
           <Grid
             container
             style={{
