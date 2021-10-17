@@ -24,6 +24,14 @@ const Footer = () => {
         width: "100%",
       },
     },
+    apps: {
+      textAlign: "right",
+
+      "@media (max-width: 960px)": {
+        textAlign: "left",
+        marginTop: 20,
+      },
+    },
     heading: {
       margin: "0 0 10px 0",
       fontSize: 13,
@@ -45,23 +53,29 @@ const Footer = () => {
   return (
     <footer className={classes.root}>
       <Grid container spacing={2} className={classes.inner}>
-        <Grid item xs={12} sm={3}>
+        <Grid item sm={12} md={3}>
           <Link to="/">
             <img
-              style={{ height: "32px" }}
+              style={{ height: "32px", marginBottom: 20 }}
               src={ElegantWhiteLogo}
               alt="elegant-icon.svg"
             />
           </Link>
         </Grid>
-        <Grid item xs={12} sm={5}>
+        <Grid
+          item
+          sm={12}
+          md={5}
+          className={classes.app}
+          style={{ width: "100%" }}
+        >
           <h4 className={classes.heading}>NEW TO ELEGANT?</h4>
           <div className={classes.subHeading}>
             <span>SIGN UP AND GET UP TO R200 OFF</span>
           </div>
           <form noValidate autoComplete="off">
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={7}>
+              <Grid item xs={12} sm={12} md={7}>
                 <TextField
                   className={classes.textField}
                   color="secondary"
@@ -73,9 +87,9 @@ const Footer = () => {
                   variant="filled"
                 />
               </Grid>
-              <Grid item xs={12} sm={5}>
+              <Grid item xs={12} sm={12} md={5}>
                 <Grid container spacing={2} className={classes.btns}>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Button
                       color="secondary"
                       size="large"
@@ -85,7 +99,7 @@ const Footer = () => {
                       Male
                     </Button>
                   </Grid>
-                  <Grid item xs={12} md={6}>
+                  <Grid item xs={12} sm={12} md={6}>
                     <Button
                       color="secondary"
                       size="large"
@@ -100,13 +114,8 @@ const Footer = () => {
             </Grid>
           </form>
         </Grid>
-        <Grid item xm={12} sm={4}>
-          <Grid
-            container
-            style={{
-              textAlign: "right",
-            }}
-          >
+        <Grid item sm={12} md={4}>
+          <Grid container className={classes.apps}>
             <Grid item xs={12}>
               <h4 className={classes.heading}>
                 DOWNLOAD THE ELEGANT FREE APP!
