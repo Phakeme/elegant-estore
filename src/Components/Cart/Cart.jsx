@@ -21,7 +21,7 @@ const Styles = makeStyles((theme) => ({
     maxWidth: "100%",
     margin: "auto",
     marginBottom: 16,
-    marginTop: `${76 + 8 + 8}px`,
+    paddingTop: 20,
   },
   header: {
     height: "30px",
