@@ -23,6 +23,7 @@ const styles = makeStyles((theme) => ({
   link: {
     "&:hover": {
       color: theme.palette.secondary.main,
+      cursor: "pointer",
     },
   },
   badge: {
@@ -60,16 +61,16 @@ const Admin = ({ cart }) => {
         onClick={() => setHelpOpen(!helpOpen)}
       >
         <Link to="/sp-help">
-          <label className={classes.textLabel}>
+          <Box className={classes.textLabel}>
             <span>
               <FaRegQuestionCircle fontSize={20} style={{ marginRight: 5 }} />
             </span>
             <span>Help</span>
-          </label>
+          </Box>
         </Link>
       </Grid>
       {/* -------------- CART LINK -------------- */}
-      <Grid item xs={4} className={classes.link}>
+      <Grid item xs={4} className={classes.lik}>
         <Link to="/cart">
           <Box>
             <span>
@@ -88,10 +89,9 @@ const Admin = ({ cart }) => {
         className={classes.link}
         item
         xs={4}
-        onMouseEnter={() => setLoginOpen(true)}
         onClick={() => setLoginOpen(!loginOpen)}
       >
-        <label>
+        <Box>
           <span>
             <FaRegUser fontSize={20} style={{ marginRight: 5 }} />
           </span>
@@ -99,7 +99,7 @@ const Admin = ({ cart }) => {
           <span className={classes.textLabel}>
             {!loginOpen ? <BiChevronDown /> : <BiChevronUp />}
           </span>
-        </label>
+        </Box>
         {loginOpen && (
           <Paper
             elevation={5}
@@ -111,6 +111,7 @@ const Admin = ({ cart }) => {
               height: "235px",
               right: "0px",
               top: "50px",
+              zIndex: "1200",
             }}
             onMouseLeave={() => setLoginOpen(false)}
           >
