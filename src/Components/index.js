@@ -4,6 +4,7 @@ export { default as Container } from "./utils/Container";
 export { default as CurrentPath } from "./utils/CurrentPath";
 export { default as NoResultsErr } from "./utils/NoResultsErr";
 export { default as GlobalContainer } from "./utils/Container";
+export { default as MarginTop } from "./utils/MarginTop";
 export { default as Banner } from "./Banner/Banner";
 export { default as NewArrivalsBanner } from "./Banner/NewArrivalsBanner";
 export { default as Thumbnails } from "./Banner/Thumbnails";
