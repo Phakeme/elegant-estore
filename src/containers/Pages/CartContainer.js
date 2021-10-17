@@ -1,21 +1,25 @@
 import React from "react";
-import { Cart, GlobalContainer, NewArrivalsBanner } from "../../Components";
+import {
+  Cart,
+  GlobalContainer,
+  NewArrivalsBanner,
+  MarginTop,
+} from "../../Components";
 
 const CartContainer = ({ cart, removeFromCart, generateToken, products }) => {
-  // <Container style={{ marginTop: `${76 + 8 + 8}px` }}>
   return (
     <GlobalContainer>
-      <main style={{ margin: "auto" }}>
+      <MarginTop>
         <Cart
           cart={cart}
           removeFromCart={removeFromCart}
           generateToken={generateToken}
         />
-      </main>
 
-      {cart.total_items === 0 && (
-        <NewArrivalsBanner products={products} title="Start shopping" />
-      )}
+        {cart.total_items === 0 && (
+          <NewArrivalsBanner products={products} title="Start shopping" />
+        )}
+      </MarginTop>
     </GlobalContainer>
   );
 };
