@@ -1,28 +1,55 @@
 import React from "react";
 import { useLocation, useParams, Link } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    height: 35,
+    minWidth: "100%",
+    display: "flex",
+    alignItems: "center",
+    overflow: "auto",
+    whiteSpace: "nowrap",
+  },
+  slug: {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    "@media (max-width: 600px)": {
+      width: "250px",
+    },
+    "@media (max-width: 360px)": {
+      width: "160px",
+    },
+  },
+  description: {
+    width: "180px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    "@media (max-width: 1280px)": {
+      width: "150px",
+    },
+  },
+}));
 
 const CurrentPath = () => {
   const location = useLocation();
   const { slug } = useParams();
+  const classes = useStyles();
+
   return (
-    <Grid
-      container
-      justifycontent="center"
-      style={{ fontSize: "0.875rem", color: "75757a", textAlign: "center" }}
-    >
-      <Grid item>
-        <Link to="/">
-          <p>Home </p>
-        </Link>
-      </Grid>
-      <Grid item>
-        <p style={{ width: 25 }}>{`>`}</p>
-      </Grid>
-      <Grid item>
-        {slug ? <p>{slug}</p> : <p>{location.pathname.replace("/", "")}</p>}
-      </Grid>
-    </Grid>
+    <Breadcrumbs aria-label="breadcrumb" className={classes.root}>
+      <Link to="/">Home</Link>
+      <div className={classes.slug}>
+        {slug ? (
+          <span>{slug}</span>
+        ) : (
+          <span>{location.pathname.replace("/", "")}</span>
+        )}
+      </div>
+    </Breadcrumbs>
   );
 };
 
