@@ -15,8 +15,8 @@ import { RiFacebookCircleFill } from "react-icons/ri";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { MdAddShoppingCart, MdAssignmentReturn } from "react-icons/md";
 import { FaTruck } from "react-icons/fa";
-import logo from "../../img/product-placeholder.svg";
 import NoResultsErr from "../utils/NoResultsErr";
+import Progress from "../utils/Progress";
 
 const Styles = makeStyles((theme) => ({
   root: {
@@ -44,10 +44,9 @@ const Styles = makeStyles((theme) => ({
   },
   placeholder: {
     height: 551,
-    backgroundImage: `url(${logo})`,
-    backgroundSize: "contain",
-    backgroundRepeat: "noRepeat",
-    backgroundPosition: "left",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     "@media (max-width: 1280px)": {
       height: 540,
     },
@@ -86,7 +85,7 @@ Product.View = ({ product, handleOpen, productError }) => {
     <Paper className={classes.mainPaper} style={{ padding: "16px" }}>
       {productError.state === false ? (
         <Grid container spacing={2}>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4}>
             <Box>
               <Box>
                 <Carousel showThumbs useKeyboardArrows showStatus={false}>
@@ -122,7 +121,7 @@ Product.View = ({ product, handleOpen, productError }) => {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={12} sm={8}>
             <Box>
               <Box>
                 {product.hasOwnProperty("name") && (
@@ -235,9 +234,9 @@ Product.View = ({ product, handleOpen, productError }) => {
 Product.Placeholder = () => {
   const classes = Styles();
   return (
-    <Grid item xs={12}>
-      <Paper className={classes.placeholder}></Paper>
-    </Grid>
+    <Paper className={classes.placeholder}>
+      <Progress />
+    </Paper>
   );
 };
 
