@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     transform: " translate(-50%, -50% )",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(3),
+    "@media (max-width: 600px)": {
+      width: "80%",
+    },
   },
   root: {
     display: "flex",
@@ -59,7 +62,6 @@ const AddToCartModal = ({
   const vgrpId = product.variant_groups[0].id;
 
   const getItemQty = (optionId) => {
-    console.log(cart, "Cartt");
     const item = cart.line_items.filter(
       (item) => item.selected_options[0].option_id === optionId
     );
