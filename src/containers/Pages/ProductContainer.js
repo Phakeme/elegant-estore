@@ -5,6 +5,7 @@ import {
   AddToCartModal,
   GlobalContainer,
   CurrentPath,
+  MarginTop,
 } from "../../Components";
 import Modal from "@material-ui/core/Modal";
 import Grid from "@material-ui/core/Grid";
@@ -38,10 +39,10 @@ const ProductContainer = ({
 
   return (
     <GlobalContainer>
-      <section style={{ margin: "76px 0 16px 0" }}>
+      <MarginTop>
         <CurrentPath />
         <Grid container spacing={2}>
-          <Grid item xs={9}>
+          <Grid item xs={12} md={9}>
             {!loading ? (
               <Product product={product} handleClose={handleClose}>
                 <Product.View
@@ -56,11 +57,11 @@ const ProductContainer = ({
               </section>
             )}
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={12} md={3}>
             <Product.Information></Product.Information>
           </Grid>
         </Grid>
-      </section>
+      </MarginTop>
       <Modal
         open={open}
         onClose={handleClose}
