@@ -9,7 +9,7 @@ import { FaShoppingBasket } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
 import { GiShoppingCart } from "react-icons/gi";
 import { makeStyles } from "@material-ui/styles";
-import CartItem from "./CartItem";
+import TableDisplay from "./TableDisplay";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Styles = makeStyles((theme) => ({
@@ -28,16 +28,16 @@ const Styles = makeStyles((theme) => ({
     textTransform: "uppercase",
   },
   items: {
-    width: "53.47%",
+    // width: "53.47%",
   },
   quantity: {
-    width: "10.315%",
+    // width: "10.315%",
   },
   unitPrice: {
-    width: "18.105%",
+    // width: "18.105%",
   },
   subTotal: {
-    width: "18.105%",
+    // width: "18.105%",
   },
   actionBtns: {
     display: "flex",
@@ -151,73 +151,12 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
           <Typography variant="h5" paragraph component="h2">
             <Box>Cart: {cart.line_items.length} item(s)</Box>
           </Typography>
-          <div className={`${classes.header} ${classes.root}`}>
-            <div className={classes.items}>
-              <Typography variant="subtitle2" paragraph component="h2">
-                <Box>Items</Box>
-              </Typography>
-            </div>
-            <div className={classes.quantity}>
-              <Typography
-                variant="subtitle2"
-                paragraph
-                component="h2"
-                align="center"
-              >
-                <Box>Quantity</Box>
-              </Typography>
-            </div>
-            <div className={classes.unitPrice}>
-              <Typography
-                variant="subtitle2"
-                paragraph
-                component="h2"
-                align="center"
-              >
-                <Box>Unit Price</Box>
-              </Typography>
-            </div>
-            <div className={classes.subTotal}>
-              <Typography
-                variant="subtitle2"
-                paragraph
-                component="h2"
-                align="center"
-              >
-                <Box>SubTotal</Box>
-              </Typography>
-            </div>
-          </div>
           <div style={{ minHeight: "50vh" }}>
             <FormGroup>
-              {cart.line_items.map(
-                (
-                  {
-                    product_id,
-                    id,
-                    name,
-                    media,
-                    line_total,
-                    price,
-                    quantity,
-                    selected_options,
-                  },
-                  index
-                ) => (
-                  <CartItem
-                    line_total={line_total}
-                    quantity={quantity}
-                    name={name}
-                    id={id}
-                    removeFromCart={removeFromCart}
-                    key={index}
-                    product_id={product_id}
-                    media={media}
-                    price={price}
-                    selected_options={selected_options}
-                  />
-                )
-              )}
+              <TableDisplay
+                rows={cart.line_items}
+                removeFromCart={removeFromCart}
+              />
               <div style={{ marginTop: "20px" }}>
                 <Typography variant="h5" component="p" align="right">
                   Total: {cart.subtotal.formatted_with_symbol}
@@ -227,29 +166,25 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
                 </Typography>
                 <Paper style={{ padding: 10, marginTop: 15 }}>
                   <div className={classes.actionBtns}>
-                    <div>
+                    <Button
+                      className={classes.actionBtn}
+                      variant="contained"
+                      color="secondary"
+                      startIcon={<FaShoppingBasket />}
+                    >
+                      <Link to="/">Continue shopping</Link>
+                    </Button>
+                    <Link to="/checkout">
                       <Button
                         className={classes.actionBtn}
                         variant="contained"
                         color="secondary"
-                        startIcon={<FaShoppingBasket />}
+                        startIcon={<FiCheckCircle />}
+                        onClick={() => generateToken(cart.id)}
                       >
-                        <Link to="/">Continue shopping</Link>
+                        Checkout
                       </Button>
-                    </div>
-                    <div>
-                      <Link to="/checkout">
-                        <Button
-                          className={classes.actionBtn}
-                          variant="contained"
-                          color="secondary"
-                          startIcon={<FiCheckCircle />}
-                          onClick={() => generateToken(cart.id)}
-                        >
-                          Checkout
-                        </Button>
-                      </Link>
-                    </div>
+                    </Link>
                   </div>
                 </Paper>
               </div>
