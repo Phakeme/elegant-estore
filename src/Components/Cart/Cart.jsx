@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import FormGroup from "@material-ui/core/FormGroup";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 import { FaShoppingBasket } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
 import { GiShoppingCart } from "react-icons/gi";
@@ -13,40 +14,18 @@ import TableDisplay from "./TableDisplay";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Styles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    width: "100%",
-  },
   container: {
     maxWidth: "100%",
     margin: "auto",
     marginBottom: 16,
     paddingTop: 20,
   },
-  header: {
-    height: "30px",
-    textTransform: "uppercase",
-  },
-  items: {
-    // width: "53.47%",
-  },
-  quantity: {
-    // width: "10.315%",
-  },
-  unitPrice: {
-    // width: "18.105%",
-  },
-  subTotal: {
-    // width: "18.105%",
-  },
-  actionBtns: {
-    display: "flex",
-    justifyContent: "flex-end",
+  shopBtn: {
+    width: "100%",
   },
   actionBtn: {
-    marginLeft: 10,
     color: theme.palette.primary.main,
-    width: 250,
+    width: "100%",
   },
 }));
 
@@ -158,34 +137,46 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
                 removeFromCart={removeFromCart}
               />
               <div style={{ marginTop: "20px" }}>
-                <Typography variant="h5" component="p" align="right">
-                  Total: {cart.subtotal.formatted_with_symbol}
-                </Typography>
-                <Typography variant="body1" component="p" align="right">
-                  Shipping fees included{" "}
-                </Typography>
-                <Paper style={{ padding: 10, marginTop: 15 }}>
-                  <div className={classes.actionBtns}>
-                    <Button
-                      className={classes.actionBtn}
-                      variant="contained"
-                      color="secondary"
-                      startIcon={<FaShoppingBasket />}
-                    >
-                      <Link to="/">Continue shopping</Link>
-                    </Button>
-                    <Link to="/checkout">
-                      <Button
-                        className={classes.actionBtn}
-                        variant="contained"
-                        color="secondary"
-                        startIcon={<FiCheckCircle />}
-                        onClick={() => generateToken(cart.id)}
-                      >
-                        Checkout
-                      </Button>
-                    </Link>
+                <Paper style={{ padding: 10, marginTop: 0 }}>
+                  <div style={{ padding: 10, marginBottom: 10 }}>
+                    <Typography variant="h5" component="p">
+                      Total: {cart.subtotal.formatted_with_symbol}
+                    </Typography>
+                    <Typography variant="body1" component="p">
+                      Shipping fees included{" "}
+                    </Typography>
                   </div>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <Link to="/">
+                        <Button
+                          variant="outlined"
+                          fullWidth
+                          // elavation={2}
+                          elevation={2}
+                          color="secondary"
+                          size="large"
+                          startIcon={<FaShoppingBasket />}
+                        >
+                          Continue shopping
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Link to="/checkout">
+                        <Button
+                          className={`${classes.actionBtn}`}
+                          variant="contained"
+                          color="secondary"
+                          size="large"
+                          startIcon={<FiCheckCircle />}
+                          onClick={() => generateToken(cart.id)}
+                        >
+                          Checkout
+                        </Button>
+                      </Link>
+                    </Grid>
+                  </Grid>
                 </Paper>
               </div>
             </FormGroup>
