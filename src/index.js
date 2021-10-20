@@ -14,6 +14,9 @@ const theme = createMuiTheme({
     secondary: {
       main: "#f68b1e",
     },
+    success: {
+      main: "#00A300",
+    },
   },
   overrides: {
     MuiStepIcon: {
