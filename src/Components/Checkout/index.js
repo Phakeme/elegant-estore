@@ -13,6 +13,7 @@ import OrderSummary from "./Review.jsx";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { MdPayment } from "react-icons/md";
 import { BiErrorCircle } from "react-icons/bi";
+import MarginTop from "../utils/MarginTop.jsx";
 
 const steps = ["Checkout", "Payment", "Complete"];
 
@@ -130,28 +131,34 @@ const Checkout = ({
   };
 
   return (
-    <Grid container spacing={2} style={{ marginTop: `${76 + 8 + 8}px` }}>
-      <Grid item xs={8}>
-        <Stepper
-          elevation={1}
-          activeStep={activeStep}
-          className={classes.stepper}
-        >
-          {steps.map((label, index) => (
-            <Step key={index}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        <div style={{ marginBottom: 16 }}>
-          <CurrentForm />
-        </div>
-        {activeStep === 1 && children}
+    <MarginTop>
+      <Grid
+        container
+        spacing={2}
+        style={{paddingTop: 16}}
+      >
+        <Grid item sm={12} md={8}>
+          <Stepper
+            elevation={1}
+            activeStep={activeStep}
+            className={classes.stepper}
+          >
+            {steps.map((label, index) => (
+              <Step key={index}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+          
+            <CurrentForm />
+          
+          {activeStep === 1 && children}
+        </Grid>
+        <Grid item xs={12} sm={12} md={4} >
+          <OrderSummary checkoutData={checkoutData} />
+        </Grid>
       </Grid>
-      <Grid item xs={4}>
-        <OrderSummary checkoutData={checkoutData} />
-      </Grid>
-    </Grid>
+    </MarginTop>
   );
 };
 
