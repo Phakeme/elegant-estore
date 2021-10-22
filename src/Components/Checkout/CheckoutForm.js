@@ -78,15 +78,21 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
   });
 
   return (
+    <>
     <form noValidate autoComplete="on" onSubmit={formik.handleSubmit}>
       <Grid container spacing={2}>
-        <Grid item style={{ width: "100%" }}>
-          <Paper style={{ padding: "10px 10px 30px 10px" }}>
+        <Grid item xs={12} >
+          <Paper  style={{
+              padding: "10px 10px 30px 10px",
+            }}>
             <FormSubHeader title="Personal details" />
             <Grid container>
               <Grid item xs={1}></Grid>
               <Grid item xs={11}>
-                <Grid container spacing={2}>
+                <Grid
+                  container
+                  spacing={2}
+                >
                   <Grid item xs={6}>
                     <TextField
                       className={classes.textField}
@@ -127,7 +133,7 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
                       fullWidth
                     />
                   </Grid>
-                  <div style={{ padding: "0 8px", width: "50%" }}>
+                  <Grid item xs={12}>
                     <TextField
                       className={classes.textField}
                       color="secondary"
@@ -143,13 +149,13 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
                       value={formik.values.email}
                       fullWidth
                     />
-                  </div>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Paper>
         </Grid>
-        <Grid item style={{ width: "100%" }}>
+        <Grid item xs={12}>
           <Paper
             style={{
               padding: "10px 10px 30px 10px",
@@ -157,7 +163,7 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
           >
             <FormSubHeader title="Shipping details" />
             <Grid container>
-              <Grid item xs={1}></Grid>
+              <Grid item xs={1} />
               <Grid item xs={11}>
                 <Grid container spacing={2}>
                   <Grid item xs={6}>
@@ -262,6 +268,7 @@ const CheckoutForm = ({ nextStep, getOrderData }) => {
         Next
       </Button>
     </form>
+    </>
   );
 };
 
