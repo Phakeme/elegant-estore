@@ -152,7 +152,6 @@ const Cart = ({ cart, removeFromCart, generateToken }) => {
                         <Button
                           variant="outlined"
                           fullWidth
-                          // elavation={2}
                           elevation={2}
                           color="secondary"
                           size="large"
