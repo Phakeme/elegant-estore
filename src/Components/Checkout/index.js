@@ -132,11 +132,7 @@ const Checkout = ({
 
   return (
     <MarginTop>
-      <Grid
-        container
-        spacing={2}
-        style={{paddingTop: 16}}
-      >
+      <Grid container spacing={2} style={{ paddingTop: 16 }}>
         <Grid item sm={12} md={8}>
           <Stepper
             elevation={1}
@@ -149,12 +145,15 @@ const Checkout = ({
               </Step>
             ))}
           </Stepper>
-          
-            <CurrentForm />
-          
-          {activeStep === 1 && children}
+          <CurrentForm />
+          <div className={classes.bannerDesktop}>
+            {activeStep === 1 && children}
+          </div>
         </Grid>
-        <Grid item xs={12} sm={12} md={4} >
+        <Grid item xs={12} sm={12} md={4}>
+          <div className={classes.bannerMobile}>
+            {activeStep === 1 && children}
+          </div>
           <OrderSummary checkoutData={checkoutData} />
         </Grid>
       </Grid>
