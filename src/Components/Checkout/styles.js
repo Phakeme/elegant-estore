@@ -32,9 +32,21 @@ export default makeStyles((theme) => ({
   stepper: {
     marginBottom: 16,
     height: 10,
-    "@media (max-width: 960px)":{
-      display: "none"
-    }
+    "@media (max-width: 960px)": {
+      display: "none",
+    },
+  },
+  bannerDesktop: {
+    marginTop: 16,
+    "@media (max-width: 960px)": {
+      display: "none",
+    },
+  },
+  bannerMobile: {
+    display: "none",
+    "@media (max-width: 960px)": {
+      display: "block",
+    },
   },
   btnNext: {
     marginTop: "16px",
