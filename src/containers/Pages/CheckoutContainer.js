@@ -29,13 +29,15 @@ const CheckoutContainer = ({
           paymentResults={paymentResults}
           paymentError={paymentError}
         >
-          <Banner
-            title="You may also like"
-            numOfProds={4}
-            xs={3}
-            loading={loading}
-            products={products}
-          />
+          <div style={{ width: "100%" }}>
+            <Banner
+              title="You may also like"
+              numOfProds={4}
+              xs={3}
+              loading={loading}
+              products={products}
+            />
+          </div>
         </Checkout>
       </main>
     </GlobalContainer>
