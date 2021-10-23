@@ -23,7 +23,7 @@ const SPHelp = ({ qaItems, children }) => {
     <Paper className={classes.paper}>
       <div className={classes.banner}></div>
       <Grid container spacing={2} style={{ padding: 10 }}>
-        <Grid item xs={8} style={{ marginTop: "-80px" }}>
+        <Grid item xs={12} md={8} style={{ marginTop: "-80px" }}>
           <div className={classes.gridArea}>
             {qALinks.map(({ label, icon }, i) => (
               <QALink key={i} label={label} icon={icon} />
@@ -31,7 +31,7 @@ const SPHelp = ({ qaItems, children }) => {
           </div>
           <FAQ qaItems={qaItems} />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} md={4}>
           <h3 className={classes.label}>DISCOVER ELEGANT</h3>
           {children}
         </Grid>
