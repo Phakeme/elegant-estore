@@ -63,46 +63,48 @@ const Checkout = ({
     } else if (activeStep > 1 && paymentResults) {
       return (
         <Paper className={classes.paymentResults}>
-          <div className={classes.paymentIcon}>
-            <MdPayment />
+          <div>
+            <div className={classes.paymentIcon}>
+              <MdPayment />
+            </div>
+            <h3>
+              Payment of{" "}
+              <span className={classes.textDecoration}>
+                {paymentResults.order_value.formatted_with_symbol}
+              </span>{" "}
+              was successful.
+            </h3>{" "}
+            <h3>
+              Confirmation email was sent to{" "}
+              <span className={classes.textDecoration}>
+                {" "}
+                {paymentResults.customer.email}
+              </span>
+              .
+            </h3>
+            <h3>
+              Thank you{" "}
+              <span className={classes.textDecoration}>
+                {" "}
+                {paymentResults.customer.firstName}{" "}
+              </span>{" "}
+              for being our valued customer.
+            </h3>
+            <h3>
+              We are so grateful for the pleasure of serving you and hope we met
+              your expectations.{" "}
+            </h3>{" "}
+            <Link to="/">
+              <Button
+                variant="contained"
+                size="large"
+                color="secondary"
+                style={{ color: "white" }}
+              >
+                Continue shopping
+              </Button>
+            </Link>
           </div>
-          <h3>
-            Payment of{" "}
-            <span className={classes.textDecoration}>
-              {paymentResults.order_value.formatted_with_symbol}
-            </span>{" "}
-            was successful.
-          </h3>{" "}
-          <h3>
-            Confirmation email was sent to{" "}
-            <span className={classes.textDecoration}>
-              {" "}
-              {paymentResults.customer.email}
-            </span>
-            .
-          </h3>
-          <h3>
-            Thank you{" "}
-            <span className={classes.textDecoration}>
-              {" "}
-              {paymentResults.customer.firstName}{" "}
-            </span>{" "}
-            for being our valued customer.
-          </h3>
-          <h3>
-            We are so grateful for the pleasure of serving you and hope we met
-            your expectations.{" "}
-          </h3>{" "}
-          <Link to="/">
-            <Button
-              variant="contained"
-              size="large"
-              color="secondary"
-              style={{ color: "white" }}
-            >
-              Continue shopping
-            </Button>
-          </Link>
         </Paper>
       );
     } else if (activeStep > 1 && paymentError) {
@@ -119,7 +121,7 @@ const Checkout = ({
     } else {
       return (
         <Paper className={classes.paymentResults}>
-          <div style={{ marginTop: 110 }}>
+          <div>
             <div className={classes.paymentIcon}>
               <CircularProgress />
             </div>
@@ -133,7 +135,7 @@ const Checkout = ({
   return (
     <MarginTop>
       <Grid container spacing={2} style={{ paddingTop: 16 }}>
-        <Grid item sm={12} md={8}>
+        <Grid item xs={12} md={8}>
           <Stepper
             elevation={1}
             activeStep={activeStep}
