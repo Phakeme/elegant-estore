@@ -131,17 +131,19 @@ function App() {
   };
 
   const captureCheckout = (orderData, id) => {
-    // console.log(orderData, id, "CaptureCheckout");
+    setLoading(true);
     commerce.checkout
       .capture(id, orderData)
       .then(({ customer, order_value }) => {
         SetPaymentResults({ customer, order_value });
         emptyCart();
         localStorage.clear();
+        setLoading(false);
         // console.log(customer, order_value, "customer, order_value");
       })
       .catch(({ data }) => {
         SetPaymentError({ data });
+        setLoading(false);
         // console.error(data);
       });
   };
