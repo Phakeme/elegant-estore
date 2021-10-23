@@ -103,7 +103,7 @@ const PaymentForm = ({
               )}
               <br /> <br />
               <Grid container spacing={1}>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <Button
                     variant="outlined"
                     fullWidth
@@ -115,7 +115,7 @@ const PaymentForm = ({
                     Back
                   </Button>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={6}>
                   <Button
                     style={{ color: "white" }}
                     type="submit"
