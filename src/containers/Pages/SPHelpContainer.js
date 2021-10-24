@@ -2,16 +2,13 @@ import React from "react";
 import { SPHelp, GlobalContainer } from "../../Components";
 import categories from "../../Data/categories";
 import faq from "../../Data/faq";
-import { Hero } from "../../Components";
+import { Categories } from "../../Components";
 
 const FaqContainer = ({ searchProducts }) => {
   return (
     <GlobalContainer>
       <SPHelp qaItems={faq}>
-        <Hero.Categories
-          categories={categories}
-          searchProducts={searchProducts}
-        />
+        <Categories categories={categories} searchProducts={searchProducts} />
       </SPHelp>
     </GlobalContainer>
   );
