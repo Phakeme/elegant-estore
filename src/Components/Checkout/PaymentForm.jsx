@@ -10,6 +10,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Styles from "./styles";
+import { GlobalAlert } from "..";
 
 const PaymentForm = ({
   backStep,
@@ -21,6 +22,7 @@ const PaymentForm = ({
 }) => {
   const classes = Styles();
   const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+  const [open, setOpen] = React.useState(false);
 
   const handleSubmit = async (event, elements, stripe) => {
     event.preventDefault();
@@ -84,56 +86,59 @@ const PaymentForm = ({
   };
 
   return (
-    <Paper style={{ padding: 10 }}>
-      <span>
-        Please use this demo card number to make your paymant:
-        42424242424242424242424242
-      </span>
-      <Typography variant="h6" gutterBottom style={{ margin: "20px 0" }}>
-        Payment method
-      </Typography>
-      <Elements stripe={stripePromise}>
-        <ElementsConsumer>
-          {({ elements, stripe }) => (
-            <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
-              {stripe ? (
-                <CardElement />
-              ) : (
-                <p>Something went wrong, please try again later</p>
-              )}
-              <br /> <br />
-              <Grid container spacing={1}>
-                <Grid item xs={12} sm={6}>
-                  <Button
-                    variant="outlined"
-                    fullWidth
-                    disabled={activeStep === 0}
-                    className={classes.backButton}
-                    onClick={backStep}
-                    size="large"
-                  >
-                    Back
-                  </Button>
+    <>
+      <GlobalAlert open={open} setOpen={setOpen} />
+      <Paper style={{ padding: 10 }}>
+        <span>Payment gateway is in Stripe Test Mode!</span>
+        <Typography variant="h6" gutterBottom style={{ margin: "20px 0" }}>
+          Payment method
+        </Typography>
+        <Elements stripe={stripePromise}>
+          <ElementsConsumer>
+            {({ elements, stripe }) => (
+              <form onSubmit={(e) => handleSubmit(e, elements, stripe)}>
+                {stripe ? (
+                  <CardElement />
+                ) : (
+                  <p>Something went wrong, please try again later</p>
+                )}
+                <br /> <br />
+                <Grid container spacing={1}>
+                  <Grid item xs={12} sm={6}>
+                    <Button
+                      variant="outlined"
+                      fullWidth
+                      disabled={activeStep === 0}
+                      className={classes.backButton}
+                      onClick={backStep}
+                      size="large"
+                    >
+                      Back
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Button
+                      style={{ color: "white" }}
+                      type="submit"
+                      variant="contained"
+                      fullWidth
+                      size="large"
+                      disabled={!stripe}
+                      color="secondary"
+                      onClick={() => {
+                        setOpen(true);
+                      }}
+                    >
+                      Pay Price
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                  <Button
-                    style={{ color: "white" }}
-                    type="submit"
-                    variant="contained"
-                    fullWidth
-                    size="large"
-                    disabled={!stripe}
-                    color="secondary"
-                  >
-                    Pay Price
-                  </Button>
-                </Grid>
-              </Grid>
-            </form>
-          )}
-        </ElementsConsumer>
-      </Elements>
-    </Paper>
+              </form>
+            )}
+          </ElementsConsumer>
+        </Elements>
+      </Paper>
+    </>
   );
 };
 
