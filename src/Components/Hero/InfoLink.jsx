@@ -7,7 +7,7 @@ const InfoLink = ({ path, icon, title, subTitle }) => {
     <Link to={path}>
       <Box style={{ display: "flex", width: "100%" }}>
         <Box style={{ marginRight: "5px" }}>
-          <img src={icon} alt="" />
+          <img src={icon} alt={title} />
         </Box>
         <Box>
           <div style={{ fontSize: "13px", fontWeight: "bold" }}>{title}</div>
