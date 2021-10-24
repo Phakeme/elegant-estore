@@ -1,6 +1,6 @@
-## Hello and welcome to my Elegant Store (Zando Clone) 👋
+## Welcome to my Elegant Store (Zando Clone) 👋
 
-![Elegant Preview](https://user-images.githubusercontent.com/49435141/138600808-8c66fc74-a6d5-4d62-9353-58f994c3cce6.jpg)
+![Elegant Preview](https://user-images.githubusercontent.com/49435141/138600974-a2959b13-6a6f-4bee-bdbd-5b7da965cd08.jpg)
 
 ### About this project 
 
