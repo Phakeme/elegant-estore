@@ -14,7 +14,7 @@ const FAQ = ({ qaItems }) => {
           textAlign: "center",
           height: "50px",
           fontWeight: "700px",
-          marginTop: 50,
+          marginTop: 16,
         }}
       >
         <h3>Frequently Asked Questions</h3>
