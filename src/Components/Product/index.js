@@ -140,7 +140,7 @@ Product.View = ({ product, handleOpen, productError }) => {
                     </Box>
                     <Box style={{ background: "", marginBottom: 10 }}>
                       <Typography variant="body2" component="h2">
-                        Brand: Elengant
+                        Brand: Elegant
                       </Typography>
                       <div style={{ display: "flex", justifuContent: "cent" }}>
                         <Rating name="no-value" value={null} />{" "}
@@ -312,7 +312,7 @@ Product.Information = () => {
               Elegant
             </h3>
             <p style={{ margin: 0, fontSize: "0.875rem" }}>
-              100%Positive Seller Score
+              100% Positive Seller Score
             </p>
           </div>
         </Paper>
