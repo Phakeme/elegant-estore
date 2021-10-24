@@ -1,16 +1,43 @@
 ## Welcome to my Elegant Store (Zando Clone) 👋
 
-![Elegant Preview](https://user-images.githubusercontent.com/49435141/138600974-a2959b13-6a6f-4bee-bdbd-5b7da965cd08.jpg)
+![Elegant Responsive Preview](https://user-images.githubusercontent.com/49435141/138603175-65386271-749f-47ce-a930-ec8f10522761.jpg)
 
-### About this project 
+### What I have learned from this Project 
 
-Why this project
+- Lifting the State in React
+- Component Namespace
+- Dynamic Object Assignment
+- Reading Documentation
+- React components automatically re-render whenever there is a change in their state or props
+- The array destructuring assignment on the left-hand side of the assignment to define what values to unpack from the sourced variable
 
-### Tools 
+### Web Host
+- https://vercel.com/
+- continuous deployment
 
-What tech used
+### API's
 
-# Getting Started with Create React App
+- http://commercejs.com/
+
+### npm packages 
+
+- @material-ui
+- react-responsive-carousel
+- react-icons
+- @chec/commerce.js
+- formik
+- yup
+
+### Features
+
+- React Hooks
+- useState, useEffect, useParams
+- React Patterns
+- Namespace
+- Responsive Web Design 
+- React Router
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -80,5 +107,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# elegant-estore
-
