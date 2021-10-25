@@ -8,8 +8,24 @@ import Branding from "./Branding";
 import GlobalContainer from "../utils/Container";
 import Search from "./Search";
 import useStyles from "./styles";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import Fab from "@material-ui/core/Fab";
 
-export default function Header({ cart, searchProducts, loading }) {
+export default function Header({ cart, searchProducts, loading }, props) {
+  const [showBackTopButton, setShowBackTopButton] = React.useState(false);
+
+  if (process.browser) {
+    // Client-side-only code
+    const showToTopButton = () => {
+      if (window.scrollY >= 554) {
+        setShowBackTopButton(true);
+      } else {
+        setShowBackTopButton(false);
+      }
+    };
+    window.addEventListener("scroll", showToTopButton);
+  }
+
   const classes = useStyles();
   return (
     <AppBar
@@ -36,6 +52,13 @@ export default function Header({ cart, searchProducts, loading }) {
           <Search searchProducts={searchProducts} />
         </div>
       </GlobalContainer>
+      {showBackTopButton && (
+        <div className={classes.root} onClick={()=>window.scrollTo(0, 0)}>
+          <Fab color="secondary" size="small" aria-label="scroll back to top">
+            <KeyboardArrowUpIcon color="primary" />
+          </Fab>
+        </div>
+      )}
     </AppBar>
   );
 }
