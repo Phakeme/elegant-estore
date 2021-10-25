@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/core";
 import ElegantWhiteLogo from "../../img/footer/elegant-white-logo.svg";
 import GooglePlayLogo from "../../img/footer/google-play-logo.svg";
 import AppStoreLogo from "../../img/footer/app-store-logo.svg";
+import Contacts from "./Contacts";
 
 const Footer = () => {
   const Styles = makeStyles((theme) => ({
@@ -140,6 +141,7 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Grid>
+        <Contacts />
       </Grid>
     </footer>
   );
