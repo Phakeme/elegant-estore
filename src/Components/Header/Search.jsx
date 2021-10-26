@@ -18,7 +18,6 @@ const Search = ({ searchProducts }) => {
 
   const search = () => {
     if (query.length > 0) {
-      // console.log(query);
       setQuery("");
       searchProducts(query);
       history.push(`/search/${query}`);
