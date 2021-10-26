@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core";
 const Contacts = () => {
   const Styles = makeStyles((theme) => ({
     footerContact: {
-      height: 100,
+      height: 120,
       marginTop: 50,
       width: "100%",
       borderTop: "1px solid #585858",
@@ -24,7 +24,7 @@ const Contacts = () => {
   }));
   const classes = Styles();
   return (
-    <Grid container xs={12} className={classes.footerContact}>
+    <Grid container className={classes.footerContact}>
       <Grid item>
         <h4 className={classes.heading}>CONNECT WITH US</h4>
         <SocialIcon
