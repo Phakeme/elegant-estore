@@ -24,7 +24,6 @@ export default makeStyles((theme) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${30}px)`,
     transition: "",
-    // width: "100%",
   },
   info: {
     minWidth: "200px",
