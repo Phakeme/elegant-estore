@@ -37,7 +37,7 @@ export default function GlabalAlert({ open, setOpen }) {
             </IconButton>
           }
         >
-          Payment gateway is in Stripe Test Mode, We don't accept payments yet!
+          Payment gateway is Stripe Test Mode, We don't accept payments yet!
         </Alert>
       </Paper>
     </Collapse>
