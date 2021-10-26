@@ -5,7 +5,6 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-// import { Header, ScrollToTop } from "./Components/";
 import { Header, Footer, ScrollToTop } from "./Components/";
 import Cart from "./containers/Pages/CartContainer";
 import CheckoutContainer from "./containers/Pages/CheckoutContainer";
@@ -42,11 +41,10 @@ function App() {
       .list()
       .then((product) => {
         setLoading(false);
-        setProducts(product.data, console.log(product.data, "product.data"));
+        setProducts(product.data);
       })
       .catch(({ data }) => {
         setLoading(false);
-        console.error(data, "DATA");
       });
   }, []);
 
@@ -59,12 +57,10 @@ function App() {
       .then((product) => {
         setProduct(product);
         setLoading(false);
-        // setRecentlyViewed((oldArray) => [...oldArray, product]);
       })
       .catch(({ data }) => {
         setLoading(false);
         setProductError({ state: true, message: data.error.message });
-        // console.error(data, "DATA");
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };
@@ -97,15 +93,13 @@ function App() {
   };
 
   const removeFromCart = (id) => {
-    commerce.cart
-      .remove(id)
-      .then(({ cart }) => setCart(cart, console.log(cart, "removeCart")));
+    commerce.cart.remove(id).then(({ cart }) => setCart(cart));
   };
 
   const decrementCart = (id, qty, name) => {
     setIsCartUpdating({ state: true, name });
     commerce.cart.update(id, { quantity: qty }).then(({ cart }) => {
-      setCart(cart, console.log(cart, "removeCart"));
+      setCart(cart);
       setIsCartUpdating({ state: false, name: "" });
     });
   };
@@ -126,7 +120,6 @@ function App() {
   };
 
   const getOrderData = (data) => {
-    // localStorage.setItem("orderData", JSON.stringify(data));
     setCheckoutData(data);
   };
 
@@ -139,19 +132,16 @@ function App() {
         emptyCart();
         localStorage.clear();
         setLoading(false);
-        // console.log(customer, order_value, "customer, order_value");
       })
       .catch(({ data }) => {
         SetPaymentError({ data });
         setLoading(false);
-        // console.error(data);
       });
   };
 
   const emptyCart = () => {
     commerce.cart.empty().then((response) => {
       setCart(response);
-      // console.log(response, "response empty()");
     });
   };
 
