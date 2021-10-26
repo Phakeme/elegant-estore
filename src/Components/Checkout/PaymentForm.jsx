@@ -89,7 +89,7 @@ const PaymentForm = ({
     <>
       <GlobalAlert open={open} setOpen={setOpen} />
       <Paper style={{ padding: 10 }}>
-        <span>Payment gateway is in Stripe Test Mode!</span>
+        <span>Payment gateway is Stripe Test Mode!</span>
         <Typography variant="h6" gutterBottom style={{ margin: "20px 0" }}>
           Payment method
         </Typography>
